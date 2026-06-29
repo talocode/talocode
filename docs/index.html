@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talocode — Open-Source Infrastructure for AI-Native Work</title>
+  <meta name="description" content="Talocode is open-source infrastructure for AI-native work. Build locally with open-source tools. Scale with hosted APIs through TALOCODE_API_KEY.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://talocode.xyz">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">talocode</a>
+    <div class="nav-links">
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#cloud">Cloud</a>
+      <a href="#status">Status</a>
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <h1>Talocode is <span class="highlight">open-source infrastructure</span> for AI-native work.</h1>
+    <p class="hero-sub">Build locally with open-source tools. Scale with hosted APIs through <code>TALOCODE_API_KEY</code>.</p>
+    <div class="hero-actions">
+      <a href="https://github.com/talocode" class="btn btn-primary" target="_blank" rel="noopener">GitHub Organization</a>
+      <a href="/CLOUD.md" class="btn btn-secondary">Cloud Docs</a>
+      <a href="/docs/pricing.md" class="btn btn-secondary">API Pricing</a>
+    </div>
+  </div>
+</header>
+
+<section id="ecosystem" class="section">
+  <div class="container">
+    <h2>Ecosystem</h2>
+    <p class="section-sub">Every product ships as open-source. Run locally, or use via Talocode Cloud.</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Stacklane</h3>
+        <p>Backend cloud platform for AI-native apps. PostgreSQL-powered auth, billing, project management, and usage metering.</p>
+        <span class="badge badge-exp">Experimental</span>
+      </div>
+      <div class="card">
+        <h3>Codra</h3>
+        <p>Local-first AI coding agent. Understands your project, runs commands, edits files. Zero cloud dependency.</p>
+        <span class="badge badge-exp">Experimental</span>
+      </div>
+      <div class="card">
+        <h3>Agent Browser</h3>
+        <p>Browser validation layer for AI agents. Check pages, take screenshots, collect evidence via REST API or MCP.</p>
+        <span class="badge badge-exp">Experimental</span>
+      </div>
+      <div class="card">
+        <h3>WorkLane</h3>
+        <p>Agent workflow and approval runtime. Multi-step agent tasks with human-in-the-loop gates.</p>
+        <span class="badge badge-plan">Planned</span>
+      </div>
+      <div class="card">
+        <h3>Talocode Skills</h3>
+        <p>Reusable skill definitions for AI agents. Structured capability modules for discovery and execution.</p>
+        <span class="badge badge-exp">Experimental</span>
+      </div>
+      <div class="card">
+        <h3>Tera</h3>
+        <p>Learning and context assistant. Captures web content, summarizes, builds a personal knowledge base.</p>
+        <span class="badge badge-plan">Planned</span>
+      </div>
+      <div class="card">
+        <h3>ClipLoop</h3>
+        <p>Short-form promo video engine for indie apps. Generate product demos and social promos from templates.</p>
+        <span class="badge badge-exp">Experimental</span>
+      </div>
+      <div class="card">
+        <h3>Tradia</h3>
+        <p>Trading performance intelligence. Import trades, analyze behavior, generate risk reports.</p>
+        <span class="badge badge-plan">Planned</span>
+      </div>
+      <div class="card">
+        <h3>SignalLane</h3>
+        <p>Business signal detection and routing. Monitor RSS, GitHub, web sources for relevant signals.</p>
+        <span class="badge badge-plan">Planned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cloud" class="section section-dark">
+  <div class="container">
+    <h2>Talocode Cloud</h2>
+    <p class="section-sub">One <code>TALOCODE_API_KEY</code> unlocks every product API with unified prepaid billing.</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">K</div>
+        <h3>API Key Auth</h3>
+        <p>Single <code>TALOCODE_API_KEY</code> for all product APIs. Bearer token authentication.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">W</div>
+        <h3>Prepaid Wallet</h3>
+        <p>1 credit = $0.01 USD. 100 free credits ($1.00) on signup. Pay-per-use, no subscriptions.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">R</div>
+        <h3>Provider Router</h3>
+        <p>OpenAI-compatible <code>/v1/chat/completions</code> with automatic fallback across providers.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">T</div>
+        <h3>Stripe Top-Ups</h3>
+        <p>Fund your wallet via Stripe. Minimum $5. Instant credit. No surprise bills.</p>
+      </div>
+    </div>
+    <div class="code-block">
+      <pre><code>curl https://api.talocode.xyz/v1/chat/completions \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "talocode/auto",
+    "messages": [
+      { "role": "user", "content": "Hello" }
+    ]
+  }'</code></pre>
+    </div>
+    <div class="hero-actions">
+      <a href="/CLOUD.md" class="btn btn-primary">Read Cloud Docs</a>
+      <a href="/docs/pricing.md" class="btn btn-secondary">Pricing</a>
+    </div>
+  </div>
+</section>
+
+<section id="status" class="section">
+  <div class="container">
+    <h2>Status</h2>
+    <p class="section-sub">Where each part of the ecosystem stands today.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Status</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Brand repo</td>
+            <td><span class="status-live">Live</span></td>
+            <td>This site</td>
+          </tr>
+          <tr>
+            <td>Stacklane billing</td>
+            <td><span class="status-live">Live</span></td>
+            <td>Prepaid wallet, API keys, usage metering — local/demo</td>
+          </tr>
+          <tr>
+            <td>Cloud router</td>
+            <td><span class="status-live">Live</span></td>
+            <td>OpenAI-compatible router with fallback — local/demo</td>
+          </tr>
+          <tr>
+            <td>Agent Browser API</td>
+            <td><span class="status-exp">Experimental</span></td>
+            <td>Billing integration connected locally</td>
+          </tr>
+          <tr>
+            <td>Cloud dashboard</td>
+            <td><span class="status-exp">Experimental</span></td>
+            <td>UI built, needs deployment</td>
+          </tr>
+          <tr>
+            <td>Public cloud deployment</td>
+            <td><span class="status-plan">Planned</span></td>
+            <td>Hosted at api.talocode.xyz</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+      <a href="/docs/api.md">API Docs</a>
+      <a href="/CLOUD.md">Cloud</a>
+      <a href="/docs/pricing.md">Pricing</a>
+    </div>
+    <p class="footer-copy">Talocode — Open-source infrastructure for AI-native work.</p>
+  </div>
+</footer>
+
+</body>
+</html>

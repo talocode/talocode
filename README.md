@@ -52,7 +52,8 @@ curl https://api.talocode.xyz/v1/chat/completions \
 
 | Resource | URL |
 |----------|-----|
-| Website | [talocode.xyz](https://talocode.xyz) |
+| Website | [talocode.xyz](https://talocode.xyz) — GitHub Pages landing page |
+| Source | [github.com/talocode/talocode](https://github.com/talocode/talocode) |
 | Cloud Dashboard | [cloud.talocode.xyz](https://cloud.talocode.xyz) |
 | API Endpoint | [api.talocode.xyz](https://api.talocode.xyz) |
 | Documentation | [docs.talocode.xyz](https://docs.talocode.xyz) |

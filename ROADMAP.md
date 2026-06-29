@@ -5,7 +5,7 @@
 Establish the brand, the hosted API layer, and the first wave of open-source tools.
 
 - [x] Brand repository — this repo
-- [ ] talocode.xyz — landing page
+- [x] talocode.xyz — landing page (GitHub Pages)
 - [x] Stacklane billing — prepaid wallet, API keys, usage metering
 - [x] Talocode Cloud router — OpenAI-compatible provider router with fallback
 - [ ] Agent Browser API — hosted browser validation with Talocode Cloud billing
