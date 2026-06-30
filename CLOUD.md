@@ -37,9 +37,9 @@ The router at `POST /v1/chat/completions` provides an OpenAI-compatible chat com
 
 | Model | Fallback Order | Use Case |
 |-------|---------------|----------|
-| `talocode/auto` | openrouter → openai → gemini → mock | General purpose, best automatic choice |
-| `talocode/fast` | openrouter → gemini → mock | Low-latency, simple tasks |
-| `talocode/coding` | openrouter → openai → mock | Code generation and reasoning |
+| `talocode/auto` | openrouter → openai → gemini → xai | General purpose, best automatic choice |
+| `talocode/fast` | openrouter → gemini → xai | Low-latency, simple tasks |
+| `talocode/coding` | openrouter → openai → anthropic | Code generation and reasoning |
 
 ### Pricing per Model
 

@@ -39,7 +39,7 @@ OpenAI-compatible chat completion endpoint with automatic provider routing.
   "object": "chat.completion",
   "created": 1700000000,
   "model": "talocode/auto",
-  "provider": "mock",
+  "provider": "openai",
   "choices": [
     {
       "index": 0,
