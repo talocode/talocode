@@ -76,6 +76,10 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | Agent Browser | `browser.evidence` | 8 |
 | Tera Context | `context.capture` | 5 |
 | ClipLoop | `brief.generate` | 15 |
+| Codra | `repo.summary` | 50 |
+| Codra | `explain` | 20 |
+| Codra | `review` | 40 |
+| Codra | `plan` | 40 |
 | Tradia | `performance.analyze` | 20 |
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
@@ -101,6 +105,10 @@ await talocode.tera.writing.rewrite({ text: "Hello", style: "clear" });
 await talocode.router.chat({ model: "talocode/auto", messages: [{ role: "user", content: "Hi" }] });
 await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
 await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
+await talocode.codra.repoSummary({ files: [{ path: "src/main.ts", content: "..." }] });
+await talocode.codra.explain({ language: "typescript", code: "const x = 1", level: "beginner" });
+await talocode.codra.review({ language: "typescript", code: "function f() {}", focus: ["bugs"] });
+await talocode.codra.plan({ task: "Add auth", constraints: ["no secrets"] });
 ```
 
 ### API Key Migration
@@ -108,6 +116,7 @@ await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
 | Product | Old Key | New Key | Status |
 |---------|---------|---------|--------|
 | ClipLoop | `CLIPLOOP_API_KEY` | `TALOCODE_API_KEY` | `CLIPLOOP_API_KEY` deprecated — use `TALOCODE_API_KEY` |
+| Codra | — | `TALOCODE_API_KEY` | Standard — new hosted API |
 | All others | — | `TALOCODE_API_KEY` | Standard |
 
 See the [SDK docs](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full usage.
@@ -121,6 +130,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | Router | `/v1/router/` | `POST /v1/router/chat/completions` |
 | Tera | `/v1/tera/` | `POST /v1/tera/writing/rewrite` |
 | Agent Browser | `/v1/agent-browser/` | `POST /v1/agent-browser/browser/check` |
+| Codra | `/v1/codra/` | `POST /v1/codra/repo-summary` |
 
 ## Endpoints
 

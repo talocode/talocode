@@ -26,6 +26,12 @@ const check = await talocode.agentBrowser.check({ url: "https://example.com", sc
 
 // Router — chat completions
 const chat = await talocode.router.chat({ model: "talocode/auto", messages: [{ role: "user", content: "Hi" }] });
+
+// Codra — hosted coding capabilities
+const summary = await talocode.codra.repoSummary({ files: [{ path: "src/main.ts", content: "..." }] });
+const explain = await talocode.codra.explain({ language: "typescript", code: "const x = 1", level: "beginner" });
+const review = await talocode.codra.review({ language: "typescript", code: "function f() {}", focus: ["bugs"] });
+const plan = await talocode.codra.plan({ task: "Add auth", constraints: ["no secrets"] });
 ```
 
 ### API Key Migration
@@ -52,7 +58,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/tera/` | Tera (writing/coding capabilities) | `POST /v1/tera/writing/rewrite` |
 | `/v1/agent-browser/` | Agent Browser | `POST /v1/agent-browser/browser/check` |
 | `/v1/cliploop/` | ClipLoop (video generation) | `POST /v1/cliploop/brief/generate` |
-| `/v1/codra/` | Codra (AI coding) | _planned_ |
+| `/v1/codra/` | Codra (AI coding) | `POST /v1/codra/repo-summary` |
 | `/v1/tradia/` | Tradia (trading intelligence) | _planned_ |
 | `/v1/signallane/` | SignalLane (business signals) | _planned_ |
 | `/v1/worklane/` | WorkLane (agent workflows) | _planned_ |
@@ -176,4 +182,73 @@ GET /api/v1/cloud/router/health
 
 ```
 GET /api/v1/cloud/router/providers
+```
+
+## Codra API
+
+Codra Cloud API provides hosted coding capabilities: repo analysis, code explanation, code review, and implementation planning. Local Codra remains open-source and local-first.
+
+### Repo Summary
+
+```
+POST /v1/codra/repo-summary
+```
+
+Analyze a repository structure and get architecture insights, risks, and next steps.
+
+```json
+{
+  "files": [
+    { "path": "src/index.ts", "content": "..." }
+  ],
+  "focus": ["architecture", "risks", "next_steps"]
+}
+```
+
+### Explain Code
+
+```
+POST /v1/codra/explain
+```
+
+Explain a code snippet at beginner, intermediate, or expert level.
+
+```json
+{
+  "language": "typescript",
+  "code": "const x = 1;",
+  "level": "beginner"
+}
+```
+
+### Review Code
+
+```
+POST /v1/codra/review
+```
+
+Review code for bugs, types, security, or performance issues.
+
+```json
+{
+  "language": "typescript",
+  "code": "function bad(x) { return x }",
+  "focus": ["bugs", "types"]
+}
+```
+
+### Plan Implementation
+
+```
+POST /v1/codra/plan
+```
+
+Generate an implementation plan from a task description.
+
+```json
+{
+  "task": "Add Stripe topups",
+  "context": "We use Stripe for payments",
+  "constraints": ["do not break auth"]
+}
 ```

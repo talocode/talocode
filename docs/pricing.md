@@ -37,8 +37,10 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | tradia | trade.import | 3 |
 | tradia | performance.analyze | 20 |
 | tradia | risk.report | 35 |
-| codra | task.small | 40 |
-| codra | task.large | 150 |
+| codra | repo.summary | 50 |
+| codra | explain | 20 |
+| codra | review | 40 |
+| codra | plan | 40 |
 | worklane | workflow.small | 15 |
 | worklane | workflow.large | 40 |
 
