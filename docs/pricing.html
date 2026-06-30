@@ -21,61 +21,100 @@
   </div>
 </nav>
 
-<div class="content">
+<header class="hero">
   <div class="container">
-    <a href="/" class="back-link">&larr; Home</a>
+    <p class="hero-breadcrumb"><a href="/">Home</a> / Pricing</p>
     <h1>Talocode Cloud Pricing</h1>
-
-    <h2>Credit System</h2>
-    <ul>
-      <li><strong>1 credit = $0.01 USD</strong></li>
-      <li>100 free credits on new project creation ($1.00)</li>
-      <li>Minimum top-up: 500 credits ($5.00)</li>
-    </ul>
-
-    <h2>Router Pricing</h2>
-    <table>
-      <thead>
-        <tr><th>Model</th><th>Per Request</th><th>Per 1K Input</th><th>Per 1K Output</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>talocode/auto</td><td>2 cr</td><td>1 cr</td><td>2 cr</td></tr>
-        <tr><td>talocode/fast</td><td>1 cr</td><td>1 cr</td><td>1 cr</td></tr>
-        <tr><td>talocode/coding</td><td>3 cr</td><td>2 cr</td><td>4 cr</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Product Action Pricing</h2>
-    <table>
-      <thead>
-        <tr><th>Product</th><th>Action</th><th>Credits</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>agent_browser</td><td>browser.check</td><td>2</td></tr>
-        <tr><td>agent_browser</td><td>browser.screenshot</td><td>3</td></tr>
-        <tr><td>agent_browser</td><td>browser.evidence</td><td>3</td></tr>
-        <tr><td>agent_browser</td><td>browser.trace_report</td><td>5</td></tr>
-        <tr><td>tera_context</td><td>context.capture</td><td>2</td></tr>
-        <tr><td>tera_context</td><td>context.summarize</td><td>5</td></tr>
-        <tr><td>talocode_reach</td><td>web.read</td><td>2</td></tr>
-        <tr><td>talocode_reach</td><td>search.query</td><td>2</td></tr>
-        <tr><td>talocode_reach</td><td>github.read</td><td>2</td></tr>
-        <tr><td>cliploop</td><td>brief.generate</td><td>10</td></tr>
-        <tr><td>cliploop</td><td>script.generate</td><td>10</td></tr>
-        <tr><td>cliploop</td><td>video.render</td><td>150</td></tr>
-        <tr><td>tradia</td><td>trade.import</td><td>2</td></tr>
-        <tr><td>tradia</td><td>performance.analyze</td><td>15</td></tr>
-        <tr><td>tradia</td><td>risk.report</td><td>25</td></tr>
-        <tr><td>codra</td><td>task.small</td><td>25</td></tr>
-        <tr><td>codra</td><td>task.large</td><td>100</td></tr>
-        <tr><td>worklane</td><td>workflow.small</td><td>10</td></tr>
-        <tr><td>worklane</td><td>workflow.large</td><td>25</td></tr>
-      </tbody>
-    </table>
-
-    <p>Full pricing is available programmatically at <code>GET /api/v1/cloud/pricing</code>.</p>
+    <p class="hero-sub">Pay-per-use, prepaid. No subscriptions. No surprise bills.</p>
   </div>
-</div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>Credit System</h2>
+    <p class="section-sub">Simple, transparent pricing for every API call.</p>
+    <div class="grid">
+      <div class="card" style="text-align:center">
+        <p style="font-size:2.5rem;font-weight:700;margin:0 0 4px;color:var(--text)">1&cent;</p>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin:0">= 1 credit</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <p style="font-size:2.5rem;font-weight:700;margin:0 0 4px;color:var(--text)">100</p>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin:0">free credits ($1.00)</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <p style="font-size:2.5rem;font-weight:700;margin:0 0 4px;color:var(--text)">500</p>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin:0">minimum top-up ($5)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Router Pricing</h2>
+    <p class="section-sub">OpenAI-compatible chat completion with automatic provider fallback.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Model</th><th>Per Request</th><th>Per 1K Input</th><th>Per 1K Output</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>talocode/auto</td><td>2 cr</td><td>1 cr</td><td>2 cr</td></tr>
+          <tr><td>talocode/fast</td><td>1 cr</td><td>1 cr</td><td>1 cr</td></tr>
+          <tr><td>talocode/coding</td><td>3 cr</td><td>2 cr</td><td>4 cr</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Product Action Pricing</h2>
+    <p class="section-sub">Every API call deducts credits based on the action.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Product</th><th>Action</th><th>Credits</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>agent_browser</td><td>browser.check</td><td>2</td></tr>
+          <tr><td>agent_browser</td><td>browser.screenshot</td><td>3</td></tr>
+          <tr><td>agent_browser</td><td>browser.evidence</td><td>3</td></tr>
+          <tr><td>agent_browser</td><td>browser.trace_report</td><td>5</td></tr>
+          <tr><td>tera_context</td><td>context.capture</td><td>2</td></tr>
+          <tr><td>tera_context</td><td>context.summarize</td><td>5</td></tr>
+          <tr><td>talocode_reach</td><td>web.read</td><td>2</td></tr>
+          <tr><td>talocode_reach</td><td>search.query</td><td>2</td></tr>
+          <tr><td>talocode_reach</td><td>github.read</td><td>2</td></tr>
+          <tr><td>cliploop</td><td>brief.generate</td><td>10</td></tr>
+          <tr><td>cliploop</td><td>script.generate</td><td>10</td></tr>
+          <tr><td>cliploop</td><td>video.render</td><td>150</td></tr>
+          <tr><td>tradia</td><td>trade.import</td><td>2</td></tr>
+          <tr><td>tradia</td><td>performance.analyze</td><td>15</td></tr>
+          <tr><td>tradia</td><td>risk.report</td><td>25</td></tr>
+          <tr><td>codra</td><td>task.small</td><td>25</td></tr>
+          <tr><td>codra</td><td>task.large</td><td>100</td></tr>
+          <tr><td>worklane</td><td>workflow.small</td><td>10</td></tr>
+          <tr><td>worklane</td><td>workflow.large</td><td>25</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;margin-top:16px">Full pricing available programmatically at <code>GET /api/v1/cloud/pricing</code>.</p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container" style="text-align:center">
+    <h2>Get Started</h2>
+    <p class="section-sub">100 free credits on every new project. No credit card required.</p>
+    <div class="hero-actions">
+      <a href="cloud.html" class="btn btn-primary">Talocode Cloud Docs</a>
+      <a href="api.html" class="btn btn-secondary">API Reference</a>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="container footer-inner">

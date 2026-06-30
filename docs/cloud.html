@@ -21,98 +21,156 @@
   </div>
 </nav>
 
-<div class="content">
+<header class="hero">
   <div class="container">
-    <a href="/" class="back-link">&larr; Home</a>
+    <p class="hero-breadcrumb"><a href="/">Home</a> / Cloud</p>
     <h1>Talocode Cloud</h1>
-    <p>Talocode Cloud is the hosted API layer for the Talocode ecosystem. A single <code>TALOCODE_API_KEY</code> unlocks access to every product API with unified prepaid billing.</p>
+    <p class="hero-sub">The hosted API layer for the Talocode ecosystem. One <code>TALOCODE_API_KEY</code> unlocks every product API with unified prepaid billing.</p>
+  </div>
+</header>
 
+<section class="section">
+  <div class="container">
     <h2>Authentication</h2>
-    <p>Include your API key in every request:</p>
-    <pre><code>Authorization: Bearer tk_dev_xxxxxxxxxxxx</code></pre>
-    <p>Keys are generated per project from the <a href="https://cloud.talocode.xyz">Cloud Dashboard</a>.</p>
+    <p class="section-sub">Include your API key in every request.</p>
+    <div class="code-block">
+      <pre><code>Authorization: Bearer tk_dev_xxxxxxxxxxxx</code></pre>
+    </div>
+    <p style="text-align:center;margin-top:12px">Keys are generated per project from the <a href="https://cloud.talocode.xyz">Cloud Dashboard</a>.</p>
+  </div>
+</section>
 
+<section class="section section-dark">
+  <div class="container">
     <h2>Wallet and Credits</h2>
-    <ul>
+    <p class="section-sub">Simple prepaid billing. No subscriptions. No surprises.</p>
+    <div class="grid">
+      <div class="card" style="text-align:center">
+        <p style="font-size:2.5rem;font-weight:700;margin:0 0 4px;color:var(--text)">1&cent;</p>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin:0">per credit</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <p style="font-size:2.5rem;font-weight:700;margin:0 0 4px;color:var(--text)">100</p>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin:0">free credits on signup</p>
+      </div>
+      <div class="card" style="text-align:center">
+        <p style="font-size:2.5rem;font-weight:700;margin:0 0 4px;color:var(--text)">$5</p>
+        <p style="font-size:0.85rem;color:var(--text-dim);margin:0">minimum top-up</p>
+      </div>
+    </div>
+    <ul style="max-width:480px;margin:32px auto 0">
       <li><strong>1 credit = $0.01 USD</strong></li>
       <li>New projects receive <strong>100 free credits</strong> ($1.00)</li>
       <li><strong>Minimum top-up</strong>: 500 credits ($5.00)</li>
       <li>Credits never expire</li>
-      <li>Usage is deducted per-request based on the action pricing</li>
+      <li>Usage deducted per-request based on action pricing</li>
     </ul>
+  </div>
+</section>
 
+<section class="section">
+  <div class="container">
     <h2>Billing Model</h2>
-    <p>Pay-per-use, prepaid wallet. No monthly subscriptions. No surprise bills.</p>
-    <ol>
+    <p class="section-sub">Pay-per-use, prepaid wallet. Fund once, use any API.</p>
+    <ol style="max-width:480px;margin:0 auto">
       <li>Top up your wallet via Stripe</li>
       <li>Use any product API</li>
       <li>Credits are deducted automatically</li>
       <li>Insufficient credits returns HTTP 402 with <code>required</code> and <code>available</code> values</li>
     </ol>
-
-    <h2>OpenAI-Compatible Router</h2>
-    <p>The router at <code>POST /v1/chat/completions</code> provides an OpenAI-compatible chat completion endpoint that routes requests through multiple AI providers with automatic fallback.</p>
-
-    <h3>Models</h3>
-    <table>
-      <thead>
-        <tr><th>Model</th><th>Fallback Order</th><th>Use Case</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><code>talocode/auto</code></td><td>openrouter &rarr; openai &rarr; gemini &rarr; mock</td><td>General purpose, best automatic choice</td></tr>
-        <tr><td><code>talocode/fast</code></td><td>openrouter &rarr; gemini &rarr; mock</td><td>Low-latency, simple tasks</td></tr>
-        <tr><td><code>talocode/coding</code></td><td>openrouter &rarr; openai &rarr; mock</td><td>Code generation and reasoning</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Pricing per Model</h3>
-    <table>
-      <thead>
-        <tr><th>Model</th><th>Per Request</th><th>Per 1K Input</th><th>Per 1K Output</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>talocode/auto</td><td>2 credits</td><td>1 credit</td><td>2 credits</td></tr>
-        <tr><td>talocode/fast</td><td>1 credit</td><td>1 credit</td><td>1 credit</td></tr>
-        <tr><td>talocode/coding</td><td>3 credits</td><td>2 credits</td><td>4 credits</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Product APIs</h2>
-    <p>Every Talocode product exposes its API through Talocode Cloud with the same authentication and billing.</p>
-    <table>
-      <thead>
-        <tr><th>Product</th><th>Example Action</th><th>Credits</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Agent Browser</td><td><code>browser.check</code></td><td>2</td></tr>
-        <tr><td>Agent Browser</td><td><code>browser.screenshot</code></td><td>3</td></tr>
-        <tr><td>Agent Browser</td><td><code>browser.evidence</code></td><td>3</td></tr>
-        <tr><td>Tera Context</td><td><code>context.capture</code></td><td>2</td></tr>
-        <tr><td>ClipLoop</td><td><code>brief.generate</code></td><td>10</td></tr>
-        <tr><td>Tradia</td><td><code>performance.analyze</code></td><td>15</td></tr>
-      </tbody>
-    </table>
-    <p>Full pricing is available at <code>GET /api/v1/cloud/pricing</code>.</p>
-
-    <h2>Endpoints</h2>
-    <table>
-      <thead>
-        <tr><th>Method</th><th>Path</th><th>Auth</th><th>Description</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>GET</td><td><code>/v1/models</code></td><td>None</td><td>List available models</td></tr>
-        <tr><td>POST</td><td><code>/v1/chat/completions</code></td><td>API Key</td><td>Chat completion with provider routing</td></tr>
-        <tr><td>POST</td><td><code>/api/v1/cloud/usage/charge</code></td><td>API Key</td><td>Charge credits for an action</td></tr>
-        <tr><td>GET</td><td><code>/api/v1/cloud/pricing</code></td><td>None</td><td>List full pricing catalog</td></tr>
-        <tr><td>GET</td><td><code>/api/v1/cloud/projects/{id}/wallet</code></td><td>Session</td><td>Wallet balance</td></tr>
-        <tr><td>GET</td><td><code>/api/v1/cloud/projects/{id}/usage</code></td><td>Session</td><td>Usage history</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Status</h2>
-    <p>Talocode Cloud is <strong>experimental</strong>. APIs are working but may evolve. Backward compatibility will be maintained where possible.</p>
   </div>
-</div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>OpenAI-Compatible Router</h2>
+    <p class="section-sub">The router at <code>POST /v1/chat/completions</code> routes through multiple AI providers with automatic fallback.</p>
+
+    <h3 style="text-align:center">Models</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Model</th><th>Fallback Order</th><th>Use Case</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>talocode/auto</code></td><td>openrouter &rarr; openai &rarr; gemini &rarr; mock</td><td>General purpose, best automatic choice</td></tr>
+          <tr><td><code>talocode/fast</code></td><td>openrouter &rarr; gemini &rarr; mock</td><td>Low-latency, simple tasks</td></tr>
+          <tr><td><code>talocode/coding</code></td><td>openrouter &rarr; openai &rarr; mock</td><td>Code generation and reasoning</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="text-align:center;margin-top:40px">Pricing per Model</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Model</th><th>Per Request</th><th>Per 1K Input</th><th>Per 1K Output</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>talocode/auto</td><td>2 credits</td><td>1 credit</td><td>2 credits</td></tr>
+          <tr><td>talocode/fast</td><td>1 credit</td><td>1 credit</td><td>1 credit</td></tr>
+          <tr><td>talocode/coding</td><td>3 credits</td><td>2 credits</td><td>4 credits</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Product APIs</h2>
+    <p class="section-sub">Every product exposed through Talocode Cloud with the same auth and billing.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Product</th><th>Example Action</th><th>Credits</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Agent Browser</td><td><code>browser.check</code></td><td>2</td></tr>
+          <tr><td>Agent Browser</td><td><code>browser.screenshot</code></td><td>3</td></tr>
+          <tr><td>Agent Browser</td><td><code>browser.evidence</code></td><td>3</td></tr>
+          <tr><td>Tera Context</td><td><code>context.capture</code></td><td>2</td></tr>
+          <tr><td>ClipLoop</td><td><code>brief.generate</code></td><td>10</td></tr>
+          <tr><td>Tradia</td><td><code>performance.analyze</code></td><td>15</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="text-align:center;margin-top:16px">Full pricing at <code>GET /api/v1/cloud/pricing</code> &middot; <a href="pricing.html">View all pricing &rarr;</a></p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Endpoints</h2>
+    <p class="section-sub">RESTful API endpoints for Talocode Cloud.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Method</th><th>Path</th><th>Auth</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>GET</td><td><code>/v1/models</code></td><td>None</td><td>List available models</td></tr>
+          <tr><td>POST</td><td><code>/v1/chat/completions</code></td><td>API Key</td><td>Chat completion with provider routing</td></tr>
+          <tr><td>POST</td><td><code>/api/v1/cloud/usage/charge</code></td><td>API Key</td><td>Charge credits for an action</td></tr>
+          <tr><td>GET</td><td><code>/api/v1/cloud/pricing</code></td><td>None</td><td>List full pricing catalog</td></tr>
+          <tr><td>GET</td><td><code>/api/v1/cloud/projects/{id}/wallet</code></td><td>Session</td><td>Wallet balance</td></tr>
+          <tr><td>GET</td><td><code>/api/v1/cloud/projects/{id}/usage</code></td><td>Session</td><td>Usage history</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container" style="text-align:center">
+    <h2>Status</h2>
+    <p class="section-sub">Talocode Cloud is <strong>experimental</strong>. APIs are working but may evolve. Backward compatibility will be maintained where possible.</p>
+    <div class="hero-actions">
+      <a href="api.html" class="btn btn-primary">API Reference</a>
+      <a href="pricing.html" class="btn btn-secondary">Pricing</a>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="container footer-inner">

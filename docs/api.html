@@ -21,22 +21,35 @@
   </div>
 </nav>
 
-<div class="content">
+<header class="hero">
   <div class="container">
-    <a href="/" class="back-link">&larr; Home</a>
+    <p class="hero-breadcrumb"><a href="/">Home</a> / API</p>
     <h1>Talocode Cloud API</h1>
-    <p>Base URL: <code>https://api.talocode.xyz</code></p>
+    <p class="hero-sub">Base URL: <code>https://api.talocode.xyz</code></p>
+  </div>
+</header>
 
+<section class="section">
+  <div class="container">
     <h2>Authentication</h2>
-    <p>All API requests require a <code>TALOCODE_API_KEY</code> sent via the <code>Authorization</code> header:</p>
-    <pre><code>Authorization: Bearer tk_dev_xxxxxxxxxxxx</code></pre>
+    <p class="section-sub">All API requests require a <code>TALOCODE_API_KEY</code>.</p>
+    <div class="code-block">
+      <pre><code>Authorization: Bearer tk_dev_xxxxxxxxxxxx</code></pre>
+    </div>
+  </div>
+</section>
 
+<section class="section section-dark">
+  <div class="container">
     <h2>Chat Completions</h2>
-    <pre><code>POST /v1/chat/completions</code></pre>
-    <p>OpenAI-compatible chat completion endpoint with automatic provider routing.</p>
+    <p class="section-sub">OpenAI-compatible endpoint with automatic provider routing.</p>
+    <div class="code-block">
+      <pre><code>POST /v1/chat/completions</code></pre>
+    </div>
 
-    <h3>Request Body</h3>
-    <pre><code>{
+    <h3 style="text-align:center">Request Body</h3>
+    <div class="code-block">
+      <pre><code>{
   "model": "talocode/auto",
   "messages": [
     { "role": "user", "content": "Hello" }
@@ -44,9 +57,11 @@
   "max_tokens": 4096,
   "temperature": 0.7
 }</code></pre>
+    </div>
 
-    <h3>Response</h3>
-    <pre><code>{
+    <h3 style="text-align:center">Response</h3>
+    <div class="code-block">
+      <pre><code>{
   "id": "chatcmpl_xxx",
   "object": "chat.completion",
   "created": 1700000000,
@@ -68,33 +83,52 @@
     "total_tokens": 30
   }
 }</code></pre>
-    <p>The <code>provider</code> field indicates which AI provider served the request.</p>
+    </div>
+    <p style="text-align:center">The <code>provider</code> field indicates which AI provider served the request.</p>
+  </div>
+</section>
 
+<section class="section">
+  <div class="container">
     <h2>Models</h2>
-    <pre><code>GET /v1/models</code></pre>
-    <p>Returns the list of available router models.</p>
+    <p class="section-sub">List available router models.</p>
+    <div class="code-block">
+      <pre><code>GET /v1/models</code></pre>
+    </div>
+    <p style="text-align:center">Returns the list of available router models with provider information.</p>
+  </div>
+</section>
 
+<section class="section section-dark">
+  <div class="container">
     <h2>Charge Credits</h2>
-    <pre><code>POST /api/v1/cloud/usage/charge</code></pre>
-    <p>Charge credits from the project wallet for a specific product action.</p>
+    <p class="section-sub">Deduct credits from your project wallet for a specific action.</p>
+    <div class="code-block">
+      <pre><code>POST /api/v1/cloud/usage/charge</code></pre>
+    </div>
 
-    <h3>Request Body</h3>
-    <pre><code>{
+    <h3 style="text-align:center">Request Body</h3>
+    <div class="code-block">
+      <pre><code>{
   "product": "agent_browser",
   "action": "browser.check",
   "requestId": "my-unique-id"
 }</code></pre>
+    </div>
 
-    <h3>Success Response</h3>
-    <pre><code>{
+    <h3 style="text-align:center">Success Response</h3>
+    <div class="code-block">
+      <pre><code>{
   "data": {
     "ok": true,
     "remainingCredits": 98
   }
 }</code></pre>
+    </div>
 
-    <h3>Insufficient Credits (402)</h3>
-    <pre><code>{
+    <h3 style="text-align:center">Insufficient Credits (402)</h3>
+    <div class="code-block">
+      <pre><code>{
   "data": {
     "ok": false,
     "error": "insufficient_credits",
@@ -102,18 +136,51 @@
     "available": 2
   }
 }</code></pre>
-
-    <h2>Pricing</h2>
-    <pre><code>GET /api/v1/cloud/pricing</code></pre>
-    <p>Returns the full pricing catalog with all products, actions, and credit costs.</p>
-
-    <h2>Router Health</h2>
-    <pre><code>GET /api/v1/cloud/router/health</code></pre>
-
-    <h2>Configured Providers</h2>
-    <pre><code>GET /api/v1/cloud/router/providers</code></pre>
+    </div>
   </div>
-</div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Pricing</h2>
+    <p class="section-sub">Get the full pricing catalog.</p>
+    <div class="code-block">
+      <pre><code>GET /api/v1/cloud/pricing</code></pre>
+    </div>
+    <p style="text-align:center">Returns all products, actions, and credit costs. <a href="pricing.html">View pricing &rarr;</a></p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Router Health</h2>
+    <p class="section-sub">Check the router status and configured providers.</p>
+    <div class="code-block">
+      <pre><code>GET /api/v1/cloud/router/health</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Configured Providers</h2>
+    <p class="section-sub">List which AI providers are configured.</p>
+    <div class="code-block">
+      <pre><code>GET /api/v1/cloud/router/providers</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container" style="text-align:center">
+    <h2>Try It</h2>
+    <p class="section-sub">100 free credits on every new project.</p>
+    <div class="hero-actions">
+      <a href="cloud.html" class="btn btn-primary">Cloud Docs</a>
+      <a href="pricing.html" class="btn btn-secondary">Pricing</a>
+    </div>
+  </div>
+</section>
 
 <footer class="footer">
   <div class="container footer-inner">
