@@ -94,7 +94,11 @@ POST https://api.talocode.xyz/mcp
 
 Auth: `Authorization: Bearer $TALOCODE_API_KEY`
 
-Connect from Cursor, Claude Desktop, VS Code, or any MCP client. See [MCP docs](./docs/mcp.md).
+Two connection modes:
+- **Direct HTTP** — For clients supporting custom headers: point to `POST /mcp` with `Authorization: Bearer $TALOCODE_API_KEY`
+- **Local Bridge** — For clients that cannot send custom headers: use `npx @talocode/mcp` as a local proxy
+
+See [MCP docs](./docs/mcp.md).
 
 ## Base URL
 

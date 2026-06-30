@@ -42,12 +42,19 @@ curl https://api.talocode.xyz/v1/router/chat/completions \
 
 ## MCP
 
-Talocode MCP exposes all Talocode Cloud product APIs through the [Model Context Protocol](https://modelcontextprotocol.io). Use `TALOCODE_API_KEY` to connect from Cursor, Claude Desktop, VS Code, or any MCP client.
+Talocode MCP exposes all Talocode Cloud product APIs through the [Model Context Protocol](https://modelcontextprotocol.io).
 
+**Direct HTTP** — For clients that support custom headers:
 ```
 Endpoint: POST https://api.talocode.xyz/mcp
 Auth:     Authorization: Bearer $TALOCODE_API_KEY
 ```
+
+**Local Bridge** — For clients that cannot send custom headers:
+```
+npx @talocode/mcp
+```
+The bridge reads `TALOCODE_API_KEY` from the environment and proxies to the remote endpoint.
 
 [Learn more about Talocode MCP →](./docs/mcp.md)
 

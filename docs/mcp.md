@@ -28,7 +28,9 @@ X-Api-Key: tk_dev_xxxxxxxxxxxx
 
 ## Client Setup
 
-### Cursor
+### Remote HTTP (supports custom headers)
+
+Use the `url` + `headers` config for clients that support custom HTTP headers:
 
 ```json
 {
@@ -43,34 +45,25 @@ X-Api-Key: tk_dev_xxxxxxxxxxxx
 }
 ```
 
-### Claude Desktop
+### Local Bridge (stdio)
+
+For MCP clients that do not support custom HTTP headers (most desktop clients), use the local bridge package `@talocode/mcp`:
 
 ```json
 {
   "mcpServers": {
     "talocode": {
-      "url": "https://api.talocode.xyz/mcp",
-      "headers": {
-        "Authorization": "Bearer ${TALOCODE_API_KEY}"
+      "command": "npx",
+      "args": ["@talocode/mcp"],
+      "env": {
+        "TALOCODE_API_KEY": "tk_live_xxxxxxxxxxxx"
       }
     }
   }
 }
 ```
 
-### VS Code
-
-```json
-{
-  "mcpServers": {
-    "talocode": {
-      "url": "https://api.talocode.xyz/mcp",
-      "headers": {
-        "Authorization": "Bearer ${TALOCODE_API_KEY}"
-      }
-    }
-  }
-}
+The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP requests to `https://api.talocode.xyz/mcp` with the proper `Authorization` header.
 ```
 
 ## Available Tools
@@ -109,4 +102,4 @@ MCP tool calls are billed as standard Talocode Cloud API requests. Each tool cal
 
 - Wallet balance and usage summary tools are not yet available via MCP (the underlying project-resolution endpoint is pending)
 - No SSE streaming for long-running operations (all responses are synchronous JSON)
-- Bridge package (`npx @talocode/mcp`) not yet published for clients without header support
+- Bridge package `@talocode/mcp` v0.1 ready but not yet published to npm
