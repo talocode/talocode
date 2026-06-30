@@ -2,6 +2,25 @@
 
 Base URL: `https://api.talocode.xyz` (set `TALOCODE_BASE_URL` env var to override)
 
+## SDK
+
+Package name prepared for `@talocode/sdk`. Currently available as `@stacklane/sdk`.
+
+```ts
+import { Talocode } from "@stacklane/sdk";
+
+const talocode = new Talocode({
+  apiKey: process.env.TALOCODE_API_KEY,
+});
+
+const result = await talocode.tera.writing.rewrite({
+  text: "Hello world",
+  style: "clear",
+});
+```
+
+See [TALOCODE_SDK.md](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full usage.
+
 ## Authentication
 
 All API requests require a `TALOCODE_API_KEY` sent via the `Authorization` header:

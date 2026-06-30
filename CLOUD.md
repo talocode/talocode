@@ -86,6 +86,22 @@ Full pricing is available at `GET /api/v1/cloud/pricing`.
 TALOCODE_BASE_URL=https://api.talocode.xyz
 ```
 
+## SDK
+
+Package name prepared for `@talocode/sdk`. Currently available as `@stacklane/sdk`.
+
+```ts
+import { Talocode } from "@stacklane/sdk";
+
+const talocode = new Talocode({ apiKey: process.env.TALOCODE_API_KEY });
+
+await talocode.tera.writing.rewrite({ text: "Hello", style: "clear" });
+await talocode.router.chat({ model: "talocode/auto", messages: [{ role: "user", content: "Hi" }] });
+await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
+```
+
+See the [SDK docs](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full usage.
+
 ## API Namespaces
 
 Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespaced routes continue to work for backward compatibility.
