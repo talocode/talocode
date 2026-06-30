@@ -172,6 +172,16 @@ GET /api/v1/cloud/pricing
 
 Returns the full pricing catalog with all products, actions, and credit costs.
 
+## MCP (Model Context Protocol)
+
+Talocode MCP exposes all Talocode Cloud product APIs as MCP tools.
+
+```
+POST /mcp
+```
+
+See [MCP docs](./mcp.md) for tools, client setup, and configuration.
+
 ## Router Health
 
 ```

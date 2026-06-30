@@ -16,6 +16,7 @@
       <a href="/">Home</a>
       <a href="cloud.html">Cloud</a>
       <a href="pricing.html">Pricing</a>
+      <a href="mcp.html">MCP</a>
       <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
@@ -174,11 +175,25 @@ GET /v1/router/models   (namespaced)</code></pre>
 
 <section class="section section-dark">
   <div class="container">
-    <h2>Router Health</h2>
-    <p class="section-sub">Check the router status and configured providers.</p>
+    <h2>Configured Providers</h2>
+    <p class="section-sub">List which AI providers are configured.</p>
     <div class="code-block">
-      <pre><code>GET /api/v1/cloud/router/health</code></pre>
+      <pre><code>GET /api/v1/cloud/router/providers</code></pre>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>MCP (Model Context Protocol)</h2>
+    <p class="section-sub">Talocode MCP exposes all product APIs through the Model Context Protocol. Connect from Cursor, Claude Desktop, VS Code, or any MCP-compatible client.</p>
+    <div class="code-block">
+      <pre><code>POST /mcp
+Auth: Authorization: Bearer $TALOCODE_API_KEY
+
+14 tools available across Tera, Router, Agent Browser, ClipLoop, and Cloud.</code></pre>
+    </div>
+    <p style="text-align:center"><a href="mcp.html">Talocode MCP Docs &rarr;</a></p>
   </div>
 </section>
 

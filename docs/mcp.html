@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP — Talocode Cloud</title>
+  <meta name="description" content="Talocode MCP: use Talocode Cloud APIs as MCP tools from Cursor, Claude Desktop, VS Code, and any MCP client.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">talocode</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="api.html">API</a>
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="hero-breadcrumb"><a href="/">Home</a> / MCP</p>
+    <h1>Talocode MCP</h1>
+    <p class="hero-sub">One endpoint. 14 tools. One API key.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>What is Talocode MCP?</h2>
+    <p class="section-sub">Talocode MCP exposes all Talocode Cloud product APIs through the <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Model Context Protocol</a>. AI coding agents can call Talocode capabilities as MCP tools using a single <code>TALOCODE_API_KEY</code>.</p>
+    <div class="code-block">
+      <pre><code>Endpoint: POST https://api.talocode.xyz/mcp
+Auth:     Authorization: Bearer $TALOCODE_API_KEY</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Client Setup</h2>
+
+    <h3 style="text-align:center">Cursor</h3>
+    <div class="code-block">
+      <pre><code>.cursor/mcp.json:
+{
+  "mcpServers": {
+    "talocode": {
+      "url": "https://api.talocode.xyz/mcp",
+      "headers": {
+        "Authorization": "Bearer ${TALOCODE_API_KEY}"
+      }
+    }
+  }
+}</code></pre>
+    </div>
+
+    <h3 style="text-align:center">Claude Desktop</h3>
+    <div class="code-block">
+      <pre><code>claude_desktop_config.json:
+{
+  "mcpServers": {
+    "talocode": {
+      "url": "https://api.talocode.xyz/mcp",
+      "headers": {
+        "Authorization": "Bearer ${TALOCODE_API_KEY}"
+      }
+    }
+  }
+}</code></pre>
+    </div>
+
+    <h3 style="text-align:center">VS Code / OpenCode</h3>
+    <div class="code-block">
+      <pre><code>Same format:
+{
+  "mcpServers": {
+    "talocode": {
+      "url": "https://api.talocode.xyz/mcp",
+      "headers": {
+        "Authorization": "Bearer ${TALOCODE_API_KEY}"
+      }
+    }
+  }
+}</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Available Tools</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool</th><th>Product</th><th>Est. Credits</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>tera_writing_rewrite</td><td>Tera</td><td>5</td></tr>
+          <tr><td>tera_writing_draft</td><td>Tera</td><td>10</td></tr>
+          <tr><td>tera_coding_explain</td><td>Tera</td><td>10</td></tr>
+          <tr><td>tera_coding_review</td><td>Tera</td><td>20</td></tr>
+          <tr><td>router_chat</td><td>Router</td><td>Variable</td></tr>
+          <tr><td>agent_browser_check</td><td>Agent Browser</td><td>5</td></tr>
+          <tr><td>agent_browser_screenshot</td><td>Agent Browser</td><td>8</td></tr>
+          <tr><td>agent_browser_trace_report</td><td>Agent Browser</td><td>15</td></tr>
+          <tr><td>cliploop_brief_generate</td><td>ClipLoop</td><td>15</td></tr>
+          <tr><td>cliploop_script_generate</td><td>ClipLoop</td><td>15</td></tr>
+          <tr><td>cliploop_video_render</td><td>ClipLoop</td><td>200</td></tr>
+          <tr><td>cliploop_campaign_create</td><td>ClipLoop</td><td>50</td></tr>
+          <tr><td>cliploop_campaign_package</td><td>ClipLoop</td><td>400</td></tr>
+          <tr><td>cloud_pricing</td><td>Cloud</td><td>Free</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Billing</h2>
+    <p class="section-sub">MCP tool calls are billed as standard Talocode Cloud API requests. Credits are deducted from your wallet. No separate MCP billing.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Security</h2>
+    <p class="section-sub">Never commit API keys to configuration files. Use environment variable substitution (<code>${TALOCODE_API_KEY}</code>) where supported. Talocode MCP never logs raw keys and redacts authorization headers.</p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container" style="text-align:center">
+    <h2>Try It</h2>
+    <p class="section-sub">100 free credits on every new project.</p>
+    <div class="hero-actions">
+      <a href="cloud.html" class="btn btn-primary">Cloud Docs</a>
+      <a href="api.html" class="btn btn-secondary">API Reference</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+      <a href="api.html">API Docs</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="pricing.html">Pricing</a>
+    </div>
+    <p class="footer-copy">Talocode — Open-source infrastructure for AI-native work.</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -84,6 +84,18 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 
+## MCP (Model Context Protocol)
+
+Talocode MCP exposes all product APIs through the Model Context Protocol at:
+
+```
+POST https://api.talocode.xyz/mcp
+```
+
+Auth: `Authorization: Bearer $TALOCODE_API_KEY`
+
+Connect from Cursor, Claude Desktop, VS Code, or any MCP client. See [MCP docs](./docs/mcp.md).
+
 ## Base URL
 
 ```
