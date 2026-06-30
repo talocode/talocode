@@ -80,16 +80,32 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 
+## Base URL
+
+```
+TALOCODE_BASE_URL=https://api.talocode.xyz
+```
+
+## API Namespaces
+
+Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespaced routes continue to work for backward compatibility.
+
+| Product | Namespace | Example |
+|---------|-----------|---------|
+| Router | `/v1/router/` | `POST /v1/router/chat/completions` |
+| Tera | `/v1/tera/` | `POST /v1/tera/writing/rewrite` |
+| Agent Browser | `/v1/agent-browser/` | `POST /v1/agent-browser/browser/check` |
+
 ## Endpoints
 
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| GET | `/v1/models` | None | List available models |
-| POST | `/v1/chat/completions` | API Key | Chat completion with provider routing |
-| POST | `/api/v1/cloud/usage/charge` | API Key | Charge credits for an action |
-| GET | `/api/v1/cloud/pricing` | None | List full pricing catalog |
-| GET | `/api/v1/cloud/projects/{id}/wallet` | Session | Wallet balance |
-| GET | `/api/v1/cloud/projects/{id}/usage` | Session | Usage history |
+| Method | Path (Legacy) | Path (Namespaced) | Auth | Description |
+|--------|---------------|-------------------|------|-------------|
+| GET | `/v1/models` | `/v1/router/models` | None | List available models |
+| POST | `/v1/chat/completions` | `/v1/router/chat/completions` | API Key | Chat completion with provider routing |
+| POST | `/api/v1/cloud/usage/charge` | — | API Key | Charge credits for an action |
+| GET | `/api/v1/cloud/pricing` | — | None | List full pricing catalog |
+| GET | `/api/v1/cloud/projects/{id}/wallet` | — | Session | Wallet balance |
+| GET | `/api/v1/cloud/projects/{id}/usage` | — | Session | Usage history |
 
 ## Status
 

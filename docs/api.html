@@ -41,10 +41,24 @@
 
 <section class="section section-dark">
   <div class="container">
+    <h2>API Namespaces</h2>
+    <p class="section-sub">Each product is available under its own namespace at <code>/v1/{product}/</code>. Legacy routes remain supported.</p>
+    <div class="code-block">
+      <pre><code>Product       | Namespace           | Example
+Router        | /v1/router/          | POST /v1/router/chat/completions
+Tera          | /v1/tera/            | POST /v1/tera/writing/rewrite
+Agent Browser | /v1/agent-browser/   | POST /v1/agent-browser/browser/check</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
     <h2>Chat Completions</h2>
     <p class="section-sub">OpenAI-compatible endpoint with automatic provider routing.</p>
     <div class="code-block">
-      <pre><code>POST /v1/chat/completions</code></pre>
+      <pre><code>POST /v1/chat/completions
+POST /v1/router/chat/completions   (namespaced)</code></pre>
     </div>
 
     <h3 style="text-align:center">Request Body</h3>
@@ -93,7 +107,8 @@
     <h2>Models</h2>
     <p class="section-sub">List available router models.</p>
     <div class="code-block">
-      <pre><code>GET /v1/models</code></pre>
+      <pre><code>GET /v1/models
+GET /v1/router/models   (namespaced)</code></pre>
     </div>
     <p style="text-align:center">Returns the list of available router models with provider information.</p>
   </div>

@@ -1,6 +1,6 @@
 # Talocode Cloud API
 
-Base URL: `https://api.talocode.xyz`
+Base URL: `https://api.talocode.xyz` (set `TALOCODE_BASE_URL` env var to override)
 
 ## Authentication
 
@@ -10,10 +10,21 @@ All API requests require a `TALOCODE_API_KEY` sent via the `Authorization` heade
 Authorization: Bearer tk_dev_xxxxxxxxxxxx
 ```
 
+## API Namespaces
+
+Each product is available under its own namespace at `/v1/{product}/`. Legacy non-namespaced routes remain supported.
+
+| Namespace | Product | Example |
+|-----------|---------|---------|
+| `/v1/router/` | Router (chat completions) | `POST /v1/router/chat/completions` |
+| `/v1/tera/` | Tera (writing/coding capabilities) | `POST /v1/tera/writing/rewrite` |
+| `/v1/agent-browser/` | Agent Browser | `POST /v1/agent-browser/browser/check` |
+
 ## Chat Completions
 
 ```
 POST /v1/chat/completions
+POST /v1/router/chat/completions   (namespaced)
 ```
 
 OpenAI-compatible chat completion endpoint with automatic provider routing.

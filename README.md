@@ -28,7 +28,8 @@ Talocode helps developers and builders make work readable to agents and controll
 Talocode Cloud is the hosted API layer for the entire ecosystem. One `TALOCODE_API_KEY` gives you access to every product API with prepaid wallet billing.
 
 ```bash
-curl https://api.talocode.xyz/v1/chat/completions \
+# All product APIs are available under /v1/{product}/ namespaces
+curl https://api.talocode.xyz/v1/router/chat/completions \
   -H "Authorization: Bearer $TALOCODE_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
