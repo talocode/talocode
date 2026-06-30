@@ -33,13 +33,29 @@ Pay-per-use, prepaid wallet. No monthly subscriptions. No surprise bills.
 
 The router at `POST /v1/chat/completions` provides an OpenAI-compatible chat completion endpoint that routes requests through multiple AI providers with automatic fallback.
 
+### Supported Providers
+
+| Provider | Flagship Models | Best For |
+|----------|----------------|----------|
+| [OpenAI](https://platform.openai.com) | GPT-5.4, GPT-5.4-mini, o3 | General purpose, tool use, ecosystem breadth |
+| [Anthropic](https://docs.anthropic.com/en/docs) | Claude Opus 4.8, Sonnet 4.6, Haiku 4.5 | Coding, long-form reasoning, agentic workflows |
+| [Google Gemini](https://ai.google.dev) | Gemini 3.1 Pro, 3.5 Flash, 2.5 Flash-Lite | Multimodal, long context, best price-performance |
+| [xAI Grok](https://x.ai/api) | Grok 4.3, Grok Build 0.1 | Coding, large context, real-time data |
+| [DeepSeek](https://platform.deepseek.com) | DeepSeek V4 Pro, V4 Flash | Ultra-low cost, OpenAI-compatible, cache discounts |
+| [Mistral](https://mistral.ai) | Mistral Large 3, Mistral Small 4 | EU data residency, efficient open-weight models |
+| [Meta Llama](https://llama.meta.com) | Llama 4 Maverick, Llama 4 Scout | Self-hosting, open-weight, 10M context (Scout) |
+| [Cohere](https://cohere.com) | Command A, Command R+ | Enterprise RAG, embeddings, classification |
+| [Perplexity](https://docs.perplexity.ai) | Sonar Pro | Real-time, citation-grounded answers |
+| [Together](https://together.ai) | Llama 4, DeepSeek, Mistral (hosted) | Multi-model platform, fast inference |
+| [Groq](https://groq.com) | Llama 4, DeepSeek R1, Mixtral | Ultra-low latency inference |
+
 ### Models
 
 | Model | Fallback Order | Use Case |
 |-------|---------------|----------|
-| `talocode/auto` | openrouter → openai → gemini → xai | General purpose, best automatic choice |
-| `talocode/fast` | openrouter → gemini → xai | Low-latency, simple tasks |
-| `talocode/coding` | openrouter → openai → anthropic | Code generation and reasoning |
+| `talocode/auto` | openrouter → openai → anthropic → gemini → grok → deepseek | General purpose, automatic best choice |
+| `talocode/fast` | groq → gemini → mistral → deepseek | Low-latency, simple tasks |
+| `talocode/coding` | openrouter → anthropic → openai → grok | Code generation and reasoning |
 
 ### Pricing per Model
 

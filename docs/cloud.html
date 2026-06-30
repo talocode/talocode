@@ -86,16 +86,38 @@
     <h2>OpenAI-Compatible Router</h2>
     <p class="section-sub">The router at <code>POST /v1/chat/completions</code> routes through multiple AI providers with automatic fallback.</p>
 
-    <h3 style="text-align:center">Models</h3>
+    <h3 style="text-align:center">Supported Providers</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Provider</th><th>Flagship Models</th><th>Best For</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><a href="https://platform.openai.com">OpenAI</a></td><td>GPT-5.4, GPT-5.4-mini, o3</td><td>General purpose, tool use, ecosystem breadth</td></tr>
+          <tr><td><a href="https://docs.anthropic.com/en/docs">Anthropic</a></td><td>Claude Opus 4.8, Sonnet 4.6, Haiku 4.5</td><td>Coding, long-form reasoning, agentic workflows</td></tr>
+          <tr><td><a href="https://ai.google.dev">Google Gemini</a></td><td>Gemini 3.1 Pro, 3.5 Flash, 2.5 Flash-Lite</td><td>Multimodal, long context, best price-performance</td></tr>
+          <tr><td><a href="https://x.ai/api">xAI Grok</a></td><td>Grok 4.3, Grok Build 0.1</td><td>Coding, large context, real-time data</td></tr>
+          <tr><td><a href="https://platform.deepseek.com">DeepSeek</a></td><td>DeepSeek V4 Pro, V4 Flash</td><td>Ultra-low cost, OpenAI-compatible, cache discounts</td></tr>
+          <tr><td><a href="https://mistral.ai">Mistral</a></td><td>Mistral Large 3, Mistral Small 4</td><td>EU data residency, efficient open-weight</td></tr>
+          <tr><td><a href="https://llama.meta.com">Meta Llama</a></td><td>Llama 4 Maverick, Llama 4 Scout</td><td>Self-hosting, open-weight, 10M context</td></tr>
+          <tr><td><a href="https://cohere.com">Cohere</a></td><td>Command A, Command R+</td><td>Enterprise RAG, embeddings, classification</td></tr>
+          <tr><td><a href="https://docs.perplexity.ai">Perplexity</a></td><td>Sonar Pro</td><td>Real-time, citation-grounded answers</td></tr>
+          <tr><td><a href="https://together.ai">Together</a></td><td>Llama 4, DeepSeek, Mistral (hosted)</td><td>Multi-model platform, fast inference</td></tr>
+          <tr><td><a href="https://groq.com">Groq</a></td><td>Llama 4, DeepSeek R1, Mixtral</td><td>Ultra-low latency inference</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="text-align:center;margin-top:40px">Models</h3>
     <div class="table-wrap">
       <table>
         <thead>
           <tr><th>Model</th><th>Fallback Order</th><th>Use Case</th></tr>
         </thead>
         <tbody>
-          <tr><td><code>talocode/auto</code></td><td>openrouter &rarr; openai &rarr; gemini &rarr; xai</td><td>General purpose, best automatic choice</td></tr>
-          <tr><td><code>talocode/fast</code></td><td>openrouter &rarr; gemini &rarr; xai</td><td>Low-latency, simple tasks</td></tr>
-          <tr><td><code>talocode/coding</code></td><td>openrouter &rarr; openai &rarr; anthropic</td><td>Code generation and reasoning</td></tr>
+          <tr><td><code>talocode/auto</code></td><td>openrouter &rarr; openai &rarr; anthropic &rarr; gemini &rarr; grok &rarr; deepseek</td><td>General purpose, automatic best choice</td></tr>
+          <tr><td><code>talocode/fast</code></td><td>groq &rarr; gemini &rarr; mistral &rarr; deepseek</td><td>Low-latency, simple tasks</td></tr>
+          <tr><td><code>talocode/coding</code></td><td>openrouter &rarr; anthropic &rarr; openai &rarr; grok</td><td>Code generation and reasoning</td></tr>
         </tbody>
       </table>
     </div>
