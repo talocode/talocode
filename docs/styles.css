@@ -432,4 +432,137 @@ tbody tr:last-child td {
   .hero {
     padding: 80px 0 56px;
   }
+
+  .content {
+    padding: 40px 0;
+  }
+
+  .content table {
+    font-size: 0.8rem;
+  }
+}
+
+/* Content pages */
+
+.content {
+  padding: 64px 0 96px;
+}
+
+.content h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.content h1 + p {
+  color: var(--text-dim);
+  margin-bottom: 48px;
+}
+
+.content h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 40px 0 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 32px 0 12px;
+}
+
+.content p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+
+.content ul, .content ol {
+  margin: 0 0 20px 24px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
+.content li {
+  margin-bottom: 6px;
+}
+
+.content strong {
+  color: var(--text);
+}
+
+.content code {
+  background: var(--bg-card);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.85em;
+  border: 1px solid var(--border);
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
+}
+
+.content pre {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  margin: 0 0 20px;
+}
+
+.content pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 24px;
+  font-size: 0.875rem;
+}
+
+.content th {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.content td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+}
+
+.content a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.content a:hover {
+  color: var(--accent-dim);
+}
+
+.content .back-link {
+  display: inline-block;
+  margin-bottom: 32px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.content .back-link:hover {
+  color: var(--text);
 }

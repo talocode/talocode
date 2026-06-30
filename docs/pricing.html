@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Talocode Cloud</title>
+  <meta name="description" content="Talocode Cloud pricing: 1 credit = $0.01, 100 free credits, pay-per-use APIs.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">talocode</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="api.html">API</a>
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="container">
+    <a href="/" class="back-link">&larr; Home</a>
+    <h1>Talocode Cloud Pricing</h1>
+
+    <h2>Credit System</h2>
+    <ul>
+      <li><strong>1 credit = $0.01 USD</strong></li>
+      <li>100 free credits on new project creation ($1.00)</li>
+      <li>Minimum top-up: 500 credits ($5.00)</li>
+    </ul>
+
+    <h2>Router Pricing</h2>
+    <table>
+      <thead>
+        <tr><th>Model</th><th>Per Request</th><th>Per 1K Input</th><th>Per 1K Output</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>talocode/auto</td><td>2 cr</td><td>1 cr</td><td>2 cr</td></tr>
+        <tr><td>talocode/fast</td><td>1 cr</td><td>1 cr</td><td>1 cr</td></tr>
+        <tr><td>talocode/coding</td><td>3 cr</td><td>2 cr</td><td>4 cr</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Product Action Pricing</h2>
+    <table>
+      <thead>
+        <tr><th>Product</th><th>Action</th><th>Credits</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>agent_browser</td><td>browser.check</td><td>2</td></tr>
+        <tr><td>agent_browser</td><td>browser.screenshot</td><td>3</td></tr>
+        <tr><td>agent_browser</td><td>browser.evidence</td><td>3</td></tr>
+        <tr><td>agent_browser</td><td>browser.trace_report</td><td>5</td></tr>
+        <tr><td>tera_context</td><td>context.capture</td><td>2</td></tr>
+        <tr><td>tera_context</td><td>context.summarize</td><td>5</td></tr>
+        <tr><td>talocode_reach</td><td>web.read</td><td>2</td></tr>
+        <tr><td>talocode_reach</td><td>search.query</td><td>2</td></tr>
+        <tr><td>talocode_reach</td><td>github.read</td><td>2</td></tr>
+        <tr><td>cliploop</td><td>brief.generate</td><td>10</td></tr>
+        <tr><td>cliploop</td><td>script.generate</td><td>10</td></tr>
+        <tr><td>cliploop</td><td>video.render</td><td>150</td></tr>
+        <tr><td>tradia</td><td>trade.import</td><td>2</td></tr>
+        <tr><td>tradia</td><td>performance.analyze</td><td>15</td></tr>
+        <tr><td>tradia</td><td>risk.report</td><td>25</td></tr>
+        <tr><td>codra</td><td>task.small</td><td>25</td></tr>
+        <tr><td>codra</td><td>task.large</td><td>100</td></tr>
+        <tr><td>worklane</td><td>workflow.small</td><td>10</td></tr>
+        <tr><td>worklane</td><td>workflow.large</td><td>25</td></tr>
+      </tbody>
+    </table>
+
+    <p>Full pricing is available programmatically at <code>GET /api/v1/cloud/pricing</code>.</p>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+      <a href="api.html">API Docs</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="pricing.html">Pricing</a>
+    </div>
+    <p class="footer-copy">Talocode — Open-source infrastructure for AI-native work.</p>
+  </div>
+</footer>
+
+</body>
+</html>

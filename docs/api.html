@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>API Reference — Talocode Cloud</title>
+  <meta name="description" content="Talocode Cloud API reference. OpenAI-compatible chat completions, billing, and usage endpoints.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">talocode</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="content">
+  <div class="container">
+    <a href="/" class="back-link">&larr; Home</a>
+    <h1>Talocode Cloud API</h1>
+    <p>Base URL: <code>https://api.talocode.xyz</code></p>
+
+    <h2>Authentication</h2>
+    <p>All API requests require a <code>TALOCODE_API_KEY</code> sent via the <code>Authorization</code> header:</p>
+    <pre><code>Authorization: Bearer tk_dev_xxxxxxxxxxxx</code></pre>
+
+    <h2>Chat Completions</h2>
+    <pre><code>POST /v1/chat/completions</code></pre>
+    <p>OpenAI-compatible chat completion endpoint with automatic provider routing.</p>
+
+    <h3>Request Body</h3>
+    <pre><code>{
+  "model": "talocode/auto",
+  "messages": [
+    { "role": "user", "content": "Hello" }
+  ],
+  "max_tokens": 4096,
+  "temperature": 0.7
+}</code></pre>
+
+    <h3>Response</h3>
+    <pre><code>{
+  "id": "chatcmpl_xxx",
+  "object": "chat.completion",
+  "created": 1700000000,
+  "model": "talocode/auto",
+  "provider": "mock",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Hello! How can I help you today?"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 10,
+    "completion_tokens": 20,
+    "total_tokens": 30
+  }
+}</code></pre>
+    <p>The <code>provider</code> field indicates which AI provider served the request.</p>
+
+    <h2>Models</h2>
+    <pre><code>GET /v1/models</code></pre>
+    <p>Returns the list of available router models.</p>
+
+    <h2>Charge Credits</h2>
+    <pre><code>POST /api/v1/cloud/usage/charge</code></pre>
+    <p>Charge credits from the project wallet for a specific product action.</p>
+
+    <h3>Request Body</h3>
+    <pre><code>{
+  "product": "agent_browser",
+  "action": "browser.check",
+  "requestId": "my-unique-id"
+}</code></pre>
+
+    <h3>Success Response</h3>
+    <pre><code>{
+  "data": {
+    "ok": true,
+    "remainingCredits": 98
+  }
+}</code></pre>
+
+    <h3>Insufficient Credits (402)</h3>
+    <pre><code>{
+  "data": {
+    "ok": false,
+    "error": "insufficient_credits",
+    "required": 5,
+    "available": 2
+  }
+}</code></pre>
+
+    <h2>Pricing</h2>
+    <pre><code>GET /api/v1/cloud/pricing</code></pre>
+    <p>Returns the full pricing catalog with all products, actions, and credit costs.</p>
+
+    <h2>Router Health</h2>
+    <pre><code>GET /api/v1/cloud/router/health</code></pre>
+
+    <h2>Configured Providers</h2>
+    <pre><code>GET /api/v1/cloud/router/providers</code></pre>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+      <a href="api.html">API Docs</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="pricing.html">Pricing</a>
+    </div>
+    <p class="footer-copy">Talocode — Open-source infrastructure for AI-native work.</p>
+  </div>
+</footer>
+
+</body>
+</html>
