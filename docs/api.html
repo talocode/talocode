@@ -16,6 +16,7 @@
       <a href="/">Home</a>
       <a href="cloud.html">Cloud</a>
       <a href="pricing.html">Pricing</a>
+      <a href="mcp.html">MCP</a>
       <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
@@ -50,7 +51,7 @@ Router        | /v1/router/          | POST /v1/router/chat/completions
 Tera          | /v1/tera/            | POST /v1/tera/writing/rewrite
 Agent Browser | /v1/agent-browser/   | POST /v1/agent-browser/browser/check
 ClipLoop      | /v1/cliploop/        | POST /v1/cliploop/brief/generate
-Codra         | /v1/codra/           | planned
+Codra         | /v1/codra/           | POST /v1/codra/repo-summary
 Tradia        | /v1/tradia/          | planned
 SignalLane    | /v1/signallane/      | planned
 WorkLane      | /v1/worklane/        | planned</code></pre>
@@ -174,11 +175,25 @@ GET /v1/router/models   (namespaced)</code></pre>
 
 <section class="section section-dark">
   <div class="container">
-    <h2>Router Health</h2>
-    <p class="section-sub">Check the router status and configured providers.</p>
+    <h2>Configured Providers</h2>
+    <p class="section-sub">List which AI providers are configured.</p>
     <div class="code-block">
-      <pre><code>GET /api/v1/cloud/router/health</code></pre>
+      <pre><code>GET /api/v1/cloud/router/providers</code></pre>
     </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>MCP (Model Context Protocol)</h2>
+    <p class="section-sub">Talocode MCP exposes all product APIs through the Model Context Protocol. Connect from Cursor, Claude Desktop, VS Code, or any MCP-compatible client.</p>
+    <div class="code-block">
+      <pre><code>POST /mcp
+Auth: Authorization: Bearer $TALOCODE_API_KEY
+
+14 tools available across Tera, Router, Agent Browser, ClipLoop, and Cloud.</code></pre>
+    </div>
+    <p style="text-align:center"><a href="mcp.html">Talocode MCP Docs &rarr;</a></p>
   </div>
 </section>
 
@@ -189,6 +204,20 @@ GET /v1/router/models   (namespaced)</code></pre>
     <div class="code-block">
       <pre><code>GET /api/v1/cloud/router/providers</code></pre>
     </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Codra API</h2>
+    <p class="section-sub">Hosted coding capabilities: repo analysis, code explanation, code review, and implementation planning. Local Codra remains open-source and local-first.</p>
+    <div class="code-block">
+      <pre><code>POST /v1/codra/repo-summary    — Analyze repository structure
+POST /v1/codra/explain         — Explain code snippet
+POST /v1/codra/review          — Review code for issues
+POST /v1/codra/plan            — Generate implementation plan</code></pre>
+    </div>
+    <p style="text-align:center"><strong>Pricing:</strong> repo.summary 50cr, explain 20cr, review 40cr, plan 40cr</p>
   </div>
 </section>
 

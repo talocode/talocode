@@ -40,6 +40,24 @@ curl https://api.talocode.xyz/v1/router/chat/completions \
   }'
 ```
 
+## MCP
+
+Talocode MCP exposes all Talocode Cloud product APIs through the [Model Context Protocol](https://modelcontextprotocol.io).
+
+**Direct HTTP** — For clients that support custom headers:
+```
+Endpoint: POST https://api.talocode.xyz/mcp
+Auth:     Authorization: Bearer $TALOCODE_API_KEY
+```
+
+**Local Bridge** — For clients that cannot send custom headers:
+```
+npx @talocode/mcp
+```
+The bridge reads `TALOCODE_API_KEY` from the environment and proxies to the remote endpoint.
+
+[Learn more about Talocode MCP →](./docs/mcp.md)
+
 ## SDK
 
 Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
@@ -51,6 +69,7 @@ const talocode = new Talocode({ apiKey: process.env.TALOCODE_API_KEY });
 const result = await talocode.tera.writing.rewrite({ text: "Hello", style: "clear" });
 const video = await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
 const sites = await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
+const codraSummary = await talocode.codra.repoSummary({ files: [{ path: "src/main.ts", content: "..." }] });
 ```
 
 - **One API key** — use `TALOCODE_API_KEY` for every product
