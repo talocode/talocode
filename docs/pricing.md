@@ -10,32 +10,32 @@
 
 | Model | Per Request | Per 1K Input | Per 1K Output |
 |-------|-------------|--------------|---------------|
-| talocode/auto | 2 cr | 1 cr | 2 cr |
-| talocode/fast | 1 cr | 1 cr | 1 cr |
-| talocode/coding | 3 cr | 2 cr | 4 cr |
+| talocode/auto | 4 cr | 2 cr | 3 cr |
+| talocode/fast | 2 cr | 1 cr | 2 cr |
+| talocode/coding | 5 cr | 3 cr | 6 cr |
 
 ## Product Action Pricing
 
 | Product | Action | Credits |
 |---------|--------|---------|
-| agent_browser | browser.check | 2 |
-| agent_browser | browser.screenshot | 3 |
-| agent_browser | browser.evidence | 3 |
-| agent_browser | browser.trace_report | 5 |
-| tera_context | context.capture | 2 |
-| tera_context | context.summarize | 5 |
-| talocode_reach | web.read | 2 |
-| talocode_reach | search.query | 2 |
-| talocode_reach | github.read | 2 |
-| cliploop | brief.generate | 10 |
-| cliploop | script.generate | 10 |
-| cliploop | video.render | 150 |
-| tradia | trade.import | 2 |
-| tradia | performance.analyze | 15 |
-| tradia | risk.report | 25 |
-| codra | task.small | 25 |
-| codra | task.large | 100 |
-| worklane | workflow.small | 10 |
-| worklane | workflow.large | 25 |
+| agent_browser | browser.check | 5 |
+| agent_browser | browser.screenshot | 8 |
+| agent_browser | browser.evidence | 8 |
+| agent_browser | browser.trace_report | 15 |
+| tera_context | context.capture | 5 |
+| tera_context | context.summarize | 10 |
+| talocode_reach | web.read | 3 |
+| talocode_reach | search.query | 3 |
+| talocode_reach | github.read | 3 |
+| cliploop | brief.generate | 15 |
+| cliploop | script.generate | 15 |
+| cliploop | video.render | 200 |
+| tradia | trade.import | 3 |
+| tradia | performance.analyze | 20 |
+| tradia | risk.report | 35 |
+| codra | task.small | 40 |
+| codra | task.large | 150 |
+| worklane | workflow.small | 15 |
+| worklane | workflow.large | 40 |
 
 Full pricing is available programmatically at `GET /api/v1/cloud/pricing`.

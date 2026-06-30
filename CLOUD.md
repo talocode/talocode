@@ -61,9 +61,9 @@ The router at `POST /v1/chat/completions` provides an OpenAI-compatible chat com
 
 | Model | Per Request | Per 1K Input Tokens | Per 1K Output Tokens |
 |-------|-------------|---------------------|----------------------|
-| talocode/auto | 2 credits | 1 credit | 2 credits |
-| talocode/fast | 1 credit | 1 credit | 1 credit |
-| talocode/coding | 3 credits | 2 credits | 4 credits |
+| talocode/auto | 4 credits | 2 credits | 3 credits |
+| talocode/fast | 2 credits | 1 credit | 2 credits |
+| talocode/coding | 5 credits | 3 credits | 6 credits |
 
 ## Product APIs
 
@@ -71,12 +71,12 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 
 | Product | Example Action | Credits |
 |---------|---------------|---------|
-| Agent Browser | `browser.check` | 2 |
-| Agent Browser | `browser.screenshot` | 3 |
-| Agent Browser | `browser.evidence` | 3 |
-| Tera Context | `context.capture` | 2 |
-| ClipLoop | `brief.generate` | 10 |
-| Tradia | `performance.analyze` | 15 |
+| Agent Browser | `browser.check` | 5 |
+| Agent Browser | `browser.screenshot` | 8 |
+| Agent Browser | `browser.evidence` | 8 |
+| Tera Context | `context.capture` | 5 |
+| ClipLoop | `brief.generate` | 15 |
+| Tradia | `performance.analyze` | 20 |
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 
