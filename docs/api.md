@@ -4,22 +4,35 @@ Base URL: `https://api.talocode.xyz` (set `TALOCODE_BASE_URL` env var to overrid
 
 ## SDK
 
-Package name prepared for `@talocode/sdk`. Currently available as `@stacklane/sdk`.
+Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
+
+One API key (`TALOCODE_API_KEY`). One base URL (`TALOCODE_BASE_URL`). Every Talocode product is programmable through Talocode Cloud.
 
 ```ts
-import { Talocode } from "@stacklane/sdk";
+import { Talocode } from "@talocode/sdk";
 
 const talocode = new Talocode({
   apiKey: process.env.TALOCODE_API_KEY,
 });
 
-const result = await talocode.tera.writing.rewrite({
-  text: "Hello world",
-  style: "clear",
-});
+// Tera — writing and coding capabilities
+const result = await talocode.tera.writing.rewrite({ text: "Hello world", style: "clear" });
+
+// ClipLoop — video generation
+const brief = await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
+
+// Agent Browser — website validation
+const check = await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
+
+// Router — chat completions
+const chat = await talocode.router.chat({ model: "talocode/auto", messages: [{ role: "user", content: "Hi" }] });
 ```
 
-See [TALOCODE_SDK.md](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full usage.
+### API Key Migration
+
+ClipLoop previously used `CLIPLOOP_API_KEY`. This is now **deprecated** in favor of `TALOCODE_API_KEY`. The old key still works as a fallback but will be removed in a future release.
+
+See [TALOCODE_SDK.md](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full SDK docs.
 
 ## Authentication
 
@@ -38,6 +51,11 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/router/` | Router (chat completions) | `POST /v1/router/chat/completions` |
 | `/v1/tera/` | Tera (writing/coding capabilities) | `POST /v1/tera/writing/rewrite` |
 | `/v1/agent-browser/` | Agent Browser | `POST /v1/agent-browser/browser/check` |
+| `/v1/cliploop/` | ClipLoop (video generation) | `POST /v1/cliploop/brief/generate` |
+| `/v1/codra/` | Codra (AI coding) | _planned_ |
+| `/v1/tradia/` | Tradia (trading intelligence) | _planned_ |
+| `/v1/signallane/` | SignalLane (business signals) | _planned_ |
+| `/v1/worklane/` | WorkLane (agent workflows) | _planned_ |
 
 ## Chat Completions
 

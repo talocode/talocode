@@ -42,15 +42,19 @@ curl https://api.talocode.xyz/v1/router/chat/completions \
 
 ## SDK
 
-Package name prepared for `@talocode/sdk`. Currently available as `@stacklane/sdk`.
+Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
 
 ```ts
 import { Talocode } from "@talocode/sdk";
 
 const talocode = new Talocode({ apiKey: process.env.TALOCODE_API_KEY });
 const result = await talocode.tera.writing.rewrite({ text: "Hello", style: "clear" });
+const video = await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
+const sites = await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
 ```
 
+- **One API key** — use `TALOCODE_API_KEY` for every product
+- **One SDK** — `@talocode/sdk` for all hosted APIs
 - **Prepaid wallet** — 1 credit = $0.01 USD, 100 free credits on signup
 - **Pay-per-use** — every API call deducts credits from your wallet
 - **OpenAI-compatible router** — automatic provider fallback (OpenAI, OpenRouter, Gemini)

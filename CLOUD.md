@@ -88,17 +88,27 @@ TALOCODE_BASE_URL=https://api.talocode.xyz
 
 ## SDK
 
-Package name prepared for `@talocode/sdk`. Currently available as `@stacklane/sdk`.
+Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
+
+Talocode Cloud gives every Talocode product one programmable API surface. Use `TALOCODE_API_KEY` to call Tera, ClipLoop, Agent Browser, Codra, Tradia, SignalLane, WorkLane, and future hosted services.
 
 ```ts
-import { Talocode } from "@stacklane/sdk";
+import { Talocode } from "@talocode/sdk";
 
 const talocode = new Talocode({ apiKey: process.env.TALOCODE_API_KEY });
 
 await talocode.tera.writing.rewrite({ text: "Hello", style: "clear" });
 await talocode.router.chat({ model: "talocode/auto", messages: [{ role: "user", content: "Hi" }] });
 await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
+await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
 ```
+
+### API Key Migration
+
+| Product | Old Key | New Key | Status |
+|---------|---------|---------|--------|
+| ClipLoop | `CLIPLOOP_API_KEY` | `TALOCODE_API_KEY` | `CLIPLOOP_API_KEY` deprecated — use `TALOCODE_API_KEY` |
+| All others | — | `TALOCODE_API_KEY` | Standard |
 
 See the [SDK docs](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full usage.
 

@@ -1,5 +1,9 @@
 # Talocode Cloud Pricing
 
+One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the same credit rate.
+
+> **ClipLoop API key migration:** `CLIPLOOP_API_KEY` is deprecated. Use `TALOCODE_API_KEY` for all hosted ClipLoop API access. See [CLOUD.md](../CLOUD.md).
+
 ## Credit System
 
 - 1 credit = $0.01 USD
