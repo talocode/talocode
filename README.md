@@ -29,7 +29,7 @@ Talocode Cloud is the hosted API layer for the entire ecosystem. One `TALOCODE_A
 
 ```bash
 # All product APIs are available under /v1/{product}/ namespaces
-curl https://api.talocode.xyz/v1/router/chat/completions \
+curl https://api.talocode.site/v1/router/chat/completions \
   -H "Authorization: Bearer $TALOCODE_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -46,7 +46,7 @@ Talocode MCP exposes all Talocode Cloud product APIs through the [Model Context 
 
 **Direct HTTP** — For clients that support custom headers:
 ```
-Endpoint: POST https://api.talocode.xyz/mcp
+Endpoint: POST https://api.talocode.site/mcp
 Auth:     Authorization: Bearer $TALOCODE_API_KEY
 ```
 
@@ -70,6 +70,7 @@ const result = await talocode.tera.writing.rewrite({ text: "Hello", style: "clea
 const video = await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
 const sites = await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
 const codraSummary = await talocode.codra.repoSummary({ files: [{ path: "src/main.ts", content: "..." }] });
+const skill = await talocode.skills.generate.githubProfile({ username: "octocat", target: "cursor" });
 ```
 
 - **One API key** — use `TALOCODE_API_KEY` for every product
@@ -87,11 +88,11 @@ const codraSummary = await talocode.codra.repoSummary({ files: [{ path: "src/mai
 
 | Resource | URL |
 |----------|-----|
-| Website | [talocode.xyz](https://talocode.xyz) — GitHub Pages landing page |
+| Website | [talocode.site](https://talocode.site) — GitHub Pages landing page (legacy: [talocode.xyz](https://talocode.xyz)) |
 | Source | [github.com/talocode/talocode](https://github.com/talocode/talocode) |
-| Cloud Dashboard | [cloud.talocode.xyz](https://cloud.talocode.xyz) |
-| API Endpoint | [api.talocode.xyz](https://api.talocode.xyz) |
-| Documentation | [docs.talocode.xyz](https://docs.talocode.xyz) |
+| Cloud Dashboard | [cloud.talocode.site](https://cloud.talocode.site) |
+| API Endpoint | [api.talocode.site](https://api.talocode.site) |
+| Documentation | [docs.talocode.site](https://docs.talocode.site) |
 | GitHub | [github.com/talocode](https://github.com/talocode) |
 
 ---

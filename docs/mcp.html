@@ -33,11 +33,11 @@
   <div class="container">
     <h2>What is Talocode MCP?</h2>
     <p class="section-sub">Two ways to connect:</p>
-    <p><strong>Remote HTTP</strong> — For clients that support custom HTTP headers (some VS Code MCP extensions, OpenCode). Point to <code>https://api.talocode.xyz/mcp</code> with <code>Authorization: Bearer $TALOCODE_API_KEY</code>.</p>
+    <p><strong>Remote HTTP</strong> — For clients that support custom HTTP headers (some VS Code MCP extensions, OpenCode). Point to <code>https://api.talocode.site/mcp</code> with <code>Authorization: Bearer $TALOCODE_API_KEY</code>.</p>
     <p><strong>Local Bridge</strong> — For clients that do not support custom headers (Claude Desktop, Cursor standard config). Use <code>npx @talocode/mcp</code> as a local stdio bridge. The bridge reads <code>TALOCODE_API_KEY</code> from the environment and forwards requests to the remote endpoint.</p>
     <p class="section-sub">Talocode MCP exposes all Talocode Cloud product APIs through the <a href="https://modelcontextprotocol.io" target="_blank" rel="noopener">Model Context Protocol</a>. AI coding agents can call Talocode capabilities as MCP tools using a single <code>TALOCODE_API_KEY</code>.</p>
     <div class="code-block">
-      <pre><code>Endpoint: POST https://api.talocode.xyz/mcp
+      <pre><code>Endpoint: POST https://api.talocode.site/mcp
 Auth:     Authorization: Bearer $TALOCODE_API_KEY</code></pre>
     </div>
   </div>
@@ -53,7 +53,7 @@ Auth:     Authorization: Bearer $TALOCODE_API_KEY</code></pre>
 {
   "mcpServers": {
     "talocode": {
-      "url": "https://api.talocode.xyz/mcp",
+      "url": "https://api.talocode.site/mcp",
       "headers": {
         "Authorization": "Bearer ${TALOCODE_API_KEY}"
       }
@@ -68,7 +68,7 @@ Auth:     Authorization: Bearer $TALOCODE_API_KEY</code></pre>
 {
   "mcpServers": {
     "talocode": {
-      "url": "https://api.talocode.xyz/mcp",
+      "url": "https://api.talocode.site/mcp",
       "headers": {
         "Authorization": "Bearer ${TALOCODE_API_KEY}"
       }
@@ -94,7 +94,7 @@ Works with Claude Desktop, Cursor, OpenCode:
   }
 }
 
-The bridge forwards all requests to https://api.talocode.xyz/mcp
+The bridge forwards all requests to https://api.talocode.site/mcp
 with Authorization: Bearer $TALOCODE_API_KEY.</code></pre>
     </div>
   </div>

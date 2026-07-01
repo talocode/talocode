@@ -1,41 +1,39 @@
-# Talocode Domains
+# Talocode DNS — talocode.site
 
-## DNS Configuration
+## Primary Domain
 
-GitHub Pages hosts `talocode.xyz` from the `talocode/talocode` repository.
+The primary Talocode domain is now **talocode.site**.
 
-### Apex Domain (talocode.xyz)
+### Apex Domain (talocode.site)
 
-Configured via GitHub Pages with `CNAME` file. Point the apex to GitHub Pages IPs:
+| Record | Target | Status |
+|--------|--------|--------|
+| A (root) | `185.199.108.153` | Pending DNS |
+| A (root) | `185.199.109.153` | Pending DNS |
+| A (root) | `185.199.110.153` | Pending DNS |
+| A (root) | `185.199.111.153` | Pending DNS |
+| CNAME www | `talocode.github.io` | Pending DNS |
 
-```
-A 185.199.108.153
-A 185.199.109.153
-A 185.199.110.153
-A 185.199.111.153
-```
+### Subdomains
 
-### www Subdomain
+| Subdomain | Purpose | Plan |
+|-----------|---------|------|
+| api.talocode.site | API endpoint | Point to Stacklane API hosting provider |
+| docs.talocode.site | Documentation site | CNAME or redirect to talocode.site/docs |
+| cloud.talocode.site | Cloud dashboard | Point to dashboard hosting provider |
 
-```
-CNAME www → talocode.xyz
-```
+## Legacy Aliases (Future)
 
-### Future Subdomains
+The following .xyz domains are retained as legacy aliases for backward compatibility:
 
-| Domain | Service | DNS Record |
-|--------|---------|------------|
-| cloud.talocode.xyz | Cloud dashboard | CNAME cloud → talocode.github.io (or Vercel/Netlify) |
-| api.talocode.xyz | API endpoint | CNAME api → talocode.github.io (or server IP) |
-| docs.talocode.xyz | Documentation site | CNAME docs → talocode.github.io (or Vercel/Netlify) |
+- talocode.xyz
+- api.talocode.xyz
+- docs.talocode.xyz
+- cloud.talocode.xyz
 
-## Current Setup
+These may be redirected to the .site equivalents in a future phase.
 
-| Domain | Status | Hosting |
-|--------|--------|---------|
-| talocode.xyz | Live — landing page | GitHub Pages (this repo, `docs/` folder) |
-| cloud.talocode.xyz | Reserved — not yet deployed | Pending cloud dashboard deployment |
-| api.talocode.xyz | Reserved — not yet deployed | Pending API server deployment |
-| docs.talocode.xyz | Reserved — not yet deployed | Pending docs site deployment |
+## SSL
 
-All infrastructure is managed and pointed to Talocode-controlled services.
+- Let's Encrypt (auto via Namecheap/GitHub Pages) automates SSL.
+- Allow up to 24 hours for DNS propagation and SSL provisioning.

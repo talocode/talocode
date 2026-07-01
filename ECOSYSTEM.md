@@ -43,7 +43,7 @@ The backbone that connects everything.
 ## How It Fits Together
 
 ```
-                    Talocode Cloud (api.talocode.xyz)
+                    Talocode Cloud (api.talocode.site)
                     ┌─────────────────────────────────┐
                     │  Auth (TALOCODE_API_KEY)         │
                     │  Wallet / Credits / Billing      │

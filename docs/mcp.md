@@ -5,7 +5,7 @@ Talocode MCP exposes all Talocode Cloud product APIs through the [Model Context 
 ## Endpoint
 
 ```
-https://api.talocode.xyz/mcp
+https://api.talocode.site/mcp
 ```
 
 ## Status
@@ -36,7 +36,7 @@ Use the `url` + `headers` config for clients that support custom HTTP headers:
 {
   "mcpServers": {
     "talocode": {
-      "url": "https://api.talocode.xyz/mcp",
+      "url": "https://api.talocode.site/mcp",
       "headers": {
         "Authorization": "Bearer ${TALOCODE_API_KEY}"
       }
@@ -63,7 +63,7 @@ For MCP clients that do not support custom HTTP headers (most desktop clients), 
 }
 ```
 
-The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP requests to `https://api.talocode.xyz/mcp` with the proper `Authorization` header.
+The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP requests to `https://api.talocode.site/mcp` with the proper `Authorization` header.
 ```
 
 ## Available Tools

@@ -10,7 +10,7 @@ Include your API key in every request:
 Authorization: Bearer tk_dev_xxxxxxxxxxxx
 ```
 
-Keys are generated per project from the [Cloud Dashboard](https://cloud.talocode.xyz).
+Keys are generated per project from the [Cloud Dashboard](https://cloud.talocode.site).
 
 ## Wallet and Credits
 
@@ -81,6 +81,12 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | Codra | `review` | 40 |
 | Codra | `plan` | 40 |
 | Tradia | `performance.analyze` | 20 |
+| Skills | `generate.github_profile` | 80 |
+| Skills | `generate.github_repo` | 100 |
+| Skills | `generate.docs` | 100 |
+| Skills | `generate.text` | 40 |
+| Skills | `export.cursor` | 10 |
+| Skills | `export.claude` | 10 |
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 
@@ -89,7 +95,7 @@ Full pricing is available at `GET /api/v1/cloud/pricing`.
 Talocode MCP exposes all product APIs through the Model Context Protocol at:
 
 ```
-POST https://api.talocode.xyz/mcp
+POST https://api.talocode.site/mcp
 ```
 
 Auth: `Authorization: Bearer $TALOCODE_API_KEY`
@@ -103,7 +109,7 @@ See [MCP docs](./docs/mcp.md).
 ## Base URL
 
 ```
-TALOCODE_BASE_URL=https://api.talocode.xyz
+TALOCODE_BASE_URL=https://api.talocode.site
 ```
 
 ## SDK
@@ -125,6 +131,10 @@ await talocode.codra.repoSummary({ files: [{ path: "src/main.ts", content: "..."
 await talocode.codra.explain({ language: "typescript", code: "const x = 1", level: "beginner" });
 await talocode.codra.review({ language: "typescript", code: "function f() {}", focus: ["bugs"] });
 await talocode.codra.plan({ task: "Add auth", constraints: ["no secrets"] });
+await talocode.skills.generate.githubProfile({ username: "octocat", target: "cursor" });
+await talocode.skills.generate.githubRepo({ repoUrl: "https://github.com/talocode/codra", target: "cursor" });
+await talocode.skills.generate.docs({ url: "https://docs.example.com/api", target: "cursor" });
+await talocode.skills.generate.text({ name: "my-project", content: "...", target: "cursor" });
 ```
 
 ### API Key Migration
@@ -147,6 +157,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | Tera | `/v1/tera/` | `POST /v1/tera/writing/rewrite` |
 | Agent Browser | `/v1/agent-browser/` | `POST /v1/agent-browser/browser/check` |
 | Codra | `/v1/codra/` | `POST /v1/codra/repo-summary` |
+| Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |
 
 ## Endpoints
 
@@ -158,6 +169,13 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | GET | `/api/v1/cloud/pricing` | — | None | List full pricing catalog |
 | GET | `/api/v1/cloud/projects/{id}/wallet` | — | Session | Wallet balance |
 | GET | `/api/v1/cloud/projects/{id}/usage` | — | Session | Usage history |
+| POST | `/v1/skills/generate/github-profile` | — | API Key | Generate skill from GitHub profile |
+| POST | `/v1/skills/generate/github-repo` | — | API Key | Generate skill from GitHub repo |
+| POST | `/v1/skills/generate/docs` | — | API Key | Generate skill from docs URL |
+| POST | `/v1/skills/generate/text` | — | API Key | Generate skill from text |
+| POST | `/v1/skills/export/cursor` | — | API Key | Export skill for Cursor |
+| POST | `/v1/skills/export/claude` | — | API Key | Export skill for Claude Code |
+| GET | `/v1/skills/health` | — | API Key | Skills API health |
 
 ## Status
 

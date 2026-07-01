@@ -1,6 +1,6 @@
 # Talocode Cloud API
 
-Base URL: `https://api.talocode.xyz` (set `TALOCODE_BASE_URL` env var to override)
+Base URL: `https://api.talocode.site` (set `TALOCODE_BASE_URL` env var to override)
 
 ## SDK
 

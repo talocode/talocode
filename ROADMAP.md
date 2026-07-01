@@ -5,7 +5,7 @@
 Establish the brand, the hosted API layer, and the first wave of open-source tools.
 
 - [x] Brand repository — this repo
-- [x] talocode.xyz — landing page (GitHub Pages)
+- [x] talocode.site — landing page (GitHub Pages, legacy alias: talocode.xyz)
 - [x] Stacklane billing — prepaid wallet, API keys, usage metering
 - [x] Talocode Cloud router — OpenAI-compatible provider router with fallback
 - [ ] Agent Browser API — hosted browser validation with Talocode Cloud billing
@@ -15,8 +15,8 @@ Establish the brand, the hosted API layer, and the first wave of open-source too
 
 Connect the ecosystem, ship the cloud dashboard, and enable end-to-end workflows.
 
-- [ ] docs.talocode.xyz — comprehensive documentation site
-- [ ] cloud.talocode.xyz — web dashboard for wallet, usage, and API keys
+- [ ] docs.talocode.site — comprehensive documentation site
+- [ ] cloud.talocode.site — web dashboard for wallet, usage, and API keys
 - [ ] Codra — Talocode Cloud integration for skill execution
 - [ ] Tera — Browser context capture API with Talocode Cloud billing
 - [ ] ClipLoop — hosted video rendering API
