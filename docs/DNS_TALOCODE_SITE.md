@@ -38,29 +38,32 @@ Add four A records pointing to GitHub Pages IPs:
 
 ## Subdomain Plans
 
+### Static Subdomains (GitHub Pages)
+
+**docs.talocode.site** and **cloud.talocode.site** are static aliases hosted through the same GitHub Pages site as talocode.site.
+
+Client-side redirect via JavaScript in `docs/index.html` and `docs/404.html`:
+- `docs.talocode.site/` → `https://talocode.site/docs.html`
+- `cloud.talocode.site/` → `https://talocode.site/cloud.html`
+
+DNS records to add in Namecheap:
+
+| Type | Host | Value | TTL |
+|------|------|-------|-----|
+| CNAME | `docs` | `talocode.github.io` | Automatic |
+| CNAME | `cloud` | `talocode.github.io` | Automatic |
+
+Because GitHub Pages supports one custom domain per site (`talocode.site`), the `docs` and `cloud` subdomains cannot have independent CNAME files. Instead, they point to `talocode.github.io` directly, and the JavaScript redirect handles the initial page load.
+
 ### api.talocode.site
 
-**Target:** Stacklane API hosting provider.
+**Target:** Stacklane API hosting provider (NOT GitHub Pages).
+
+api.talocode.site must NOT point to GitHub Pages because it needs a backend server.
 
 Options:
-- CNAME to the hosting provider's endpoint (e.g., Netlify, Railway, Fly.io)
-- Or A record pointing to a static IP if using a VPS
-
-### docs.talocode.site
-
-**Target:** Either a separate docs host or redirect to talocode.site/docs.
-
-Options:
-- CNAME to the docs hosting provider
-- Or a redirect rule at the web server level
-
-### cloud.talocode.site
-
-**Target:** Cloud dashboard (Stacklane web app).
-
-Options:
-- CNAME to Vercel/Netlify deployment
-- Or A record for the dashboard server
+- CNAME to the hosting provider's endpoint (e.g., Netlify, Railway, Render, Fly.io)
+- Or A record pointing to a VPS IP
 
 ## SSL / TLS
 

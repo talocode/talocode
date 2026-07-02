@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills API — Talocode Cloud</title>
+  <meta name="description" content="Talocode Skills API generates installable AI skill packs from GitHub profiles, repos, docs, and text.">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">talocode</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="docs.html">Docs</a>
+      <a href="api.html">API</a>
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <p class="hero-breadcrumb"><a href="/">Home</a> / <a href="docs.html">Docs</a> / Skills API</p>
+    <h1>Skills API v0.1</h1>
+    <p class="hero-sub">Generate installable AI skill packs from GitHub profiles, repositories, documentation URLs, and raw text.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    <h2>Overview</h2>
+    <p class="section-sub">The Talocode Skills API generates SKILL.md files compatible with Cursor, Claude Code, OpenCode, Codra, and other SKILL.md-compatible agent workflows.</p>
+    <div class="code-block">
+      <pre><code>Base URL: https://api.talocode.site
+Auth:     Authorization: Bearer $TALOCODE_API_KEY</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>Endpoints</h2>
+
+    <h3 style="text-align:center">Generate from GitHub Profile</h3>
+    <div class="code-block">
+      <pre><code>POST /v1/skills/generate/github-profile</code></pre>
+    </div>
+    <p style="text-align:center">Scrapes a public GitHub profile and generates a skill pack. <strong>80 credits</strong></p>
+
+    <h3 style="text-align:center">Generate from GitHub Repository</h3>
+    <div class="code-block">
+      <pre><code>POST /v1/skills/generate/github-repo</code></pre>
+    </div>
+    <p style="text-align:center">Analyzes a public GitHub repository and generates a skill pack. <strong>100 credits</strong></p>
+
+    <h3 style="text-align:center">Generate from Documentation URL</h3>
+    <div class="code-block">
+      <pre><code>POST /v1/skills/generate/docs</code></pre>
+    </div>
+    <p style="text-align:center">Fetches documentation from a URL and generates a skill pack. <strong>100 credits</strong></p>
+
+    <h3 style="text-align:center">Generate from Text</h3>
+    <div class="code-block">
+      <pre><code>POST /v1/skills/generate/text</code></pre>
+    </div>
+    <p style="text-align:center">Generates a skill pack from raw text input. <strong>40 credits</strong></p>
+
+    <h3 style="text-align:center">Export for Cursor</h3>
+    <div class="code-block">
+      <pre><code>POST /v1/skills/export/cursor</code></pre>
+    </div>
+    <p style="text-align:center">Exports a generated skill as Cursor-compatible files. <strong>10 credits</strong></p>
+
+    <h3 style="text-align:center">Export for Claude Code</h3>
+    <div class="code-block">
+      <pre><code>POST /v1/skills/export/claude</code></pre>
+    </div>
+    <p style="text-align:center">Exports a generated skill as Claude Code-compatible files. <strong>10 credits</strong></p>
+
+    <h3 style="text-align:center">Health</h3>
+    <div class="code-block">
+      <pre><code>GET /v1/skills/health</code></pre>
+    </div>
+    <p style="text-align:center">Returns the health status of the Skills API. <strong>Free</strong></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>SDK Usage</h2>
+    <div class="code-block">
+      <pre><code>import { Talocode } from "@talocode/sdk";
+
+const talocode = new Talocode();
+
+// Generate skill from GitHub profile
+const skill = await talocode.skills.generate.githubProfile({
+  username: "octocat",
+  target: "cursor"
+});
+
+// Generate skill from GitHub repository
+const repoSkill = await talocode.skills.generate.githubRepo({
+  repoUrl: "https://github.com/talocode/codra",
+  target: "cursor"
+});
+
+// Generate skill from documentation
+const docsSkill = await talocode.skills.generate.docs({
+  url: "https://docs.example.com/api",
+  target: "cursor"
+});
+
+// Generate skill from text
+const textSkill = await talocode.skills.generate.text({
+  name: "my-project",
+  content: "Project context and patterns...",
+  target: "cursor"
+});</code></pre>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>MCP Tools</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Tool Name</th><th>Description</th><th>Credits</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>skills_generate_github_profile</code></td><td>Generate a skill from a GitHub profile</td><td>80</td></tr>
+          <tr><td><code>skills_generate_github_repo</code></td><td>Generate a skill from a GitHub repo</td><td>100</td></tr>
+          <tr><td><code>skills_generate_docs</code></td><td>Generate a skill from a docs URL</td><td>100</td></tr>
+          <tr><td><code>skills_generate_text</code></td><td>Generate a skill from text</td><td>40</td></tr>
+          <tr><td><code>skills_export_cursor</code></td><td>Export a skill for Cursor</td><td>10</td></tr>
+          <tr><td><code>skills_export_claude</code></td><td>Export a skill for Claude Code</td><td>10</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>Pricing</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Action</th><th>Credits</th><th>USD Value</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>skills.generate.github_profile</td><td>80</td><td>$0.80</td></tr>
+          <tr><td>skills.generate.github_repo</td><td>100</td><td>$1.00</td></tr>
+          <tr><td>skills.generate.docs</td><td>100</td><td>$1.00</td></tr>
+          <tr><td>skills.generate.text</td><td>40</td><td>$0.40</td></tr>
+          <tr><td>skills.export.cursor</td><td>10</td><td>$0.10</td></tr>
+          <tr><td>skills.export.claude</td><td>10</td><td>$0.10</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container" style="text-align:center">
+    <h2>Try It</h2>
+    <p class="section-sub">100 free credits on every new project.</p>
+    <div class="hero-actions">
+      <a href="cloud.html" class="btn btn-primary">Cloud Docs</a>
+      <a href="api.html" class="btn btn-secondary">API Reference</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+      <a href="api.html">API Docs</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="docs.html">Docs</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="mcp.html">MCP</a>
+      <a href="skills.html">Skills</a>
+    </div>
+    <p class="footer-copy">Talocode — Open-source infrastructure for AI-native work.</p>
+  </div>
+</footer>
+
+</body>
+</html>
