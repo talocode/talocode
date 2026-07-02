@@ -36,36 +36,58 @@ Add four A records pointing to GitHub Pages IPs:
 |------|------|-------|
 | CNAME Record | `www` | `talocode.github.io` |
 
-## Subdomain Plans
+## Subdomain Architecture
 
-### Static Subdomains (URL Redirect)
+### talocode.site — GitHub Pages
 
-**docs.talocode.site** and **cloud.talocode.site** redirect to the main talocode.site via Namecheap URL Redirect records.
+The apex domain `talocode.site` is served via GitHub Pages from the `docs/` directory. This remains the public brand and home site. **Do not remove this setup.**
 
-Redirect targets:
-- `https://docs.talocode.site/` → `https://talocode.site/docs.html` (301 permanent)
-- `https://cloud.talocode.site/` → `https://talocode.site/cloud.html` (301 permanent)
+### cloud.talocode.site — Netlify (Vite App)
 
-DNS records in Namecheap:
+The `cloud.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Netlify**.
 
-| Type | Host | Value | Redirect Type |
-|------|------|-------|---------------|
-| URL Redirect | `docs` | `https://talocode.site/docs.html` | 301 (Permanent) |
-| URL Redirect | `cloud` | `https://talocode.site/cloud.html` | 301 (Permanent) |
+DNS: When Netlify provides the deployment target, add a CNAME record:
+- `cloud` CNAME → `{netlify-app}.netlify.app`
 
-**Important:** Disable "Masking" (no iframe). Masking breaks browser behavior and SEO.
+Full instructions in [`docs/NETLIFY_FRONTEND_APPS.md`](./NETLIFY_FRONTEND_APPS.md).
 
-**Background:** CNAME records to `talocode.github.io` resolve correctly at the DNS level, but GitHub Pages only accepts one custom domain per site (`talocode.site`), so those subdomains return 404. URL Redirect avoids this by redirecting at Namecheap's edge before any HTTPS request reaches GitHub Pages.
+### docs.talocode.site — Netlify (Vite App)
 
-### api.talocode.site
+The `docs.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Netlify**.
 
-**Target:** Stacklane API hosting provider (NOT GitHub Pages).
+DNS: When Netlify provides the deployment target, add a CNAME record:
+- `docs` CNAME → `{netlify-app}.netlify.app`
+
+Full instructions in [`docs/NETLIFY_FRONTEND_APPS.md`](./NETLIFY_FRONTEND_APPS.md).
+
+### dashboard.talocode.site — Netlify (Vite App)
+
+The `dashboard.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Netlify**.
+
+DNS: When Netlify provides the deployment target, add a CNAME record:
+- `dashboard` CNAME → `{netlify-app}.netlify.app`
+
+Full instructions in [`docs/NETLIFY_FRONTEND_APPS.md`](./NETLIFY_FRONTEND_APPS.md).
+
+### api.talocode.site — Backend Host
+
+**Target:** Stacklane API hosting provider (NOT GitHub Pages, NOT Netlify frontend).
 
 api.talocode.site must NOT point to GitHub Pages because it needs a backend server.
 
 Options:
-- CNAME to the hosting provider's endpoint (e.g., Netlify, Railway, Render, Fly.io)
+- CNAME to the hosting provider's endpoint (e.g., Railway, Render, Fly.io)
 - Or A record pointing to a VPS IP
+
+### Summary Table
+
+| Subdomain | Hosting | Type |
+|-----------|---------|------|
+| talocode.site | GitHub Pages | Static brand site |
+| cloud.talocode.site | Netlify | Vite + React app |
+| docs.talocode.site | Netlify | Vite + React app |
+| dashboard.talocode.site | Netlify | Vite + React app |
+| api.talocode.site | Backend host | API server |
 
 ## SSL / TLS
 

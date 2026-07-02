@@ -1,0 +1,16 @@
+{
+  "name": "talocode",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Talocode — Open-source infrastructure for AI-native work",
+  "scripts": {
+    "dev:cloud": "cd apps/cloud && npx vite",
+    "dev:docs": "cd apps/docs && npx vite",
+    "dev:dashboard": "cd apps/dashboard && npx vite",
+    "build:cloud": "cd apps/cloud && npx vite build",
+    "build:docs": "cd apps/docs && npx vite build",
+    "build:dashboard": "cd apps/dashboard && npx vite build",
+    "build:frontends": "npm run build:cloud && npm run build:docs && npm run build:dashboard",
+    "check:apps": "node scripts/check-frontend-apps.mjs"
+  }
+}
