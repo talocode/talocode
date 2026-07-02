@@ -38,22 +38,24 @@ Add four A records pointing to GitHub Pages IPs:
 
 ## Subdomain Plans
 
-### Static Subdomains (GitHub Pages)
+### Static Subdomains (URL Redirect)
 
-**docs.talocode.site** and **cloud.talocode.site** are static aliases hosted through the same GitHub Pages site as talocode.site.
+**docs.talocode.site** and **cloud.talocode.site** redirect to the main talocode.site via Namecheap URL Redirect records.
 
-Client-side redirect via JavaScript in `docs/index.html` and `docs/404.html`:
-- `docs.talocode.site/` → `https://talocode.site/docs.html`
-- `cloud.talocode.site/` → `https://talocode.site/cloud.html`
+Redirect targets:
+- `https://docs.talocode.site/` → `https://talocode.site/docs.html` (301 permanent)
+- `https://cloud.talocode.site/` → `https://talocode.site/cloud.html` (301 permanent)
 
-DNS records to add in Namecheap:
+DNS records in Namecheap:
 
-| Type | Host | Value | TTL |
-|------|------|-------|-----|
-| CNAME | `docs` | `talocode.github.io` | Automatic |
-| CNAME | `cloud` | `talocode.github.io` | Automatic |
+| Type | Host | Value | Redirect Type |
+|------|------|-------|---------------|
+| URL Redirect | `docs` | `https://talocode.site/docs.html` | 301 (Permanent) |
+| URL Redirect | `cloud` | `https://talocode.site/cloud.html` | 301 (Permanent) |
 
-Because GitHub Pages supports one custom domain per site (`talocode.site`), the `docs` and `cloud` subdomains cannot have independent CNAME files. Instead, they point to `talocode.github.io` directly, and the JavaScript redirect handles the initial page load.
+**Important:** Disable "Masking" (no iframe). Masking breaks browser behavior and SEO.
+
+**Background:** CNAME records to `talocode.github.io` resolve correctly at the DNS level, but GitHub Pages only accepts one custom domain per site (`talocode.site`), so those subdomains return 404. URL Redirect avoids this by redirecting at Namecheap's edge before any HTTPS request reaches GitHub Pages.
 
 ### api.talocode.site
 

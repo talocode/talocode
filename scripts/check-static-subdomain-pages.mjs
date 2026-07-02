@@ -55,8 +55,8 @@ check('docs/404.html has cloud.talocode.site redirect', () =>
 )
 
 const dnsMd = read('DNS_TALOCODE_SITE.md')
-check('DNS docs mention docs CNAME', () => dnsMd.includes('CNAME') && dnsMd.includes('docs'))
-check('DNS docs mention cloud CNAME', () => dnsMd.includes('CNAME') && dnsMd.includes('cloud'))
+check('DNS docs mention docs URL Redirect', () => dnsMd.includes('URL Redirect') && dnsMd.includes('docs'))
+check('DNS docs mention cloud URL Redirect', () => dnsMd.includes('URL Redirect') && dnsMd.includes('cloud'))
 check('DNS docs say api.talocode.site NOT GitHub Pages', () =>
   dnsMd.includes('api.talocode.site') && dnsMd.includes('NOT GitHub Pages')
 )
