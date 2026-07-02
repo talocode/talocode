@@ -34,6 +34,8 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | cliploop | brief.generate | 15 |
 | cliploop | script.generate | 15 |
 | cliploop | video.render | 200 |
+| cliploop | campaign.create | 50 |
+| cliploop | campaign.package | 400 |
 | tradia | trade.import | 3 |
 | tradia | performance.analyze | 20 |
 | tradia | risk.report | 35 |

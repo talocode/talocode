@@ -76,6 +76,10 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | Agent Browser | `browser.evidence` | 8 |
 | Tera Context | `context.capture` | 5 |
 | ClipLoop | `brief.generate` | 15 |
+| ClipLoop | `script.generate` | 15 |
+| ClipLoop | `video.render` | 200 |
+| ClipLoop | `campaign.create` | 50 |
+| ClipLoop | `campaign.package` | 400 |
 | Codra | `repo.summary` | 50 |
 | Codra | `explain` | 20 |
 | Codra | `review` | 40 |
@@ -127,6 +131,10 @@ await talocode.tera.writing.rewrite({ text: "Hello", style: "clear" });
 await talocode.router.chat({ model: "talocode/auto", messages: [{ role: "user", content: "Hi" }] });
 await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
 await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
+await talocode.cliploop.script({ briefId: "brief_xxx", style: "storytelling" });
+await talocode.cliploop.render({ scriptId: "script_xxx", format: "portrait" });
+await talocode.cliploop.campaign.create({ name: "Q3 Promo", platform: "tiktok" });
+await talocode.cliploop.campaign.package({ campaignId: "camp_xxx" });
 await talocode.codra.repoSummary({ files: [{ path: "src/main.ts", content: "..." }] });
 await talocode.codra.explain({ language: "typescript", code: "const x = 1", level: "beginner" });
 await talocode.codra.review({ language: "typescript", code: "function f() {}", focus: ["bugs"] });
@@ -156,6 +164,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | Router | `/v1/router/` | `POST /v1/router/chat/completions` |
 | Tera | `/v1/tera/` | `POST /v1/tera/writing/rewrite` |
 | Agent Browser | `/v1/agent-browser/` | `POST /v1/agent-browser/browser/check` |
+| ClipLoop | `/v1/cliploop/` | `POST /v1/cliploop/brief/generate` |
 | Codra | `/v1/codra/` | `POST /v1/codra/repo-summary` |
 | Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |
 

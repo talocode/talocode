@@ -20,6 +20,10 @@ const result = await talocode.tera.writing.rewrite({ text: "Hello world", style:
 
 // ClipLoop — video generation
 const brief = await talocode.cliploop.brief({ prompt: "Weekly promo", channel: "twitter" });
+const script = await talocode.cliploop.script({ briefId: brief.data.briefId, style: "storytelling" });
+const render = await talocode.cliploop.render({ scriptId: script.data.scriptId, format: "portrait" });
+const campaign = await talocode.cliploop.campaign.create({ name: "Q3 Promo", platform: "tiktok" });
+const packaged = await talocode.cliploop.campaign.package({ campaignId: campaign.data.campaignId });
 
 // Agent Browser — website validation
 const check = await talocode.agentBrowser.check({ url: "https://example.com", screenshot: true });
@@ -57,7 +61,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/router/` | Router (chat completions) | `POST /v1/router/chat/completions` |
 | `/v1/tera/` | Tera (writing/coding capabilities) | `POST /v1/tera/writing/rewrite` |
 | `/v1/agent-browser/` | Agent Browser | `POST /v1/agent-browser/browser/check` |
-| `/v1/cliploop/` | ClipLoop (video generation) | `POST /v1/cliploop/brief/generate` |
+| `/v1/cliploop/` | ClipLoop (video generation) | `POST /v1/cliploop/brief/generate`, `POST /v1/cliploop/script/generate`, `POST /v1/cliploop/video/render`, `POST /v1/cliploop/campaign/create`, `POST /v1/cliploop/campaign/package` |
 | `/v1/codra/` | Codra (AI coding) | `POST /v1/codra/repo-summary` |
 | `/v1/tradia/` | Tradia (trading intelligence) | _planned_ |
 | `/v1/signallane/` | SignalLane (business signals) | _planned_ |
