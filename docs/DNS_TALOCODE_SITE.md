@@ -42,32 +42,32 @@ Add four A records pointing to GitHub Pages IPs:
 
 The apex domain `talocode.site` is served via GitHub Pages from the `docs/` directory. This remains the public brand and home site. **Do not remove this setup.**
 
-### cloud.talocode.site — Netlify (Vite App)
+### cloud.talocode.site — Railway (Vite App)
 
-The `cloud.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Netlify**.
+The `cloud.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Railway**.
 
-DNS: When Netlify provides the deployment target, add a CNAME record:
-- `cloud` CNAME → `{netlify-app}.netlify.app`
+DNS: After Railway deployment, add a CNAME record:
+- `cloud` CNAME → `{railway-service-url}.railway.app`
 
-Full instructions in [`docs/NETLIFY_FRONTEND_APPS.md`](./NETLIFY_FRONTEND_APPS.md).
+Full instructions in [`docs/RAILWAY_FRONTENDS_DEPLOY.md`](./RAILWAY_FRONTENDS_DEPLOY.md).
 
-### docs.talocode.site — Netlify (Vite App)
+### docs.talocode.site — Railway (Vite App)
 
-The `docs.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Netlify**.
+The `docs.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Railway**.
 
-DNS: When Netlify provides the deployment target, add a CNAME record:
-- `docs` CNAME → `{netlify-app}.netlify.app`
+DNS: After Railway deployment, add a CNAME record:
+- `docs` CNAME → `{railway-service-url}.railway.app`
 
-Full instructions in [`docs/NETLIFY_FRONTEND_APPS.md`](./NETLIFY_FRONTEND_APPS.md).
+Full instructions in [`docs/RAILWAY_FRONTENDS_DEPLOY.md`](./RAILWAY_FRONTENDS_DEPLOY.md).
 
-### dashboard.talocode.site — Netlify (Vite App)
+### dashboard.talocode.site — Railway (Vite App)
 
-The `dashboard.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Netlify**.
+The `dashboard.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Railway**.
 
-DNS: When Netlify provides the deployment target, add a CNAME record:
-- `dashboard` CNAME → `{netlify-app}.netlify.app`
+DNS: After Railway deployment, add a CNAME record:
+- `dashboard` CNAME → `{railway-service-url}.railway.app`
 
-Full instructions in [`docs/NETLIFY_FRONTEND_APPS.md`](./NETLIFY_FRONTEND_APPS.md).
+Full instructions in [`docs/RAILWAY_FRONTENDS_DEPLOY.md`](./RAILWAY_FRONTENDS_DEPLOY.md).
 
 ### api.talocode.site — Backend Host
 
@@ -84,9 +84,9 @@ Options:
 | Subdomain | Hosting | Type |
 |-----------|---------|------|
 | talocode.site | GitHub Pages | Static brand site |
-| cloud.talocode.site | Netlify | Vite + React app |
-| docs.talocode.site | Netlify | Vite + React app |
-| dashboard.talocode.site | Netlify | Vite + React app |
+| cloud.talocode.site | Railway | Vite + React app |
+| docs.talocode.site | Railway | Vite + React app |
+| dashboard.talocode.site | Railway | Vite + React app |
 | api.talocode.site | Backend host | API server |
 
 ## SSL / TLS
