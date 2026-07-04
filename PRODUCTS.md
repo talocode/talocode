@@ -58,7 +58,7 @@ Trading performance intelligence. Import trades from brokers, analyze behavior p
 
 ## SignalLane
 
-Business signal detection and routing. Monitor RSS feeds, GitHub activity, web pages, and other sources for relevant signals. Route signals to the right channels.
+X growth intelligence — account analytics, content experiments, and growth strategy for indie builders.
 
 - **Status**: Planned
 - **Repo**: [github.com/talocode/signallane](https://github.com/talocode/signallane)

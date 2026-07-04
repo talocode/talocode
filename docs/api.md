@@ -64,7 +64,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/cliploop/` | ClipLoop (video generation) | `POST /v1/cliploop/brief/generate`, `POST /v1/cliploop/script/generate`, `POST /v1/cliploop/video/render`, `POST /v1/cliploop/campaign/create`, `POST /v1/cliploop/campaign/package` |
 | `/v1/codra/` | Codra (AI coding) | `POST /v1/codra/repo-summary` |
 | `/v1/tradia/` | Tradia (trading intelligence) | _planned_ |
-| `/v1/signallane/` | SignalLane (business signals) | _planned_ |
+| `/v1/signallane/` | SignalLane (X growth intelligence) | `POST /v1/signallane/x/analyze`, `POST /v1/signallane/x/content-plan`, `POST /v1/signallane/x/post-drafts`, `POST /v1/signallane/x/experiments`, `POST /v1/signallane/x/report` |
 | `/v1/worklane/` | WorkLane (agent workflows) | _planned_ |
 
 ## Chat Completions
@@ -264,5 +264,197 @@ Generate an implementation plan from a task description.
   "task": "Add Stripe topups",
   "context": "We use Stripe for payments",
   "constraints": ["do not break auth"]
+}
+```
+
+## SignalLane — X Growth Intelligence
+
+SignalLane provides X growth intelligence for builders: account analytics, content strategy, post drafting, experiments, and full growth reports.
+
+### Health Check
+
+```
+GET /v1/signallane/health
+```
+
+Returns the health status of the SignalLane API.
+
+```
+HTTP 200
+{"status": "ok"}
+```
+
+### Analyze Account
+
+```
+POST /v1/signallane/x/analyze
+```
+
+Analyze an X account for growth signals, engagement metrics, and performance trends. Costs 30 credits.
+
+```json
+{
+  "username": "elonmusk",
+  "period": "30d"
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/signallane/x/analyze \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "elonmusk", "period": "30d"}'
+```
+
+```json
+{
+  "data": {
+    "username": "elonmusk",
+    "period": "30d",
+    "followerGrowth": 2.4,
+    "engagementRate": 3.8,
+    "topPosts": [],
+    "growthSignals": []
+  }
+}
+```
+
+### Content Plan
+
+```
+POST /v1/signallane/x/content-plan
+```
+
+Generate a weekly content strategy tailored to an X account's audience and goals. Costs 40 credits.
+
+```json
+{
+  "username": "elonmusk",
+  "goals": ["engagement", "followers"],
+  "topics": ["AI", "space", "tech"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/signallane/x/content-plan \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "elonmusk", "goals": ["engagement", "followers"], "topics": ["AI", "space", "tech"]}'
+```
+
+```json
+{
+  "data": {
+    "plan": [
+      {"day": "Monday", "topic": "AI breakthrough", "format": "thread", "bestTime": "12:00 UTC"},
+      {"day": "Wednesday", "topic": "Space update", "format": "poll", "bestTime": "15:00 UTC"},
+      {"day": "Friday", "topic": "Tech forecast", "format": "video", "bestTime": "18:00 UTC"}
+    ]
+  }
+}
+```
+
+### Post Drafts
+
+```
+POST /v1/signallane/x/post-drafts
+```
+
+Generate optimized X post drafts with hooks, hashtags, and engagement patterns. Costs 40 credits.
+
+```json
+{
+  "username": "elonmusk",
+  "topic": "New product launch",
+  "tone": "exciting",
+  "count": 5
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/signallane/x/post-drafts \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "elonmusk", "topic": "New product launch", "tone": "exciting", "count": 5}'
+```
+
+```json
+{
+  "data": {
+    "drafts": [
+      {"content": "Excited to announce...", "hookStrength": 0.92, "format": "text", "predictedEngagement": "high"},
+      {"content": "We've been working on...", "hookStrength": 0.88, "format": "image", "predictedEngagement": "high"}
+    ]
+  }
+}
+```
+
+### Experiments
+
+```
+POST /v1/signallane/x/experiments
+```
+
+Design content experiments to test posting strategies and optimize performance. Costs 30 credits.
+
+```json
+{
+  "username": "elonmusk",
+  "goal": "maximize engagement",
+  "variables": ["posting_time", "content_format"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/signallane/x/experiments \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "elonmusk", "goal": "maximize engagement", "variables": ["posting_time", "content_format"]}'
+```
+
+```json
+{
+  "data": {
+    "experiments": [
+      {"variable": "posting_time", "control": "12:00 UTC", "variant": "18:00 UTC", "duration": "7d"},
+      {"variable": "content_format", "control": "text", "variant": "image", "duration": "7d"}
+    ]
+  }
+}
+```
+
+### Full Report
+
+```
+POST /v1/signallane/x/report
+```
+
+Generate a comprehensive growth intelligence report with insights across growth, engagement, content performance, and audience analysis. Costs 60 credits.
+
+```json
+{
+  "username": "elonmusk",
+  "period": "90d",
+  "sections": ["growth", "engagement", "content", "audience"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/signallane/x/report \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"username": "elonmusk", "period": "90d", "sections": ["growth", "engagement", "content", "audience"]}'
+```
+
+```json
+{
+  "data": {
+    "username": "elonmusk",
+    "period": "90d",
+    "growth": {"followerChange": 125000, "growthRate": 3.2},
+    "engagement": {"avgLikes": 45000, "avgRetweets": 8200, "engagementRate": 4.1},
+    "content": {"bestPerforming": "", "worstPerforming": "", "recommendations": []},
+    "audience": {"demographics": {}, "activeHours": [], "interests": []}
+  }
 }
 ```

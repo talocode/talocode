@@ -29,7 +29,7 @@ Specialized services for specific domains.
 |---------|-------------|
 | [ClipLoop](https://github.com/talocode/cliploop) | Short-form promo video engine — generate product videos from templates for indie devs |
 | [Tradia](https://github.com/talocode/tradia) | Trading performance intelligence — import trades, analyze behavior, generate risk reports |
-| [SignalLane](https://github.com/talocode/signallane) | Business signal detection — monitor RSS, GitHub, web sources and route relevant signals |
+| [SignalLane](https://github.com/talocode/signallane) | X growth intelligence — account analytics, content experiments, and growth strategy for indie builders |
 
 ## Layer 4: Infrastructure
 

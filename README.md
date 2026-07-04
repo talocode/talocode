@@ -18,7 +18,7 @@ Talocode helps developers and builders make work readable to agents and controll
 | **Learning** | [Tera](https://github.com/talocode/tera) | Learning and context assistant | Planned |
 | **Video** | [ClipLoop](https://github.com/talocode/cliploop) | Short-form promo video engine for indie apps | Experimental |
 | **Trading** | [Tradia](https://github.com/talocode/tradia) | Trading performance intelligence | Planned |
-| **Signals** | [SignalLane](https://github.com/talocode/signallane) | Business signal detection and routing | Planned |
+| **Signals** | [SignalLane](https://github.com/talocode/signallane) | X growth intelligence for builders | Planned |
 | **Hosted API** | [Talocode Cloud](./CLOUD.md) | Hosted API layer with wallet credits and router | Experimental |
 
 ---
