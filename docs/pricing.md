@@ -50,5 +50,10 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | signallane | x.post_drafts | 40 |
 | signallane | x.experiments | 30 |
 | signallane | x.report | 60 |
+| invoicelane | extract | 20 |
+| invoicelane | receipt.extract | 20 |
+| invoicelane | invoice.extract | 30 |
+| invoicelane | validate | 10 |
+| invoicelane | export.csv | 5 |
 
 Full pricing is available programmatically at `GET /api/v1/cloud/pricing`.

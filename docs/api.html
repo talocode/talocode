@@ -55,6 +55,7 @@ ClipLoop      | /v1/cliploop/        | POST /v1/cliploop/brief/generate
 Codra         | /v1/codra/           | POST /v1/codra/repo-summary
 Tradia        | /v1/tradia/          | planned
 SignalLane    | /v1/signallane/      | POST /v1/signallane/x/analyze
+InvoiceLane   | /v1/invoicelane/     | POST /v1/invoicelane/extract
 WorkLane      | /v1/worklane/        | planned</code></pre>
     </div>
   </div>
@@ -192,7 +193,7 @@ GET /v1/router/models   (namespaced)</code></pre>
       <pre><code>POST /mcp
 Auth: Authorization: Bearer $TALOCODE_API_KEY
 
-19 tools available across Tera, Router, Agent Browser, ClipLoop, SignalLane, and Cloud.</code></pre>
+24 tools available across Tera, Router, Agent Browser, ClipLoop, SignalLane, InvoiceLane, and Cloud.</code></pre>
     </div>
     <p style="text-align:center"><a href="mcp.html">Talocode MCP Docs &rarr;</a></p>
   </div>
@@ -234,6 +235,21 @@ POST /v1/signallane/x/experiments   — Design content experiments (30 credits)
 POST /v1/signallane/x/report        — Full growth report (60 credits)</code></pre>
     </div>
     <p style="text-align:center"><strong>SignalLane:</strong> x.analyze 30cr, x.content_plan 40cr, x.post_drafts 40cr, x.experiments 30cr, x.report 60cr</p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>InvoiceLane — Invoice/Receipt Extraction</h2>
+    <p class="section-sub">Turn receipts, invoices, and business documents into clean structured data through one API. v0.1 supports text-based extraction only (OCR and PDF parsing planned).</p>
+    <div class="code-block">
+      <pre><code>POST /v1/invoicelane/extract            — General extraction (20 credits)
+POST /v1/invoicelane/receipt/extract    — Receipt extraction (20 credits)
+POST /v1/invoicelane/invoice/extract    — Invoice extraction (30 credits)
+POST /v1/invoicelane/validate           — Validate document data (10 credits)
+POST /v1/invoicelane/export/csv         — Export as CSV (5 credits)</code></pre>
+    </div>
+    <p style="text-align:center"><strong>InvoiceLane:</strong> extract 20cr, receipt.extract 20cr, invoice.extract 30cr, validate 10cr, export.csv 5cr</p>
   </div>
 </section>
 

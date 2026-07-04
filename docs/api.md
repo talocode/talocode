@@ -65,6 +65,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/codra/` | Codra (AI coding) | `POST /v1/codra/repo-summary` |
 | `/v1/tradia/` | Tradia (trading intelligence) | _planned_ |
 | `/v1/signallane/` | SignalLane (X growth intelligence) | `POST /v1/signallane/x/analyze`, `POST /v1/signallane/x/content-plan`, `POST /v1/signallane/x/post-drafts`, `POST /v1/signallane/x/experiments`, `POST /v1/signallane/x/report` |
+| `/v1/invoicelane/` | InvoiceLane (invoice/receipt extraction) | `POST /v1/invoicelane/extract`, `POST /v1/invoicelane/receipt/extract`, `POST /v1/invoicelane/invoice/extract`, `POST /v1/invoicelane/validate`, `POST /v1/invoicelane/export/csv` |
 | `/v1/worklane/` | WorkLane (agent workflows) | _planned_ |
 
 ## Chat Completions
@@ -458,3 +459,235 @@ curl https://api.talocode.site/v1/signallane/x/report \
   }
 }
 ```
+
+## InvoiceLane — Invoice/Receipt Extraction
+
+InvoiceLane turns receipts, invoices, and business documents into clean structured data through a single API. **v0.1 supports text-based extraction only** (OCR and PDF parsing are planned for a future release).
+
+### Health Check
+
+```
+GET /v1/invoicelane/health
+```
+
+Returns the health status of the InvoiceLane API.
+
+```
+HTTP 200
+{"status": "ok"}
+```
+
+### Extract (General)
+
+```
+POST /v1/invoicelane/extract
+```
+
+Extract structured data from any business document text. Costs 20 credits.
+
+```json
+{
+  "text": "INVOICE #INV-2026-001\nDate: 2026-01-15\nVendor: Acme Corp\nItems:\n  - Widget A x2 $10.00\n  - Widget B x1 $25.00\nTotal: $45.00"
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/invoicelane/extract \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "INVOICE #INV-2026-001\nDate: 2026-01-15\nTotal: $45.00"}'
+```
+
+```json
+{
+  "data": {
+    "documentType": "invoice",
+    "confidence": 0.95,
+    "fields": {
+      "invoiceNumber": "INV-2026-001",
+      "date": "2026-01-15",
+      "vendor": "Acme Corp",
+      "lineItems": [
+        {"description": "Widget A", "quantity": 2, "unitPrice": 10.00, "total": 20.00},
+        {"description": "Widget B", "quantity": 1, "unitPrice": 25.00, "total": 25.00}
+      ],
+      "total": 45.00,
+      "currency": "USD"
+    }
+  }
+}
+```
+
+### Receipt Extraction
+
+```
+POST /v1/invoicelane/receipt/extract
+```
+
+Extract structured data specifically from receipt text. Costs 20 credits.
+
+```json
+{
+  "text": "RECEIPT #1234\nStore: QuickMart\nDate: 2026-02-01\nItem: Milk $3.50\nItem: Bread $2.00\nTotal: $5.50"
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/invoicelane/receipt/extract \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "RECEIPT #1234\nStore: QuickMart\nTotal: $5.50"}'
+```
+
+```json
+{
+  "data": {
+    "documentType": "receipt",
+    "confidence": 0.94,
+    "fields": {
+      "receiptNumber": "1234",
+      "storeName": "QuickMart",
+      "date": "2026-02-01",
+      "lineItems": [
+        {"item": "Milk", "price": 3.50},
+        {"item": "Bread", "price": 2.00}
+      ],
+      "total": 5.50,
+      "currency": "USD"
+    }
+  }
+}
+```
+
+### Invoice Extraction
+
+```
+POST /v1/invoicelane/invoice/extract
+```
+
+Extract structured data specifically from invoice text. Costs 30 credits.
+
+```json
+{
+  "text": "INVOICE #INV-2026-002\nDate: 2026-03-01\nFrom: MegaCorp\nTo: Client Inc.\nItems:\n  - Consulting $150.00\n  - Software License $500.00\nSubtotal: $650.00\nTax: $52.00\nTotal: $702.00"
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/invoicelane/invoice/extract \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "INVOICE #INV-2026-002\nFrom: MegaCorp\nTotal: $702.00"}'
+```
+
+```json
+{
+  "data": {
+    "documentType": "invoice",
+    "confidence": 0.97,
+    "fields": {
+      "invoiceNumber": "INV-2026-002",
+      "date": "2026-03-01",
+      "vendor": "MegaCorp",
+      "customer": "Client Inc.",
+      "lineItems": [
+        {"description": "Consulting", "amount": 150.00},
+        {"description": "Software License", "amount": 500.00}
+      ],
+      "subtotal": 650.00,
+      "tax": 52.00,
+      "total": 702.00,
+      "currency": "USD"
+    }
+  }
+}
+```
+
+### Validate
+
+```
+POST /v1/invoicelane/validate
+```
+
+Validate extracted document data for correctness and completeness. Costs 10 credits.
+
+```json
+{
+  "text": "INVOICE #INV-2026-001\nTotal: $45.00"
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/invoicelane/validate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"text": "INVOICE #INV-2026-001\nTotal: $45.00"}'
+```
+
+```json
+{
+  "data": {
+    "valid": true,
+    "issues": [],
+    "fieldsPresent": ["invoiceNumber", "total"],
+    "fieldsMissing": ["date", "vendor", "lineItems"],
+    "recommendations": ["Add date and vendor information for a complete record"]
+  }
+}
+```
+
+### Export CSV
+
+```
+POST /v1/invoicelane/export/csv
+```
+
+Export extracted document data as CSV. Costs 5 credits.
+
+```json
+{
+  "data": {
+    "documentType": "invoice",
+    "fields": {
+      "invoiceNumber": "INV-2026-001",
+      "date": "2026-01-15",
+      "total": 45.00
+    }
+  }
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/invoicelane/export/csv \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"data": {"documentType": "invoice", "fields": {"invoiceNumber": "INV-2026-001", "total": 45.00}}}'
+```
+
+```json
+{
+  "data": {
+    "csv": "documentType,invoiceNumber,date,total\ninvoice,INV-2026-001,2026-01-15,45.00"
+  }
+}
+```
+
+### SDK Example
+
+```ts
+import { Talocode } from "@talocode/sdk";
+
+const talocode = new Talocode({ apiKey: process.env.TALOCODE_API_KEY });
+
+// Extract invoice data
+const result = await talocode.invoicelane.invoice.extract({
+  text: "INVOICE #1234 dated 2026-01-15 Total: $45.00"
+});
+```
+
+### Limitations (v0.1)
+
+- **Text-based only** — OCR and PDF/image parsing are not yet supported. Provide raw document text as input.
+- **English-language documents** — Multi-language support is planned.
+- **Simple documents** — Complex multi-page documents with tables may have reduced accuracy.
+- **No document upload** — Submit document text directly via the request body.

@@ -63,6 +63,13 @@ X growth intelligence — account analytics, content experiments, and growth str
 - **Status**: Planned
 - **Repo**: [github.com/talocode/signallane](https://github.com/talocode/signallane)
 
+## InvoiceLane
+
+Invoice/receipt extraction API. Turn receipts, invoices and business documents into clean structured data through one API.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/invoicelane](https://github.com/talocode/invoicelane)
+
 ## Talocode Cloud
 
 Hosted API layer for the entire ecosystem. One API key gives access to every product with unified prepaid billing. Includes an OpenAI-compatible provider router.

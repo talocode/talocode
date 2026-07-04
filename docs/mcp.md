@@ -10,7 +10,7 @@ https://api.talocode.site/mcp
 
 ## Status
 
-**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, ClipLoop, and SignalLane. New tools follow as product APIs ship.
+**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, ClipLoop, SignalLane, and InvoiceLane. New tools follow as product APIs ship.
 
 ## Authentication
 
@@ -89,6 +89,11 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `signallane_x_post_drafts` | SignalLane | 40 |
 | `signallane_x_experiments` | SignalLane | 30 |
 | `signallane_x_report` | SignalLane | 60 |
+| `invoicelane_extract` | InvoiceLane | 20 |
+| `invoicelane_extract_receipt` | InvoiceLane | 20 |
+| `invoicelane_extract_invoice` | InvoiceLane | 30 |
+| `invoicelane_validate` | InvoiceLane | 10 |
+| `invoicelane_export_csv` | InvoiceLane | 5 |
 
 Full tool schemas and routes are available at `GET /api/v1/cloud/mcp/tools`.
 
@@ -184,4 +189,72 @@ Generate a comprehensive growth intelligence report. **60 credits.**
 ```
 Generate a 90-day growth intelligence report for @elonmusk covering growth, engagement, content, and audience.
 ```
-Calls the `signallane_x_report` tool with `username: "elonmusk", period: "90d", sections: ["growth", "engagement", "content", "audience"]`.
+Calls the `signallane_x_report` tool with `username: "elonmusk", period: "90d", sections: ["growth", "engagement", "content", "audience"].
+
+## InvoiceLane MCP Tools
+
+### invoicelane_extract
+
+Extract structured data from any business document text. **20 credits.**
+
+**Input parameters:**
+- `text` (string, required) — Raw document text
+
+**Example agent prompt:**
+```
+Extract invoice data from this text: INVOICE #1234 Total: $45.00
+```
+Calls the `invoicelane_extract` tool with `text: "INVOICE #1234 Total: $45.00"`.
+
+### invoicelane_extract_receipt
+
+Extract structured data specifically from receipt text. **20 credits.**
+
+**Input parameters:**
+- `text` (string, required) — Raw receipt text
+
+**Example agent prompt:**
+```
+Extract receipt data: RECEIPT #567 Store: QuickMart Total: $12.50
+```
+Calls the `invoicelane_extract_receipt` tool with `text: "RECEIPT #567 Store: QuickMart Total: $12.50"`.
+
+### invoicelane_extract_invoice
+
+Extract structured data specifically from invoice text. **30 credits.**
+
+**Input parameters:**
+- `text` (string, required) — Raw invoice text
+
+**Example agent prompt:**
+```
+Extract invoice details: INVOICE #INV-001 from Acme Corp dated 2026-01-15 for $702.00
+```
+Calls the `invoicelane_extract_invoice` tool with `text: "INVOICE #INV-001 from Acme Corp dated 2026-01-15 for $702.00"`.
+
+### invoicelane_validate
+
+Validate extracted document data for correctness and completeness. **10 credits.**
+
+**Input parameters:**
+- `text` (string, required) — Document text to validate
+
+**Example agent prompt:**
+```
+Validate this invoice text and tell me what's missing: INVOICE #123 Total: $45.00
+```
+Calls the `invoicelane_validate` tool with `text: "INVOICE #123 Total: $45.00"`.
+
+### invoicelane_export_csv
+
+Export extracted document data as CSV. **5 credits.**
+
+**Input parameters:**
+- `data` (object, required) — Document data to export
+
+**Example agent prompt:**
+```
+Export this invoice data as CSV: invoice #INV-001, $45.00
+```
+Calls the `invoicelane_export_csv` tool with `data: { documentType: "invoice", fields: { invoiceNumber: "INV-001", total: 45.00 } }`.
+

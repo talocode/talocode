@@ -30,6 +30,7 @@ Specialized services for specific domains.
 | [ClipLoop](https://github.com/talocode/cliploop) | Short-form promo video engine — generate product videos from templates for indie devs |
 | [Tradia](https://github.com/talocode/tradia) | Trading performance intelligence — import trades, analyze behavior, generate risk reports |
 | [SignalLane](https://github.com/talocode/signallane) | X growth intelligence — account analytics, content experiments, and growth strategy for indie builders |
+| [InvoiceLane](https://github.com/talocode/invoicelane) | Invoice/receipt extraction API that turns business documents into structured data without OCR lock-in |
 
 ## Layer 4: Infrastructure
 
@@ -61,7 +62,11 @@ The backbone that connects everything.
      ┌────▼────┐        ┌─────▼─────┐        ┌─────▼─────┐
      │ Tera    │        │ ClipLoop  │        │ Tradia    │
      │         │        │           │        │ SignalLane│
-     └─────────┘        └───────────┘        └───────────┘
+     └─────────┘        └───────────┘        └─────┬─────┘
+                                                   │
+                                             ┌─────▼─────┐
+                                             │InvoiceLane│
+                                             └───────────┘
 
                     Stacklane (backend platform)
               PostgreSQL | Auth | Billing | Project Management

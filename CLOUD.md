@@ -91,6 +91,11 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | Skills | `generate.text` | 40 |
 | Skills | `export.cursor` | 10 |
 | Skills | `export.claude` | 10 |
+| InvoiceLane | `extract` | 20 |
+| InvoiceLane | `receipt.extract` | 20 |
+| InvoiceLane | `invoice.extract` | 30 |
+| InvoiceLane | `validate` | 10 |
+| InvoiceLane | `export.csv` | 5 |
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 
@@ -120,7 +125,7 @@ TALOCODE_BASE_URL=https://api.talocode.site
 
 Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
 
-Talocode Cloud gives every Talocode product one programmable API surface. Use `TALOCODE_API_KEY` to call Tera, ClipLoop, Agent Browser, Codra, Tradia, SignalLane, WorkLane, and future hosted services.
+Talocode Cloud gives every Talocode product one programmable API surface. Use `TALOCODE_API_KEY` to call Tera, ClipLoop, Agent Browser, Codra, Tradia, SignalLane, WorkLane, InvoiceLane, and future hosted services.
 
 ```ts
 import { Talocode } from "@talocode/sdk";
@@ -143,6 +148,11 @@ await talocode.skills.generate.githubProfile({ username: "octocat", target: "cur
 await talocode.skills.generate.githubRepo({ repoUrl: "https://github.com/talocode/codra", target: "cursor" });
 await talocode.skills.generate.docs({ url: "https://docs.example.com/api", target: "cursor" });
 await talocode.skills.generate.text({ name: "my-project", content: "...", target: "cursor" });
+await talocode.invoicelane.extract({ text: "INVOICE #1234 dated 2026-01-15..." });
+await talocode.invoicelane.invoice.extract({ text: "INVOICE #1234..." });
+await talocode.invoicelane.receipt.extract({ text: "RECEIPT from Store..." });
+await talocode.invoicelane.validate({ text: "INVOICE #1234..." });
+await talocode.invoicelane.export.csv({ data: {...} });
 ```
 
 ### API Key Migration
@@ -168,6 +178,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | Codra | `/v1/codra/` | `POST /v1/codra/repo-summary` |
 | Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |
 | SignalLane | `/v1/signallane/` | `POST /v1/signallane/x/analyze` |
+| InvoiceLane | `/v1/invoicelane/` | `POST /v1/invoicelane/extract` |
 
 ## Endpoints
 
