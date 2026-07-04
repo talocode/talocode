@@ -167,6 +167,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | ClipLoop | `/v1/cliploop/` | `POST /v1/cliploop/brief/generate` |
 | Codra | `/v1/codra/` | `POST /v1/codra/repo-summary` |
 | Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |
+| SignalLane | `/v1/signallane/` | `POST /v1/signallane/x/analyze` |
 
 ## Endpoints
 

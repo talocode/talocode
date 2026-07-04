@@ -54,7 +54,7 @@ Agent Browser | /v1/agent-browser/   | POST /v1/agent-browser/browser/check
 ClipLoop      | /v1/cliploop/        | POST /v1/cliploop/brief/generate
 Codra         | /v1/codra/           | POST /v1/codra/repo-summary
 Tradia        | /v1/tradia/          | planned
-SignalLane    | /v1/signallane/      | planned
+SignalLane    | /v1/signallane/      | POST /v1/signallane/x/analyze
 WorkLane      | /v1/worklane/        | planned</code></pre>
     </div>
   </div>
@@ -192,7 +192,7 @@ GET /v1/router/models   (namespaced)</code></pre>
       <pre><code>POST /mcp
 Auth: Authorization: Bearer $TALOCODE_API_KEY
 
-14 tools available across Tera, Router, Agent Browser, ClipLoop, and Cloud.</code></pre>
+19 tools available across Tera, Router, Agent Browser, ClipLoop, SignalLane, and Cloud.</code></pre>
     </div>
     <p style="text-align:center"><a href="mcp.html">Talocode MCP Docs &rarr;</a></p>
   </div>
@@ -219,6 +219,21 @@ POST /v1/codra/review          — Review code for issues
 POST /v1/codra/plan            — Generate implementation plan</code></pre>
     </div>
     <p style="text-align:center"><strong>Pricing:</strong> repo.summary 50cr, explain 20cr, review 40cr, plan 40cr</p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>SignalLane — X Growth Intelligence</h2>
+    <p class="section-sub">X growth intelligence for builders: account analytics, content strategy, post drafting, experiments, and full growth reports.</p>
+    <div class="code-block">
+      <pre><code>POST /v1/signallane/x/analyze       — Analyze X account (30 credits)
+POST /v1/signallane/x/content-plan  — Weekly content strategy (40 credits)
+POST /v1/signallane/x/post-drafts   — Generate post drafts (40 credits)
+POST /v1/signallane/x/experiments   — Design content experiments (30 credits)
+POST /v1/signallane/x/report        — Full growth report (60 credits)</code></pre>
+    </div>
+    <p style="text-align:center"><strong>SignalLane:</strong> x.analyze 30cr, x.content_plan 40cr, x.post_drafts 40cr, x.experiments 30cr, x.report 60cr</p>
   </div>
 </section>
 

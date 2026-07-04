@@ -10,7 +10,7 @@ https://api.talocode.site/mcp
 
 ## Status
 
-**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, and ClipLoop. New tools follow as product APIs ship.
+**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, ClipLoop, and SignalLane. New tools follow as product APIs ship.
 
 ## Authentication
 
@@ -84,6 +84,11 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `cliploop_campaign_create` | ClipLoop | 50 |
 | `cliploop_campaign_package` | ClipLoop | 400 |
 | `cloud_pricing` | Cloud | Free |
+| `signallane_x_analyze` | SignalLane | 30 |
+| `signallane_x_content_plan` | SignalLane | 40 |
+| `signallane_x_post_drafts` | SignalLane | 40 |
+| `signallane_x_experiments` | SignalLane | 30 |
+| `signallane_x_report` | SignalLane | 60 |
 
 Full tool schemas and routes are available at `GET /api/v1/cloud/mcp/tools`.
 
@@ -103,3 +108,80 @@ MCP tool calls are billed as standard Talocode Cloud API requests. Each tool cal
 - Wallet balance and usage summary tools are not yet available via MCP (the underlying project-resolution endpoint is pending)
 - No SSE streaming for long-running operations (all responses are synchronous JSON)
 - Bridge package `@talocode/mcp` v0.1 ready but not yet published to npm
+
+## SignalLane MCP Tools
+
+### signallane_x_analyze
+
+Analyze an X account for growth signals, engagement metrics, and performance trends. **30 credits.**
+
+**Input parameters:**
+- `username` (string, required) — X account username
+- `period` (string, optional) — Analysis period: `7d`, `30d`, `90d` (default: `30d`)
+
+**Example agent prompt:**
+```
+Analyze @elonmusk's X account for the last 30 days.
+```
+Calls the `signallane_x_analyze` tool with `username: "elonmusk", period: "30d"`.
+
+### signallane_x_content_plan
+
+Generate a weekly content strategy tailored to an X account's audience and goals. **40 credits.**
+
+**Input parameters:**
+- `username` (string, required) — X account username
+- `goals` (array of strings, required) — Content goals: `engagement`, `followers`, `awareness`, `conversion`
+- `topics` (array of strings, optional) — Preferred content topics
+
+**Example agent prompt:**
+```
+Create a weekly content plan for @elonmusk focused on engagement and followers, covering AI, space, and tech.
+```
+Calls the `signallane_x_content_plan` tool with `username: "elonmusk", goals: ["engagement", "followers"], topics: ["AI", "space", "tech"]`.
+
+### signallane_x_post_drafts
+
+Generate optimized X post drafts with hooks, hashtags, and engagement patterns. **40 credits.**
+
+**Input parameters:**
+- `username` (string, required) — X account username
+- `topic` (string, required) — Post topic
+- `tone` (string, optional) — Tone: `exciting`, `professional`, `casual`, `educational`
+- `count` (number, optional) — Number of drafts (default: 3, max: 10)
+
+**Example agent prompt:**
+```
+Draft 5 exciting posts for @elonmusk about the new product launch.
+```
+Calls the `signallane_x_post_drafts` tool with `username: "elonmusk", topic: "New product launch", tone: "exciting", count: 5`.
+
+### signallane_x_experiments
+
+Design content experiments to test posting strategies and optimize performance. **30 credits.**
+
+**Input parameters:**
+- `username` (string, required) — X account username
+- `goal` (string, required) — Experiment goal: `maximize engagement`, `maximize reach`, `improve conversion`
+- `variables` (array of strings, optional) — Variables to test: `posting_time`, `content_format`, `hashtag_count`, `post_length`
+
+**Example agent prompt:**
+```
+Design experiments for @elonmusk to maximize engagement by testing posting time and content format.
+```
+Calls the `signallane_x_experiments` tool with `username: "elonmusk", goal: "maximize engagement", variables: ["posting_time", "content_format"]`.
+
+### signallane_x_report
+
+Generate a comprehensive growth intelligence report. **60 credits.**
+
+**Input parameters:**
+- `username` (string, required) — X account username
+- `period` (string, optional) — Report period: `30d`, `90d` (default: `30d`)
+- `sections` (array of strings, optional) — Report sections: `growth`, `engagement`, `content`, `audience` (default: all)
+
+**Example agent prompt:**
+```
+Generate a 90-day growth intelligence report for @elonmusk covering growth, engagement, content, and audience.
+```
+Calls the `signallane_x_report` tool with `username: "elonmusk", period: "90d", sections: ["growth", "engagement", "content", "audience"]`.
