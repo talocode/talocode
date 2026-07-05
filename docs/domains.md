@@ -16,11 +16,14 @@ The primary Talocode domain is now **talocode.site**.
 
 ### Subdomains
 
-| Subdomain | Purpose | Plan |
-|-----------|---------|------|
-| api.talocode.site | API endpoint | Point to Stacklane API hosting provider |
-| docs.talocode.site | Documentation site | CNAME or redirect to talocode.site/docs |
-| cloud.talocode.site | Cloud dashboard | Point to dashboard hosting provider |
+| Subdomain | Purpose | Hosting |
+|-----------|---------|---------|
+| talocode.site | Main site / homepage | GitHub Pages (A records to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) |
+| api.talocode.site | API endpoint | Netlify |
+| docs.talocode.site | Documentation site | Netlify |
+| cloud.talocode.site | Cloud dashboard | Netlify |
+| stacklane.talocode.site | Stacklane platform | Netlify |
+| dashboard.talocode.site | Dashboard | Netlify |
 
 ## Legacy Aliases (Future)
 

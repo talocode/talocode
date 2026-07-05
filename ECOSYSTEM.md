@@ -45,7 +45,7 @@ The backbone that connects everything.
 ## How It Fits Together
 
 ```
-                    Talocode Cloud (api.talocode.site)
+                    Talocode Cloud (cloud.talocode.site)
                     ┌─────────────────────────────────┐
                     │  Auth (TALOCODE_API_KEY)         │
                     │  Wallet / Credits / Billing      │
