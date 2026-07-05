@@ -114,6 +114,16 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | UGCLane | `report.generate` | 40 |
 | UGCLane | `export.markdown` | 5 |
 | UGCLane | `export.json` | 5 |
+| CrawlerLane | `logs.ingest` | 5 |
+| CrawlerLane | `bots.classify` | 2 |
+| CrawlerLane | `pages.analyze` | 20 |
+| CrawlerLane | `404.analyze` | 20 |
+| CrawlerLane | `ai_visibility.score` | 30 |
+| CrawlerLane | `report.generate` | 40 |
+| CrawlerLane | `sitemap.suggest` | 20 |
+| CrawlerLane | `robots.audit` | 15 |
+| CrawlerLane | `export.markdown` | 5 |
+| CrawlerLane | `export.json` | 5 |
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 
@@ -172,6 +182,8 @@ await talocode.webdatalane.metadata({ url: "https://example.com" });
 await talocode.webdatalane.links({ url: "https://example.com", internalOnly: true });
 await talocode.webdatalane.structured({ url: "https://example.com", schema: { title: "string", price: "string" } });
 await talocode.webdatalane.crawl.plan({ url: "https://example.com", maxPages: 10 });
+await talocode.crawlerlane.bots.classify({ userAgent: "ChatGPT-User" });
+await talocode.crawlerlane.report.generate({ domain: "talocode.site", logs: [] });
 await talocode.invoicelane.extract({ text: "INVOICE #1234 dated 2026-01-15..." });
 await talocode.invoicelane.invoice.extract({ text: "INVOICE #1234..." });
 await talocode.invoicelane.receipt.extract({ text: "RECEIPT from Store..." });
@@ -209,6 +221,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |
 | SignalLane | `/v1/signallane/` | `POST /v1/signallane/x/analyze` |
 | WebDataLane | `/v1/webdatalane/` | `POST /v1/webdatalane/markdown` |
+| CrawlerLane | `/v1/crawlerlane/` | `POST /v1/crawlerlane/report/generate` |
 | UGCLane | `/v1/ugclane/` | `POST /v1/ugclane/hooks/generate` |
 | InvoiceLane | `/v1/invoicelane/` | `POST /v1/invoicelane/extract` |
 

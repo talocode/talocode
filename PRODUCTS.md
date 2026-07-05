@@ -77,6 +77,14 @@ Invoice/receipt extraction API. Turn receipts, invoices and business documents i
 - **Status**: Planned
 - **Repo**: [github.com/talocode/invoicelane](https://github.com/talocode/invoicelane)
 
+## CrawlerLane
+
+AI crawler intelligence API for founders, builders and websites. Analyze access logs from sites you own to understand what AI assistants, search engines and crawlers are doing — bot traffic ratios, missing pages, AI visibility scores, and weekly reports. Open-source local usage works without Talocode Cloud; hosted API is billed with credits.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/crawlerlane](https://github.com/talocode/crawlerlane)
+- **Package**: `@talocode/crawlerlane`
+
 ## UGCLane
 
 Programmable UGC workflow API for original hooks, scripts, calendars and experiments.

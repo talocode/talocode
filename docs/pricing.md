@@ -73,5 +73,15 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | ugclane | report.generate | 40 |
 | ugclane | export.markdown | 5 |
 | ugclane | export.json | 5 |
+| crawlerlane | logs.ingest | 5 |
+| crawlerlane | bots.classify | 2 |
+| crawlerlane | pages.analyze | 20 |
+| crawlerlane | 404.analyze | 20 |
+| crawlerlane | ai_visibility.score | 30 |
+| crawlerlane | report.generate | 40 |
+| crawlerlane | sitemap.suggest | 20 |
+| crawlerlane | robots.audit | 15 |
+| crawlerlane | export.markdown | 5 |
+| crawlerlane | export.json | 5 |
 
 Full pricing is available programmatically at `GET /api/v1/cloud/pricing`.

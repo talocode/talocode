@@ -97,6 +97,16 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `webdatalane_structured` | WebDataLane | 20 |
 | `webdatalane_crawl_plan` | WebDataLane | 15 |
 | `webdatalane_screenshot` | WebDataLane | 50 |
+| `crawlerlane_logs_ingest` | CrawlerLane | 5 |
+| `crawlerlane_bots_classify` | CrawlerLane | 2 |
+| `crawlerlane_pages_analyze` | CrawlerLane | 20 |
+| `crawlerlane_404_analyze` | CrawlerLane | 20 |
+| `crawlerlane_ai_visibility_score` | CrawlerLane | 30 |
+| `crawlerlane_report_generate` | CrawlerLane | 40 |
+| `crawlerlane_sitemap_suggest` | CrawlerLane | 20 |
+| `crawlerlane_robots_audit` | CrawlerLane | 15 |
+| `crawlerlane_export_markdown` | CrawlerLane | 5 |
+| `crawlerlane_export_json` | CrawlerLane | 5 |
 | `invoicelane_extract` | InvoiceLane | 20 |
 | `invoicelane_extract_receipt` | InvoiceLane | 20 |
 | `invoicelane_extract_invoice` | InvoiceLane | 30 |
