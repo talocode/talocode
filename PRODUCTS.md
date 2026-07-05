@@ -63,6 +63,13 @@ X growth intelligence — account analytics, content experiments, and growth str
 - **Status**: Planned
 - **Repo**: [github.com/talocode/signallane](https://github.com/talocode/signallane)
 
+## WebDataLane
+
+Web extraction API. Turn webpages into clean markdown, metadata, links, and structured data through one API. Includes URL fetch, markdown conversion, metadata extraction, link discovery, structured data extraction, and crawl planning. Local helpers work without an API key.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/webdatalane](https://github.com/talocode/webdatalane)
+
 ## InvoiceLane
 
 Invoice/receipt extraction API. Turn receipts, invoices and business documents into clean structured data through one API.

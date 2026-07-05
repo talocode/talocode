@@ -38,6 +38,19 @@ const review = await talocode.codra.review({ language: "typescript", code: "func
 const plan = await talocode.codra.plan({ task: "Add auth", constraints: ["no secrets"] });
 ```
 
+```ts
+// WebDataLane — web extraction
+const page = await talocode.webdatalane.markdown({ url: "https://example.com" });
+const meta = await talocode.webdatalane.metadata({ url: "https://example.com" });
+const links = await talocode.webdatalane.links({ url: "https://example.com", internalOnly: true });
+const structured = await talocode.webdatalane.structured({
+  url: "https://example.com",
+  schema: { title: "string", price: "string" },
+  hints: { title: ["h1"], price: [".price"] }
+});
+const plan = await talocode.webdatalane.crawl.plan({ url: "https://example.com", maxPages: 10 });
+```
+
 ### API Key Migration
 
 ClipLoop previously used `CLIPLOOP_API_KEY`. This is now **deprecated** in favor of `TALOCODE_API_KEY`. The old key still works as a fallback but will be removed in a future release.
@@ -65,6 +78,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/codra/` | Codra (AI coding) | `POST /v1/codra/repo-summary` |
 | `/v1/tradia/` | Tradia (trading intelligence) | _planned_ |
 | `/v1/signallane/` | SignalLane (X growth intelligence) | `POST /v1/signallane/x/analyze`, `POST /v1/signallane/x/content-plan`, `POST /v1/signallane/x/post-drafts`, `POST /v1/signallane/x/experiments`, `POST /v1/signallane/x/report` |
+| `/v1/webdatalane/` | WebDataLane (web extraction) | `POST /v1/webdatalane/fetch`, `POST /v1/webdatalane/markdown`, `POST /v1/webdatalane/metadata`, `POST /v1/webdatalane/links`, `POST /v1/webdatalane/extract`, `POST /v1/webdatalane/structured`, `POST /v1/webdatalane/crawl/plan`, `POST /v1/webdatalane/screenshot` |
 | `/v1/invoicelane/` | InvoiceLane (invoice/receipt extraction) | `POST /v1/invoicelane/extract`, `POST /v1/invoicelane/receipt/extract`, `POST /v1/invoicelane/invoice/extract`, `POST /v1/invoicelane/validate`, `POST /v1/invoicelane/export/csv` |
 | `/v1/worklane/` | WorkLane (agent workflows) | _planned_ |
 

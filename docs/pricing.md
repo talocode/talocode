@@ -50,6 +50,14 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | signallane | x.post_drafts | 40 |
 | signallane | x.experiments | 30 |
 | signallane | x.report | 60 |
+| webdatalane | fetch | 5 |
+| webdatalane | extract | 10 |
+| webdatalane | markdown | 10 |
+| webdatalane | metadata | 5 |
+| webdatalane | links | 5 |
+| webdatalane | structured | 20 |
+| webdatalane | crawl.plan | 15 |
+| webdatalane | screenshot | 50 |
 | invoicelane | extract | 20 |
 | invoicelane | receipt.extract | 20 |
 | invoicelane | invoice.extract | 30 |

@@ -10,7 +10,7 @@ https://api.talocode.site/mcp
 
 ## Status
 
-**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, ClipLoop, SignalLane, and InvoiceLane. New tools follow as product APIs ship.
+**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, ClipLoop, SignalLane, WebDataLane, and InvoiceLane. New tools follow as product APIs ship.
 
 ## Authentication
 
@@ -89,6 +89,14 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `signallane_x_post_drafts` | SignalLane | 40 |
 | `signallane_x_experiments` | SignalLane | 30 |
 | `signallane_x_report` | SignalLane | 60 |
+| `webdatalane_fetch` | WebDataLane | 5 |
+| `webdatalane_extract` | WebDataLane | 10 |
+| `webdatalane_markdown` | WebDataLane | 10 |
+| `webdatalane_metadata` | WebDataLane | 5 |
+| `webdatalane_links` | WebDataLane | 5 |
+| `webdatalane_structured` | WebDataLane | 20 |
+| `webdatalane_crawl_plan` | WebDataLane | 15 |
+| `webdatalane_screenshot` | WebDataLane | 50 |
 | `invoicelane_extract` | InvoiceLane | 20 |
 | `invoicelane_extract_receipt` | InvoiceLane | 20 |
 | `invoicelane_extract_invoice` | InvoiceLane | 30 |
@@ -190,6 +198,87 @@ Generate a comprehensive growth intelligence report. **60 credits.**
 Generate a 90-day growth intelligence report for @elonmusk covering growth, engagement, content, and audience.
 ```
 Calls the `signallane_x_report` tool with `username: "elonmusk", period: "90d", sections: ["growth", "engagement", "content", "audience"].
+
+## WebDataLane MCP Tools
+
+### webdatalane_fetch
+
+Fetch a URL and return its HTML and text content. **5 credits.**
+
+**Input parameters:**
+- `url` (string, required) — URL to fetch
+
+**Example agent prompt:**
+```
+Fetch https://example.com and show me the page content
+```
+
+### webdatalane_markdown
+
+Convert a URL or HTML to clean markdown. **10 credits.**
+
+**Input parameters:**
+- `url` (string) — URL to convert
+- `stripNavigation` (boolean) — Remove nav/footer/header elements
+- `includeLinks` (boolean) — Include links (default: true)
+
+**Example agent prompt:**
+```
+Turn https://example.com into clean markdown
+```
+
+### webdatalane_extract
+
+Full extraction from a page: markdown, metadata, links, headings, images, JSON-LD, and tables. **10 credits.**
+
+**Input parameters:**
+- `url` (string) — URL to extract
+- `include` (array of strings) — Fields to include
+
+**Example agent prompt:**
+```
+Extract all content from https://example.com — markdown, metadata, links, and headings
+```
+
+### webdatalane_metadata
+
+Extract page metadata: title, description, canonical URL, OpenGraph, Twitter card. **5 credits.**
+
+**Example agent prompt:**
+```
+Get the metadata from https://example.com
+```
+
+### webdatalane_links
+
+Extract all links from a page, classified as internal or external. **5 credits.**
+
+**Example agent prompt:**
+```
+Find all internal links on https://example.com
+```
+
+### webdatalane_structured
+
+Extract structured fields from a webpage using a schema. **20 credits.**
+
+**Example agent prompt:**
+```
+Extract the product title and price from this page: schema is title (string), price (string).
+```
+
+### webdatalane_crawl_plan
+
+Generate a crawl plan from a seed URL. **15 credits.**
+
+**Example agent prompt:**
+```
+Plan a crawl of https://docs.example.com, max 5 pages, same domain only
+```
+
+### webdatalane_screenshot
+
+Capture a webpage screenshot. **50 credits.** (Not available in v0.1.)
 
 ## InvoiceLane MCP Tools
 

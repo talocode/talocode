@@ -91,6 +91,14 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | Skills | `generate.text` | 40 |
 | Skills | `export.cursor` | 10 |
 | Skills | `export.claude` | 10 |
+| WebDataLane | `fetch` | 5 |
+| WebDataLane | `extract` | 10 |
+| WebDataLane | `markdown` | 10 |
+| WebDataLane | `metadata` | 5 |
+| WebDataLane | `links` | 5 |
+| WebDataLane | `structured` | 20 |
+| WebDataLane | `crawl.plan` | 15 |
+| WebDataLane | `screenshot` | 50 |
 | InvoiceLane | `extract` | 20 |
 | InvoiceLane | `receipt.extract` | 20 |
 | InvoiceLane | `invoice.extract` | 30 |
@@ -148,6 +156,12 @@ await talocode.skills.generate.githubProfile({ username: "octocat", target: "cur
 await talocode.skills.generate.githubRepo({ repoUrl: "https://github.com/talocode/codra", target: "cursor" });
 await talocode.skills.generate.docs({ url: "https://docs.example.com/api", target: "cursor" });
 await talocode.skills.generate.text({ name: "my-project", content: "...", target: "cursor" });
+await talocode.webdatalane.markdown({ url: "https://example.com" });
+await talocode.webdatalane.extract({ url: "https://example.com", include: ["metadata", "links", "headings"] });
+await talocode.webdatalane.metadata({ url: "https://example.com" });
+await talocode.webdatalane.links({ url: "https://example.com", internalOnly: true });
+await talocode.webdatalane.structured({ url: "https://example.com", schema: { title: "string", price: "string" } });
+await talocode.webdatalane.crawl.plan({ url: "https://example.com", maxPages: 10 });
 await talocode.invoicelane.extract({ text: "INVOICE #1234 dated 2026-01-15..." });
 await talocode.invoicelane.invoice.extract({ text: "INVOICE #1234..." });
 await talocode.invoicelane.receipt.extract({ text: "RECEIPT from Store..." });
@@ -178,6 +192,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | Codra | `/v1/codra/` | `POST /v1/codra/repo-summary` |
 | Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |
 | SignalLane | `/v1/signallane/` | `POST /v1/signallane/x/analyze` |
+| WebDataLane | `/v1/webdatalane/` | `POST /v1/webdatalane/markdown` |
 | InvoiceLane | `/v1/invoicelane/` | `POST /v1/invoicelane/extract` |
 
 ## Endpoints
