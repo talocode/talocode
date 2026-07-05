@@ -11,119 +11,46 @@ This guide documents how to set up DNS for **talocode.site** at Namecheap.
 | `@` (root) | A | `185.199.110.153` | Automatic |
 | `@` (root) | A | `185.199.111.153` | Automatic |
 | `www` | CNAME | `talocode.github.io` | Automatic |
+| `api` | CNAME | `talocode-cloud-api.netlify.app` | Automatic |
+| `cloud` | CNAME | `talocode-cloud.netlify.app` | Automatic |
+| `docs` | CNAME | `talocode-docs.netlify.app` | Automatic |
+| `dashboard` | CNAME | `talocode-dashboard.netlify.app` | Automatic |
+
+> Use the actual Netlify site hostnames from your Netlify dashboard after linking sites.
 
 ## Step-by-Step (Namecheap)
 
 1. Log in to [Namecheap](https://www.namecheap.com)
 2. Go to **Domain List** → **talocode.site** → **Manage**
-3. Under **Nameservers**, ensure they use Namecheap's BasicDNS (or set your own)
-4. Under **Advanced DNS**, add the following records:
-
-### Root A Records
-
-Add four A records pointing to GitHub Pages IPs:
-
-| Type | Host | Value |
-|------|------|-------|
-| A Record | `@` | `185.199.108.153` |
-| A Record | `@` | `185.199.109.153` |
-| A Record | `@` | `185.199.110.153` |
-| A Record | `@` | `185.199.111.153` |
-
-### www CNAME
-
-| Type | Host | Value |
-|------|------|-------|
-| CNAME Record | `www` | `talocode.github.io` |
+3. Under **Advanced DNS**, add the records above
 
 ## Subdomain Architecture
-
-### talocode.site — GitHub Pages
-
-The apex domain `talocode.site` is served via GitHub Pages from the `docs/` directory. This remains the public brand and home site. **Do not remove this setup.**
-
-### cloud.talocode.site — Railway (Vite App)
-
-The `cloud.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Railway**.
-
-DNS: After Railway deployment, add a CNAME record:
-- `cloud` CNAME → `{railway-service-url}.railway.app`
-
-Full instructions in [`docs/RAILWAY_FRONTENDS_DEPLOY.md`](./RAILWAY_FRONTENDS_DEPLOY.md).
-
-### docs.talocode.site — Railway (Vite App)
-
-The `docs.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Railway**.
-
-DNS: After Railway deployment, add a CNAME record:
-- `docs` CNAME → `{railway-service-url}.railway.app`
-
-Full instructions in [`docs/RAILWAY_FRONTENDS_DEPLOY.md`](./RAILWAY_FRONTENDS_DEPLOY.md).
-
-### dashboard.talocode.site — Railway (Vite App)
-
-The `dashboard.talocode.site` subdomain will be served as a standalone Vite + React app deployed to **Railway**.
-
-DNS: After Railway deployment, add a CNAME record:
-- `dashboard` CNAME → `{railway-service-url}.railway.app`
-
-Full instructions in [`docs/RAILWAY_FRONTENDS_DEPLOY.md`](./RAILWAY_FRONTENDS_DEPLOY.md).
-
-### api.talocode.site — Backend Host
-
-**Target:** Stacklane API hosting provider (NOT GitHub Pages, NOT Netlify frontend).
-
-api.talocode.site must NOT point to GitHub Pages because it needs a backend server.
-
-Options:
-- CNAME to the hosting provider's endpoint (e.g., Railway, Render, Fly.io)
-- Or A record pointing to a VPS IP
-
-### Summary Table
 
 | Subdomain | Hosting | Type |
 |-----------|---------|------|
 | talocode.site | GitHub Pages | Static brand site |
-| cloud.talocode.site | Railway | Vite + React app |
-| docs.talocode.site | Railway | Vite + React app |
-| dashboard.talocode.site | Railway | Vite + React app |
-| api.talocode.site | Backend host | API server |
+| api.talocode.site | Netlify Functions | Stacklane API |
+| cloud.talocode.site | Netlify | Vite + React app |
+| docs.talocode.site | Netlify | Vite + React app |
+| dashboard.talocode.site | Netlify | Vite + React app |
+
+### Deployment guides
+
+- API: [`Stacklane/docs/NETLIFY_API_DEPLOY.md`](https://github.com/talocode/Stacklane/blob/main/docs/NETLIFY_API_DEPLOY.md)
+- Frontends: [`docs/NETLIFY_FRONTENDS_DEPLOY.md`](./NETLIFY_FRONTENDS_DEPLOY.md)
 
 ## SSL / TLS
 
-- **GitHub Pages** automatically provisions Let's Encrypt certificates for custom domains.
-- **Other providers** typically auto-provision via Let's Encrypt as well.
-- Allow **up to 24 hours** for DNS propagation and SSL certificate provisioning.
+Netlify and GitHub Pages auto-provision Let's Encrypt certificates. Allow up to 24 hours for DNS propagation.
 
 ## Verification
 
-After DNS propagation:
-
 ```bash
 dig +short talocode.site
-# Should return 185.199.108.153 (and the other three IPs)
-
 curl -I https://talocode.site
-# Should return 200 OK with GitHub Pages headers
+curl https://api.talocode.site/api/v1/cloud/health
 ```
 
 ## Rollback / Legacy Alias
 
-The old domain **talocode.xyz** is retained as a legacy/future alias. If DNS for talocode.site fails, you can:
-
-1. Temporarily update the talocode.xyz DNS to point to the same GitHub Pages deployment
-2. Or set up a redirect from talocode.xyz to talocode.site
-
-## Troubleshooting
-
-| Problem | Likely Cause | Fix |
-|---------|-------------|-----|
-| SSL not ready | DNS not fully propagated | Wait up to 24h |
-| www redirect loop | Missing CNAME for www | Ensure CNAME www → talocode.github.io |
-| GitHub Pages 404 | Custom domain not set in repo settings | Add talocode.site in Settings → Pages → Custom domain |
-| Subdomain not resolving | No DNS record for subdomain | Add the appropriate CNAME or A record |
-
-## Resources
-
-- [GitHub Pages Custom Domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site)
-- [Namecheap DNS Management](https://www.namecheap.com/support/knowledgebase/category.aspx/10/dns/)
+The old domain **talocode.xyz** is retained as a legacy alias. If DNS for talocode.site fails, temporarily point talocode.xyz to the same targets or redirect to talocode.site.

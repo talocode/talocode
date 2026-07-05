@@ -1,20 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * Smoke test for Railway-deployed Talocode frontend apps.
+ * Smoke test for Netlify-deployed Talocode frontend apps.
  *
  * Usage:
- *   node scripts/smoke-railway-frontends.mjs <base_url>
- *
- * Examples:
- *   node scripts/smoke-railway-frontends.mjs http://localhost:4173
- *   node scripts/smoke-railway-frontends.mjs https://cloud.talocode.site
+ *   node scripts/smoke-netlify-frontends.mjs <base_url>
  */
 
 const BASE_URL = process.argv[2]
 if (!BASE_URL) {
-  console.error('Usage: node scripts/smoke-railway-frontends.mjs <base_url>')
-  console.error('Example: node scripts/smoke-railway-frontends.mjs http://localhost:4173')
+  console.error('Usage: node scripts/smoke-netlify-frontends.mjs <base_url>')
+  console.error('Example: node scripts/smoke-netlify-frontends.mjs https://cloud.talocode.site')
   process.exit(1)
 }
 
@@ -38,10 +34,9 @@ async function smoke(label, fn) {
 }
 
 async function main() {
-  console.log(`\n=== Railway Frontend Smoke Tests ===`)
+  console.log(`\n=== Netlify Frontend Smoke Tests ===`)
   console.log(`Base URL: ${BASE_URL}\n`)
 
-  // Basic connectivity
   await smoke('GET / returns 200', async () => {
     const res = await fetch(BASE_URL, { signal: AbortSignal.timeout(10000) })
     return res.status === 200
@@ -52,14 +47,12 @@ async function main() {
     return (res.headers.get('content-type') || '').includes('text/html')
   })
 
-  // Page contains expected shell
   await smoke('Page has <div id="root">', async () => {
     const res = await fetch(BASE_URL, { signal: AbortSignal.timeout(10000) })
     const html = await res.text()
     return html.includes('id="root"')
   })
 
-  // SPA fallback
   await smoke('GET /some/random/path returns HTML (SPA fallback)', async () => {
     const res = await fetch(`${BASE_URL}/some/random/path`, { signal: AbortSignal.timeout(10000) })
     const html = await res.text()
@@ -71,7 +64,7 @@ async function main() {
   process.exit(fail > 0 ? 1 : 0)
 }
 
-main().catch(e => {
+main().catch((e) => {
   console.error(`\nSmoke tests crashed: ${e.message}`)
   process.exit(1)
 })
