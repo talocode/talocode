@@ -104,6 +104,16 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | InvoiceLane | `invoice.extract` | 30 |
 | InvoiceLane | `validate` | 10 |
 | InvoiceLane | `export.csv` | 5 |
+| UGCLane | `strategy.generate` | 30 |
+| UGCLane | `competitor.analyze` | 40 |
+| UGCLane | `hooks.generate` | 20 |
+| UGCLane | `scripts.generate` | 40 |
+| UGCLane | `accounts.plan` | 30 |
+| UGCLane | `calendar.generate` | 60 |
+| UGCLane | `experiments.generate` | 30 |
+| UGCLane | `report.generate` | 40 |
+| UGCLane | `export.markdown` | 5 |
+| UGCLane | `export.json` | 5 |
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 
@@ -133,7 +143,7 @@ TALOCODE_BASE_URL=https://api.talocode.site
 
 Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
 
-Talocode Cloud gives every Talocode product one programmable API surface. Use `TALOCODE_API_KEY` to call Tera, ClipLoop, Agent Browser, Codra, Tradia, SignalLane, WorkLane, InvoiceLane, and future hosted services.
+Talocode Cloud gives every Talocode product one programmable API surface. Use `TALOCODE_API_KEY` to call Tera, ClipLoop, Agent Browser, Codra, Tradia, SignalLane, WorkLane, InvoiceLane, UGCLane, and future hosted services.
 
 ```ts
 import { Talocode } from "@talocode/sdk";
@@ -167,6 +177,11 @@ await talocode.invoicelane.invoice.extract({ text: "INVOICE #1234..." });
 await talocode.invoicelane.receipt.extract({ text: "RECEIPT from Store..." });
 await talocode.invoicelane.validate({ text: "INVOICE #1234..." });
 await talocode.invoicelane.export.csv({ data: {...} });
+await talocode.ugclane.hooks.generate({ product: "AI note-taking app", positioning: "faster than typing", tone: "bold", count: 5 });
+await talocode.ugclane.scripts.generate({ product: "AI note-taking app", hook: "Stop typing. Start thinking.", platform: "tiktok", duration: "60s" });
+await talocode.ugclane.accounts.plan({ brand: "MyApp", product: "AI note-taking app", platforms: ["twitter", "linkedin"] });
+await talocode.ugclane.calendar.generate({ brand: "MyApp", product: "AI note-taking app", month: "2026-08", platforms: ["twitter", "linkedin"] });
+await talocode.ugclane.experiments.generate({ product: "AI note-taking app", goal: "maximize engagement", variables: ["hook_style"] });
 ```
 
 ### API Key Migration
@@ -175,6 +190,7 @@ await talocode.invoicelane.export.csv({ data: {...} });
 |---------|---------|---------|--------|
 | ClipLoop | `CLIPLOOP_API_KEY` | `TALOCODE_API_KEY` | `CLIPLOOP_API_KEY` deprecated — use `TALOCODE_API_KEY` |
 | Codra | — | `TALOCODE_API_KEY` | Standard — new hosted API |
+| UGCLane | — | `TALOCODE_API_KEY` | Standard |
 | All others | — | `TALOCODE_API_KEY` | Standard |
 
 See the [SDK docs](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full usage.
@@ -193,6 +209,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |
 | SignalLane | `/v1/signallane/` | `POST /v1/signallane/x/analyze` |
 | WebDataLane | `/v1/webdatalane/` | `POST /v1/webdatalane/markdown` |
+| UGCLane | `/v1/ugclane/` | `POST /v1/ugclane/hooks/generate` |
 | InvoiceLane | `/v1/invoicelane/` | `POST /v1/invoicelane/extract` |
 
 ## Endpoints

@@ -32,6 +32,7 @@ Specialized services for specific domains.
 | [SignalLane](https://github.com/talocode/signallane) | X growth intelligence — account analytics, content experiments, and growth strategy for indie builders |
 | [WebDataLane](https://github.com/talocode/webdatalane) | Web extraction API — turn webpages into markdown, metadata, links, and structured data |
 | [InvoiceLane](https://github.com/talocode/invoicelane) | Invoice/receipt extraction API that turns business documents into structured data without OCR lock-in |
+| [UGCLane](https://github.com/talocode/ugclane) | UGC workflow API — turn product positioning into original hooks, scripts, calendars and experiments |
 
 ## Layer 4: Infrastructure
 
@@ -67,8 +68,10 @@ The backbone that connects everything.
       └─────────┘        └───────────┘        └─────┬─────┘
                                                     │
                                               ┌─────▼─────┐
-                                              │InvoiceLane│
-                                              └───────────┘
+                                               │InvoiceLane│
+                                               ├───────────┤
+                                               │  UGCLane  │
+                                               └───────────┘
 
                     Stacklane (backend platform)
               PostgreSQL | Auth | Billing | Project Management

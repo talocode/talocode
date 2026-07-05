@@ -77,6 +77,13 @@ Invoice/receipt extraction API. Turn receipts, invoices and business documents i
 - **Status**: Planned
 - **Repo**: [github.com/talocode/invoicelane](https://github.com/talocode/invoicelane)
 
+## UGCLane
+
+Programmable UGC workflow API for original hooks, scripts, calendars and experiments.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/ugclane](https://github.com/talocode/ugclane)
+
 ## Talocode Cloud
 
 Hosted API layer for the entire ecosystem. One API key gives access to every product with unified prepaid billing. Includes an OpenAI-compatible provider router.

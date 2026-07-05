@@ -10,7 +10,7 @@ https://api.talocode.site/mcp
 
 ## Status
 
-**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, ClipLoop, SignalLane, WebDataLane, and InvoiceLane. New tools follow as product APIs ship.
+**v0.1 — Working.** MCP tools are implemented for Tera, Router, Agent Browser, ClipLoop, SignalLane, WebDataLane, InvoiceLane, and UGCLane. New tools follow as product APIs ship.
 
 ## Authentication
 
@@ -102,6 +102,16 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `invoicelane_extract_invoice` | InvoiceLane | 30 |
 | `invoicelane_validate` | InvoiceLane | 10 |
 | `invoicelane_export_csv` | InvoiceLane | 5 |
+| `ugclane_strategy_generate` | UGCLane | 30 |
+| `ugclane_competitor_analyze` | UGCLane | 40 |
+| `ugclane_hooks_generate` | UGCLane | 20 |
+| `ugclane_scripts_generate` | UGCLane | 40 |
+| `ugclane_accounts_plan` | UGCLane | 30 |
+| `ugclane_calendar_generate` | UGCLane | 60 |
+| `ugclane_experiments_generate` | UGCLane | 30 |
+| `ugclane_report_generate` | UGCLane | 40 |
+| `ugclane_export_markdown` | UGCLane | 5 |
+| `ugclane_export_json` | UGCLane | 5 |
 
 Full tool schemas and routes are available at `GET /api/v1/cloud/mcp/tools`.
 
@@ -279,6 +289,137 @@ Plan a crawl of https://docs.example.com, max 5 pages, same domain only
 ### webdatalane_screenshot
 
 Capture a webpage screenshot. **50 credits.** (Not available in v0.1.)
+
+## UGCLane MCP Tools
+
+### ugclane_strategy_generate
+
+Generate a content strategy based on product positioning and audience. **30 credits.**
+
+**Input parameters:**
+- `product` (string, required) — Product name or description
+- `audience` (string, required) — Target audience
+- `positioning` (string, required) — Key positioning statement
+- `platforms` (array of strings, optional) — Target platforms
+
+**Example agent prompt:**
+```
+Generate a content strategy for my AI note-taking app aimed at knowledge workers, positioned as faster than typing.
+```
+Calls the `ugclane_strategy_generate` tool with `product: "AI note-taking app", audience: "knowledge workers", positioning: "faster than typing"`.
+
+### ugclane_competitor_analyze
+
+Analyze competitor content positioning and identify gaps. **40 credits.**
+
+**Input parameters:**
+- `competitors` (array of strings, required) — Competitor names
+- `category` (string, required) — Product category
+- `focus` (array of strings, optional) — Analysis focus areas
+
+**Example agent prompt:**
+```
+Analyze Notion and Mem.ai in the note-taking category for messaging and positioning gaps.
+```
+Calls the `ugclane_competitor_analyze` tool with `competitors: ["notion", "mem.ai"], category: "note-taking", focus: ["messaging", "positioning"]`.
+
+### ugclane_hooks_generate
+
+Generate original UGC-style hooks for social posts and ad copy. **20 credits.**
+
+**Input parameters:**
+- `product` (string, required) — Product name or description
+- `positioning` (string, required) — Key positioning
+- `tone` (string, optional) — Tone: `bold`, `curious`, `funny`, `professional`
+- `count` (number, optional) — Number of hooks (default: 3, max: 10)
+
+**Example agent prompt:**
+```
+Generate 5 bold hooks for my AI note-taking app positioned as faster than typing.
+```
+Calls the `ugclane_hooks_generate` tool with `product: "AI note-taking app", positioning: "faster than typing", tone: "bold", count: 5`.
+
+### ugclane_scripts_generate
+
+Generate UGC-style scripts for short-form video content. **40 credits.**
+
+**Input parameters:**
+- `product` (string, required) — Product name or description
+- `hook` (string, required) — Opening hook
+- `platform` (string, optional) — Platform: `tiktok`, `reels`, `shorts`, `youtube`
+- `duration` (string, optional) — Target duration: `15s`, `30s`, `60s`
+- `tone` (string, optional) — Script tone
+
+**Example agent prompt:**
+```
+Write a 60-second TikTok script for my AI note-taking app with the hook "Stop typing. Start thinking."
+```
+Calls the `ugclane_scripts_generate` tool with `product: "AI note-taking app", hook: "Stop typing. Start thinking.", platform: "tiktok", duration: "60s"`.
+
+### ugclane_accounts_plan
+
+Generate an account-level content plan with positioning, pillars, and posting cadence. **30 credits.**
+
+**Input parameters:**
+- `brand` (string, required) — Brand name
+- `product` (string, required) — Product name or description
+- `platforms` (array of strings, required) — Target platforms
+- `goals` (array of strings, optional) — Content goals
+
+### ugclane_calendar_generate
+
+Generate a month-long content calendar. **60 credits.**
+
+**Input parameters:**
+- `brand` (string, required) — Brand name
+- `product` (string, required) — Product name or description
+- `month` (string, required) — Month in YYYY-MM format
+- `platforms` (array of strings, required) — Target platforms
+- `goals` (array of strings, optional) — Content goals
+
+**Example agent prompt:**
+```
+Create an August 2026 content calendar for MyApp's AI note-taking app on Twitter and LinkedIn focused on engagement and signups.
+```
+Calls the `ugclane_calendar_generate` tool with `brand: "MyApp", product: "AI note-taking app", month: "2026-08", platforms: ["twitter", "linkedin"], goals: ["engagement", "signups"]`.
+
+### ugclane_experiments_generate
+
+Design content experiments to test hooks, formats, and posting strategies. **30 credits.**
+
+**Input parameters:**
+- `product` (string, required) — Product name or description
+- `goal` (string, required) — Experiment goal
+- `variables` (array of strings, optional) — Variables to test
+
+**Example agent prompt:**
+```
+Design experiments for my AI note-taking app to test hook styles and post formats for maximum engagement.
+```
+Calls the `ugclane_experiments_generate` tool with `product: "AI note-taking app", goal: "maximize engagement", variables: ["hook_style", "post_format"]`.
+
+### ugclane_report_generate
+
+Generate a content performance report with strategy recommendations. **40 credits.**
+
+**Input parameters:**
+- `brand` (string, required) — Brand name
+- `period` (string, optional) — Report period: `7d`, `30d`, `90d`
+- `platforms` (array of strings, optional) — Platforms to include
+
+### ugclane_export_markdown
+
+Export UGC content plan as markdown. **5 credits.**
+
+**Input parameters:**
+- `data` (object, required) — Content data to export
+
+### ugclane_export_json
+
+Export UGC content data as structured JSON. **5 credits.**
+
+**Input parameters:**
+- `data` (object, required) — Content data to export
 
 ## InvoiceLane MCP Tools
 

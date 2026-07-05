@@ -20,6 +20,7 @@ Talocode helps developers and builders make work readable to agents and controll
 | **Trading** | [Tradia](https://github.com/talocode/tradia) | Trading performance intelligence | Planned |
 | **Signals** | [SignalLane](https://github.com/talocode/signallane) | X growth intelligence for builders | Planned |
 | **Invoice** | [InvoiceLane](https://github.com/talocode/invoicelane) | Extract structured data from invoices, receipts, and business documents through one API. | Planned |
+| **UGC Workflow** | [UGCLane](https://github.com/talocode/ugclane) | Programmable UGC workflow API for original hooks, scripts, calendars and experiments | Experimental |
 | **Hosted API** | [Talocode Cloud](./CLOUD.md) | Hosted API layer with wallet credits and router | Experimental |
 
 ---

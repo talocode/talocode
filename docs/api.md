@@ -80,6 +80,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/signallane/` | SignalLane (X growth intelligence) | `POST /v1/signallane/x/analyze`, `POST /v1/signallane/x/content-plan`, `POST /v1/signallane/x/post-drafts`, `POST /v1/signallane/x/experiments`, `POST /v1/signallane/x/report` |
 | `/v1/webdatalane/` | WebDataLane (web extraction) | `POST /v1/webdatalane/fetch`, `POST /v1/webdatalane/markdown`, `POST /v1/webdatalane/metadata`, `POST /v1/webdatalane/links`, `POST /v1/webdatalane/extract`, `POST /v1/webdatalane/structured`, `POST /v1/webdatalane/crawl/plan`, `POST /v1/webdatalane/screenshot` |
 | `/v1/invoicelane/` | InvoiceLane (invoice/receipt extraction) | `POST /v1/invoicelane/extract`, `POST /v1/invoicelane/receipt/extract`, `POST /v1/invoicelane/invoice/extract`, `POST /v1/invoicelane/validate`, `POST /v1/invoicelane/export/csv` |
+| `/v1/ugclane/` | UGCLane (UGC workflow API) | `POST /v1/ugclane/strategy/generate`, `POST /v1/ugclane/competitor/analyze`, `POST /v1/ugclane/hooks/generate`, `POST /v1/ugclane/scripts/generate`, `POST /v1/ugclane/accounts/plan`, `POST /v1/ugclane/calendar/generate`, `POST /v1/ugclane/experiments/generate`, `POST /v1/ugclane/report/generate`, `POST /v1/ugclane/export/markdown`, `POST /v1/ugclane/export/json` |
 | `/v1/worklane/` | WorkLane (agent workflows) | _planned_ |
 
 ## Chat Completions
@@ -698,6 +699,381 @@ const result = await talocode.invoicelane.invoice.extract({
   text: "INVOICE #1234 dated 2026-01-15 Total: $45.00"
 });
 ```
+
+## UGCLane — UGC Workflow API
+
+UGCLane is a programmable UGC workflow API that turns product positioning into original hooks, scripts, captions, calendars, and content experiments through one API.
+
+Base URL: `https://api.talocode.site` (set `TALOCODE_BASE_URL` env var to override)
+
+Authentication uses the same `TALOCODE_API_KEY` as all other Talocode Cloud products (`Authorization: Bearer tk_dev_xxxxxxxxxxxx`).
+
+### Generate Content Strategy
+
+```
+POST /v1/ugclane/strategy/generate
+```
+
+Generate a content strategy based on product positioning and audience. Costs 30 credits.
+
+```json
+{
+  "product": "AI note-taking app",
+  "audience": "knowledge workers",
+  "positioning": "faster than typing",
+  "platforms": ["twitter", "linkedin"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/strategy/generate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"product": "AI note-taking app", "audience": "knowledge workers", "positioning": "faster than typing"}'
+```
+
+```json
+{
+  "data": {
+    "strategy": [
+      {"theme": "speed", "angles": ["save hours", "instant recall"], "platforms": ["twitter", "linkedin"]}
+    ]
+  }
+}
+```
+
+### Analyze Competitors
+
+```
+POST /v1/ugclane/competitor/analyze
+```
+
+Analyze competitor content positioning and identify gaps. Costs 40 credits.
+
+```json
+{
+  "competitors": ["notion", "mem.ai"],
+  "category": "note-taking",
+  "focus": ["messaging", "hooks", "positioning"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/competitor/analyze \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"competitors": ["notion"], "category": "note-taking"}'
+```
+
+```json
+{
+  "data": {
+    "gaps": [],
+    "opportunities": [],
+    "competitorHooks": []
+  }
+}
+```
+
+### Generate Hooks
+
+```
+POST /v1/ugclane/hooks/generate
+```
+
+Generate original UGC-style hooks for social posts and ad copy. Costs 20 credits.
+
+```json
+{
+  "product": "AI note-taking app",
+  "positioning": "faster than typing",
+  "tone": "bold",
+  "count": 5
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/hooks/generate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"product": "AI note-taking app", "positioning": "faster than typing", "tone": "bold", "count": 5}'
+```
+
+```json
+{
+  "data": {
+    "hooks": [
+      {"hook": "Stop typing. Start thinking.", "strength": 0.95, "format": "one-liner"}
+    ]
+  }
+}
+```
+
+### Generate Scripts
+
+```
+POST /v1/ugclane/scripts/generate
+```
+
+Generate UGC-style scripts for short-form video content. Costs 40 credits.
+
+```json
+{
+  "product": "AI note-taking app",
+  "hook": "Stop typing. Start thinking.",
+  "platform": "tiktok",
+  "duration": "60s",
+  "tone": "storytelling"
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/scripts/generate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"product": "AI note-taking app", "hook": "Stop typing. Start thinking.", "platform": "tiktok", "duration": "60s"}'
+```
+
+```json
+{
+  "data": {
+    "script": {"hook": "...", "body": "...", "cta": "...", "estimatedDuration": "60s"}
+  }
+}
+```
+
+### Plan Accounts
+
+```
+POST /v1/ugclane/accounts/plan
+```
+
+Generate an account-level content plan with positioning, pillars, and posting cadence. Costs 30 credits.
+
+```json
+{
+  "brand": "MyApp",
+  "product": "AI note-taking app",
+  "platforms": ["twitter", "linkedin", "tiktok"],
+  "goals": ["awareness", "conversion"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/accounts/plan \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"brand": "MyApp", "product": "AI note-taking app", "platforms": ["twitter", "linkedin"]}'
+```
+
+```json
+{
+  "data": {
+    "positioning": "",
+    "contentPillars": [],
+    "cadence": {"twitter": "3x daily", "linkedin": "1x daily"}
+  }
+}
+```
+
+### Generate Calendar
+
+```
+POST /v1/ugclane/calendar/generate
+```
+
+Generate a month-long content calendar. Costs 60 credits.
+
+```json
+{
+  "brand": "MyApp",
+  "product": "AI note-taking app",
+  "month": "2026-08",
+  "platforms": ["twitter", "linkedin"],
+  "goals": ["engagement", "signups"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/calendar/generate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"brand": "MyApp", "product": "AI note-taking app", "month": "2026-08", "platforms": ["twitter", "linkedin"]}'
+```
+
+```json
+{
+  "data": {
+    "month": "2026-08",
+    "weeks": [
+      {"week": 1, "posts": [{"day": "Mon", "platform": "twitter", "content": "", "hook": ""}]}
+    ]
+  }
+}
+```
+
+### Generate Experiments
+
+```
+POST /v1/ugclane/experiments/generate
+```
+
+Design content experiments to test hooks, formats, and posting strategies. Costs 30 credits.
+
+```json
+{
+  "product": "AI note-taking app",
+  "goal": "maximize engagement",
+  "variables": ["hook_style", "post_format"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/experiments/generate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"product": "AI note-taking app", "goal": "maximize engagement", "variables": ["hook_style", "post_format"]}'
+```
+
+```json
+{
+  "data": {
+    "experiments": [
+      {"variable": "hook_style", "control": "question", "variant": "statistic"}
+    ]
+  }
+}
+```
+
+### Generate Report
+
+```
+POST /v1/ugclane/report/generate
+```
+
+Generate a content performance report with strategy recommendations. Costs 40 credits.
+
+```json
+{
+  "brand": "MyApp",
+  "period": "30d",
+  "platforms": ["twitter", "linkedin"]
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/report/generate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"brand": "MyApp", "period": "30d", "platforms": ["twitter", "linkedin"]}'
+```
+
+```json
+{
+  "data": {
+    "performance": {},
+    "recommendations": []
+  }
+}
+```
+
+### Export Markdown
+
+```
+POST /v1/ugclane/export/markdown
+```
+
+Export UGC content plan as markdown. Costs 5 credits.
+
+```json
+{
+  "data": {
+    "calendar": {"month": "2026-08", "weeks": []}
+  }
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/export/markdown \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"data": {"calendar": {"month": "2026-08"}}}'
+```
+
+```json
+{
+  "data": {
+    "markdown": "# Content Calendar — 2026-08\n\n"
+  }
+}
+```
+
+### Export JSON
+
+```
+POST /v1/ugclane/export/json
+```
+
+Export UGC content data as structured JSON. Costs 5 credits.
+
+```json
+{
+  "data": {
+    "calendar": {"month": "2026-08", "weeks": []}
+  }
+}
+```
+
+```bash
+curl https://api.talocode.site/v1/ugclane/export/json \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"data": {"calendar": {"month": "2026-08"}}}'
+```
+
+```json
+{
+  "data": {
+    "json": {"month": "2026-08", "weeks": []}
+  }
+}
+```
+
+### SDK Example
+
+```ts
+import { Talocode } from "@talocode/sdk";
+
+const talocode = new Talocode({ apiKey: process.env.TALOCODE_API_KEY });
+
+const hooks = await talocode.ugclane.hooks.generate({
+  product: "AI note-taking app",
+  positioning: "faster than typing",
+  tone: "bold",
+  count: 5
+});
+
+const calendar = await talocode.ugclane.calendar.generate({
+  brand: "MyApp",
+  product: "AI note-taking app",
+  month: "2026-08",
+  platforms: ["twitter", "linkedin"]
+});
+```
+
+### Safety Boundaries
+
+UGCLane is designed to help creators and marketers generate original content ideas and plans. It is not designed for:
+
+- **No spam automation** — Do not use UGCLane to auto-generate and mass-post spam content
+- **No posting automation** — UGCLane generates ideas and scripts; human review is required before publishing
+- **No login automation** — Do not use UGCLane to automate login or session management for any platform
+- **No engagement bots** — Do not use UGCLane to create bots that artificially inflate engagement
+- **No private scraping** — Do not use UGCLane to scrape or extract non-public data from platforms
+- **No copying competitor content** — UGCLane generates original content; do not use it to plagiarize or closely mimic competitors
+- **No platform bypass** — Do not use UGCLane to circumvent platform terms of service, rate limits, or content policies
+
+UGCLane follows the spirit of ethical content creation, not the letter of what might technically work.
 
 ### Limitations (v0.1)
 

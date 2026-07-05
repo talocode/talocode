@@ -56,6 +56,7 @@ Codra         | /v1/codra/           | POST /v1/codra/repo-summary
 Tradia        | /v1/tradia/          | planned
 SignalLane    | /v1/signallane/      | POST /v1/signallane/x/analyze
 InvoiceLane   | /v1/invoicelane/     | POST /v1/invoicelane/extract
+UGCLane       | /v1/ugclane/         | POST /v1/ugclane/hooks/generate
 WorkLane      | /v1/worklane/        | planned</code></pre>
     </div>
   </div>
@@ -193,7 +194,7 @@ GET /v1/router/models   (namespaced)</code></pre>
       <pre><code>POST /mcp
 Auth: Authorization: Bearer $TALOCODE_API_KEY
 
-24 tools available across Tera, Router, Agent Browser, ClipLoop, SignalLane, InvoiceLane, and Cloud.</code></pre>
+34 tools available across Tera, Router, Agent Browser, ClipLoop, SignalLane, InvoiceLane, UGCLane, and Cloud.</code></pre>
     </div>
     <p style="text-align:center"><a href="mcp.html">Talocode MCP Docs &rarr;</a></p>
   </div>
@@ -250,6 +251,26 @@ POST /v1/invoicelane/validate           — Validate document data (10 credits)
 POST /v1/invoicelane/export/csv         — Export as CSV (5 credits)</code></pre>
     </div>
     <p style="text-align:center"><strong>InvoiceLane:</strong> extract 20cr, receipt.extract 20cr, invoice.extract 30cr, validate 10cr, export.csv 5cr</p>
+  </div>
+</section>
+
+<section class="section section-dark">
+  <div class="container">
+    <h2>UGCLane — UGC Workflow API</h2>
+    <p class="section-sub">Generate original UGC-style hooks, scripts, captions, calendars and content experiments through one API. Turn product positioning into content that converts.</p>
+    <div class="code-block">
+      <pre><code>POST /v1/ugclane/strategy/generate       — Generate content strategy (30 credits)
+POST /v1/ugclane/competitor/analyze      — Analyze competitor positioning (40 credits)
+POST /v1/ugclane/hooks/generate          — Generate UGC hooks (20 credits)
+POST /v1/ugclane/scripts/generate        — Generate video scripts (40 credits)
+POST /v1/ugclane/accounts/plan           — Plan account content strategy (30 credits)
+POST /v1/ugclane/calendar/generate       — Generate content calendar (60 credits)
+POST /v1/ugclane/experiments/generate    — Design content experiments (30 credits)
+POST /v1/ugclane/report/generate         — Generate performance report (40 credits)
+POST /v1/ugclane/export/markdown         — Export as markdown (5 credits)
+POST /v1/ugclane/export/json             — Export as JSON (5 credits)</code></pre>
+    </div>
+    <p style="text-align:center"><strong>UGCLane:</strong> strategy.generate 30cr, competitor.analyze 40cr, hooks.generate 20cr, scripts.generate 40cr, accounts.plan 30cr, calendar.generate 60cr, experiments.generate 30cr, report.generate 40cr, export.markdown 5cr, export.json 5cr</p>
   </div>
 </section>
 
