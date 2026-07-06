@@ -94,5 +94,18 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | opensourcelane | license.audit | 20 |
 | opensourcelane | export.markdown | 5 |
 | opensourcelane | export.json | 5 |
+| forgecad | design.generate | 60 |
+| forgecad | openscad.generate | 40 |
+| forgecad | bom.generate | 20 |
+| forgecad | cutlist.generate | 20 |
+| forgecad | assembly.plan | 25 |
+| forgecad | printability.check | 25 |
+| forgecad | manufacturability.check | 30 |
+| forgecad | design.review | 40 |
+| forgecad | material.estimate | 20 |
+| forgecad | tools.detect | 5 |
+| forgecad | render.openscad | 80 |
+| forgecad | export.markdown | 5 |
+| forgecad | export.json | 5 |
 
 Full pricing is available programmatically at `GET /api/v1/cloud/pricing`.

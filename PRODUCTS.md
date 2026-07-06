@@ -85,6 +85,22 @@ AI crawler intelligence API for founders, builders and websites. Analyze access 
 - **Repo**: [github.com/talocode/crawlerlane](https://github.com/talocode/crawlerlane)
 - **Package**: `@talocode/crawlerlane`
 
+## ForgeCAD
+
+Local-first CAD workflow API. Generate parametric OpenSCAD scripts, BOMs, cut lists, printability checks, and engineering design reports. Open-source local usage works without Talocode Cloud; hosted API is billed with credits.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/forgecad](https://github.com/talocode/forgecad)
+- **Package**: `@talocode/forgecad`
+
+## ForgeCAD
+
+Local-first CAD workflow API. Generate parametric OpenSCAD scripts, BOMs, cut lists, printability checks, and engineering design reports. Open-source local usage works without Talocode Cloud; hosted API is billed with credits.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/forgecad](https://github.com/talocode/forgecad)
+- **Package**: `@talocode/forgecad`
+
 ## OpenSourceLane
 
 Open-source software intelligence API. Find alternatives to expensive SaaS tools, score adoption risk, estimate cost savings, and generate migration plans. Open-source local usage works without Talocode Cloud; hosted API is billed with credits.
