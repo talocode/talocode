@@ -93,14 +93,6 @@ Local-first CAD workflow API. Generate parametric OpenSCAD scripts, BOMs, cut li
 - **Repo**: [github.com/talocode/forgecad](https://github.com/talocode/forgecad)
 - **Package**: `@talocode/forgecad`
 
-## ForgeCAD
-
-Local-first CAD workflow API. Generate parametric OpenSCAD scripts, BOMs, cut lists, printability checks, and engineering design reports. Open-source local usage works without Talocode Cloud; hosted API is billed with credits.
-
-- **Status**: Experimental
-- **Repo**: [github.com/talocode/forgecad](https://github.com/talocode/forgecad)
-- **Package**: `@talocode/forgecad`
-
 ## OpenSourceLane
 
 Open-source software intelligence API. Find alternatives to expensive SaaS tools, score adoption risk, estimate cost savings, and generate migration plans. Open-source local usage works without Talocode Cloud; hosted API is billed with credits.
@@ -108,6 +100,14 @@ Open-source software intelligence API. Find alternatives to expensive SaaS tools
 - **Status**: Experimental
 - **Repo**: [github.com/talocode/opensourcelane](https://github.com/talocode/opensourcelane)
 - **Package**: `@talocode/opensourcelane`
+
+## ReplyLane
+
+X reply opportunity and algorithm risk intelligence API. Score reply opportunities, draft strategic replies, detect deboost risk, check Grok compatibility, and plan Communities migration. Human-in-the-loop only.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/replylane](https://github.com/talocode/replylane)
+- **Package**: `@talocode/replylane`
 
 ## UGCLane
 

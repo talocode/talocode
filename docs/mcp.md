@@ -131,6 +131,15 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `forgecad_render_openscad` | ForgeCAD | 80 |
 | `forgecad_export_markdown` | ForgeCAD | 5 |
 | `forgecad_export_json` | ForgeCAD | 5 |
+| `replylane_opportunity_score` | ReplyLane | 15 |
+| `replylane_targets_rank` | ReplyLane | 25 |
+| `replylane_replies_draft` | ReplyLane | 30 |
+| `replylane_replies_risk` | ReplyLane | 20 |
+| `replylane_posts_grok_check` | ReplyLane | 20 |
+| `replylane_activity_audit` | ReplyLane | 35 |
+| `replylane_feeds_migrate` | ReplyLane | 40 |
+| `replylane_export_markdown` | ReplyLane | 5 |
+| `replylane_export_json` | ReplyLane | 5 |
 | `invoicelane_extract` | InvoiceLane | 20 |
 | `invoicelane_extract_receipt` | InvoiceLane | 20 |
 | `invoicelane_extract_invoice` | InvoiceLane | 30 |

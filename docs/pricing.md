@@ -107,5 +107,14 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | forgecad | render.openscad | 80 |
 | forgecad | export.markdown | 5 |
 | forgecad | export.json | 5 |
+| replylane | opportunity.score | 15 |
+| replylane | targets.rank | 25 |
+| replylane | replies.draft | 30 |
+| replylane | replies.risk | 20 |
+| replylane | posts.grok_check | 20 |
+| replylane | activity.audit | 35 |
+| replylane | feeds.migrate | 40 |
+| replylane | export.markdown | 5 |
+| replylane | export.json | 5 |
 
 Full pricing is available programmatically at `GET /api/v1/cloud/pricing`.
