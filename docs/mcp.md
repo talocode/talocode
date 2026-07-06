@@ -107,6 +107,17 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `crawlerlane_robots_audit` | CrawlerLane | 15 |
 | `crawlerlane_export_markdown` | CrawlerLane | 5 |
 | `crawlerlane_export_json` | CrawlerLane | 5 |
+| `opensourcelane_repo_analyze` | OpenSourceLane | 25 |
+| `opensourcelane_alternatives_find` | OpenSourceLane | 30 |
+| `opensourcelane_migration_plan` | OpenSourceLane | 50 |
+| `opensourcelane_cost_estimate` | OpenSourceLane | 20 |
+| `opensourcelane_risk_score` | OpenSourceLane | 30 |
+| `opensourcelane_brief_generate` | OpenSourceLane | 40 |
+| `opensourcelane_tools_compare` | OpenSourceLane | 35 |
+| `opensourcelane_deployment_plan` | OpenSourceLane | 35 |
+| `opensourcelane_license_audit` | OpenSourceLane | 20 |
+| `opensourcelane_export_markdown` | OpenSourceLane | 5 |
+| `opensourcelane_export_json` | OpenSourceLane | 5 |
 | `invoicelane_extract` | InvoiceLane | 20 |
 | `invoicelane_extract_receipt` | InvoiceLane | 20 |
 | `invoicelane_extract_invoice` | InvoiceLane | 30 |

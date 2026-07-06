@@ -184,6 +184,8 @@ await talocode.webdatalane.structured({ url: "https://example.com", schema: { ti
 await talocode.webdatalane.crawl.plan({ url: "https://example.com", maxPages: 10 });
 await talocode.crawlerlane.bots.classify({ userAgent: "ChatGPT-User" });
 await talocode.crawlerlane.report.generate({ domain: "talocode.site", logs: [] });
+await talocode.opensourcelane.alternatives.find({ replace: "Jira", teamSize: 6 });
+await talocode.opensourcelane.migration.plan({ from: "Jira", to: "hudy9x/namviek", teamSize: 6 });
 await talocode.invoicelane.extract({ text: "INVOICE #1234 dated 2026-01-15..." });
 await talocode.invoicelane.invoice.extract({ text: "INVOICE #1234..." });
 await talocode.invoicelane.receipt.extract({ text: "RECEIPT from Store..." });
@@ -222,6 +224,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | SignalLane | `/v1/signallane/` | `POST /v1/signallane/x/analyze` |
 | WebDataLane | `/v1/webdatalane/` | `POST /v1/webdatalane/markdown` |
 | CrawlerLane | `/v1/crawlerlane/` | `POST /v1/crawlerlane/report/generate` |
+| OpenSourceLane | `/v1/opensourcelane/` | `POST /v1/opensourcelane/alternatives/find` |
 | UGCLane | `/v1/ugclane/` | `POST /v1/ugclane/hooks/generate` |
 | InvoiceLane | `/v1/invoicelane/` | `POST /v1/invoicelane/extract` |
 

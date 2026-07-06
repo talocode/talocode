@@ -83,5 +83,16 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | crawlerlane | robots.audit | 15 |
 | crawlerlane | export.markdown | 5 |
 | crawlerlane | export.json | 5 |
+| opensourcelane | repo.analyze | 25 |
+| opensourcelane | alternatives.find | 30 |
+| opensourcelane | migration.plan | 50 |
+| opensourcelane | cost.estimate | 20 |
+| opensourcelane | risk.score | 30 |
+| opensourcelane | brief.generate | 40 |
+| opensourcelane | tools.compare | 35 |
+| opensourcelane | deployment.plan | 35 |
+| opensourcelane | license.audit | 20 |
+| opensourcelane | export.markdown | 5 |
+| opensourcelane | export.json | 5 |
 
 Full pricing is available programmatically at `GET /api/v1/cloud/pricing`.

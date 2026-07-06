@@ -85,6 +85,14 @@ AI crawler intelligence API for founders, builders and websites. Analyze access 
 - **Repo**: [github.com/talocode/crawlerlane](https://github.com/talocode/crawlerlane)
 - **Package**: `@talocode/crawlerlane`
 
+## OpenSourceLane
+
+Open-source software intelligence API. Find alternatives to expensive SaaS tools, score adoption risk, estimate cost savings, and generate migration plans. Open-source local usage works without Talocode Cloud; hosted API is billed with credits.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/opensourcelane](https://github.com/talocode/opensourcelane)
+- **Package**: `@talocode/opensourcelane`
+
 ## UGCLane
 
 Programmable UGC workflow API for original hooks, scripts, calendars and experiments.
