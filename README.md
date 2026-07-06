@@ -106,3 +106,9 @@ const skill = await talocode.skills.generate.githubProfile({ username: "octocat"
 | **Live** | Running in production, stable APIs |
 | **Experimental** | Working but evolving — APIs may change |
 | **Planned** | Not yet built, design phase |
+
+## Support
+
+Open-source Talocode products are built and maintained by Abdulmuiz Adeyemo.
+
+Sponsor the work: https://github.com/sponsors/Abdulmuiz44
