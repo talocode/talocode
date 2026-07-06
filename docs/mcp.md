@@ -173,7 +173,7 @@ MCP tool calls are billed as standard Talocode Cloud API requests. Each tool cal
 
 - Wallet balance and usage summary tools are not yet available via MCP (the underlying project-resolution endpoint is pending)
 - No SSE streaming for long-running operations (all responses are synchronous JSON)
-- Bridge package `@talocode/mcp` v0.1 ready but not yet published to npm
+- Bridge package `@talocode/mcp` v0.1 — install with `npx @talocode/mcp`
 
 ## SignalLane MCP Tools
 
