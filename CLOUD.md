@@ -74,6 +74,8 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | Agent Browser | `browser.check` | 5 |
 | Agent Browser | `browser.screenshot` | 8 |
 | Agent Browser | `browser.evidence` | 8 |
+| Agent Browser | `browser.extract` | 15 |
+| Agent Browser | `browser.analyze` | 25 |
 | Tera Context | `context.capture` | 5 |
 | ClipLoop | `brief.generate` | 15 |
 | ClipLoop | `script.generate` | 15 |
@@ -261,7 +263,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 |---------|-----------|---------|
 | Router | `/v1/router/` | `POST /v1/router/chat/completions` |
 | Tera | `/v1/tera/` | `POST /v1/tera/writing/rewrite` |
-| Agent Browser | `/v1/agent-browser/` | `POST /v1/agent-browser/browser/check` |
+| Agent Browser | `/v1/agent-browser/` | `POST /v1/agent-browser/check`, `POST /v1/agent-browser/extract`, `POST /v1/agent-browser/analyze` |
 | ClipLoop | `/v1/cliploop/` | `POST /v1/cliploop/brief/generate` |
 | Codra | `/v1/codra/` | `POST /v1/codra/repo-summary` |
 | Skills | `/v1/skills/` | `POST /v1/skills/generate/github-profile` |

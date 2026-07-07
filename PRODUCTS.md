@@ -14,12 +14,13 @@ Local-first AI coding agent that works with your codebase. Codra understands you
 - **Status**: Experimental
 - **Repo**: [github.com/talocode/codra](https://github.com/talocode/codra)
 
-## Agent Browser
+## Agent Browser / Web Intelligence
 
-Browser validation layer for AI agents. Agent Browser lets agents check web pages, take screenshots, collect evidence, and run trace reports. It exposes a REST API and MCP server for integration with AI agent frameworks.
+Browser validation and web intelligence layer for AI agents. Agent Browser lets agents check web pages, take screenshots, extract structured content, analyze page content with AI, collect evidence, and run trace reports. Exposes a REST API and MCP server.
 
-- **Status**: Experimental
+- **Status**: Experimental (extract + analyze in v0.2.0)
 - **Repo**: [github.com/talocode/agent-browser](https://github.com/talocode/agent-browser)
+- **Endpoints**: `check`, `screenshot`, `evidence`, `extract`, `analyze`, `trace-report`
 
 ## WorkLane
 

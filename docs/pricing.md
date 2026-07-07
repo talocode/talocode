@@ -25,6 +25,8 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | agent_browser | browser.check | 5 |
 | agent_browser | browser.screenshot | 8 |
 | agent_browser | browser.evidence | 8 |
+| agent_browser | browser.extract | 15 |
+| agent_browser | browser.analyze | 25 |
 | agent_browser | browser.trace_report | 15 |
 | tera_context | context.capture | 5 |
 | tera_context | context.summarize | 10 |

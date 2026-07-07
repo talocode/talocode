@@ -73,7 +73,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 |-----------|---------|---------|
 | `/v1/router/` | Router (chat completions) | `POST /v1/router/chat/completions` |
 | `/v1/tera/` | Tera (writing/coding capabilities) | `POST /v1/tera/writing/rewrite` |
-| `/v1/agent-browser/` | Agent Browser | `POST /v1/agent-browser/browser/check` |
+| `/v1/agent-browser/` | Agent Browser (Web Intelligence) | `POST /v1/agent-browser/check`, `POST /v1/agent-browser/screenshot`, `POST /v1/agent-browser/evidence`, `POST /v1/agent-browser/extract`, `POST /v1/agent-browser/analyze`, `POST /v1/agent-browser/trace-report` |
 | `/v1/cliploop/` | ClipLoop (video generation) | `POST /v1/cliploop/brief/generate`, `POST /v1/cliploop/script/generate`, `POST /v1/cliploop/video/render`, `POST /v1/cliploop/campaign/create`, `POST /v1/cliploop/campaign/package` |
 | `/v1/codra/` | Codra (AI coding) | `POST /v1/codra/repo-summary` |
 | `/v1/tradia/` | Tradia (trading intelligence) | `POST /v1/tradia/trade/propose` |

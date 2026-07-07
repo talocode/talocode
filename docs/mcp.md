@@ -77,6 +77,8 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `router_chat` | Router | Variable |
 | `agent_browser_check` | Agent Browser | 5 |
 | `agent_browser_screenshot` | Agent Browser | 8 |
+| `agent_browser_extract` | Agent Browser | 15 |
+| `agent_browser_analyze` | Agent Browser | 25 |
 | `agent_browser_trace_report` | Agent Browser | 15 |
 | `cliploop_brief_generate` | ClipLoop | 15 |
 | `cliploop_script_generate` | ClipLoop | 15 |
