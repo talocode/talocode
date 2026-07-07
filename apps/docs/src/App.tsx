@@ -306,9 +306,9 @@ function ApiSection() {
       <Table
         headers={["Namespace", "Description"]}
         rows={[
-          ["/v1/router/*", "Router chat completions"],
-          ["/v1/tera/*", "Tera writing / coding"],
-          ["/v1/agent-browser/*", "Browser validation"],
+          ["/v1/tera/*", "Tera API — chat, writing, coding"],
+          ["/v1/agent-browser/*", "Web Intelligence — extract & analyze"],
+          ["/v1/tradia/*", "Tradia Agentic Trading OS"],
           ["/v1/cliploop/*", "ClipLoop video engine"],
           ["/v1/codra/*", "Codra coding agent"],
           ["/v1/skills/*", "Skills API"],
@@ -328,11 +328,11 @@ function ApiSection() {
         Example Request
       </h3>
 
-      <Pre>{`curl ${"https://api.talocode.site/v1/router/chat/completions"} \\
+      <Pre>{`curl ${"https://api.talocode.site/v1/tera/chat/completions"} \\
   -H "Authorization: Bearer $TALOCODE_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
-    "model": "talocode/auto",
+    "model": "mistral-small-latest",
     "messages": [
       {"role": "user", "content": "Hello, Talocode!"}
     ]
@@ -346,7 +346,7 @@ function ApiSection() {
           fontStyle: "italic",
         }}
       >
-        Full API available after api.talocode.site deployment.
+        Tera API endpoints are functional. Other products available after api.talocode.site deployment.
       </p>
     </Section>
   );
@@ -384,10 +384,10 @@ const talocode = new Talocode({
       </h3>
 
       <p style={{ color: "var(--text-dim)", marginBottom: 8, fontWeight: 600, fontSize: 14 }}>
-        Router Chat
+        Tera Chat
       </p>
-      <Pre>{`const completion = await talocode.router.chat({
-  model: "talocode/auto",
+      <Pre>{`const chat = await talocode.tera.chat({
+  model: "mistral-small-latest",
   messages: [{ role: "user", content: "Hello!" }],
 });`}</Pre>
 
@@ -397,6 +397,43 @@ const talocode = new Talocode({
       <Pre>{`const rewritten = await talocode.tera.writing.rewrite({
   text: "Original text here",
   tone: "professional",
+});`}</Pre>
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 8, marginTop: 16, fontWeight: 600, fontSize: 14 }}>
+        Tera Write Code
+      </p>
+      <Pre>{`const code = await talocode.tera.write({
+  language: "python",
+  task: "Build a REST API with FastAPI",
+  generateTests: true,
+});`}</Pre>
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 8, marginTop: 16, fontWeight: 600, fontSize: 14 }}>
+        Agent Browser (Web Intelligence)
+      </p>
+      <Pre>{`const extracted = await talocode.agentBrowser.extract({
+  url: "https://example.com",
+});
+
+const analysis = await talocode.agentBrowser.analyze({
+  url: "https://example.com",
+  analysis: ["summary", "sentiment", "entities"],
+});`}</Pre>
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 8, marginTop: 16, fontWeight: 600, fontSize: 14 }}>
+        Tradia Trading Agent
+      </p>
+      <Pre>{`import { TradiaClient } from "@talocode/tradia";
+
+const tradia = new TradiaClient({ apiKey: process.env.TALOCODE_API_KEY });
+const plan = await tradia.agent.plan({
+  goal: "grow",
+  accountSize: 10000,
+  riskTolerance: "medium",
+});
+const signal = await tradia.signal.evaluate({
+  signal: "BTC breakout above resistance",
+  market: "BTC/USD",
 });`}</Pre>
 
       <p style={{ color: "var(--text-dim)", marginBottom: 8, marginTop: 16, fontWeight: 600, fontSize: 14 }}>
@@ -615,35 +652,23 @@ function PricingSection() {
           marginBottom: 16,
         }}
       >
-        Router Models
-      </h3>
-
-      <Table
-        headers={["Model", "Credits per 1M input tokens", "Credits per 1M output tokens"]}
-        rows={[
-          ["talocode/auto", "25", "100"],
-          ["talocode/fast", "10", "40"],
-          ["talocode/coding", "40", "150"],
-        ]}
-      />
-
-      <h3
-        style={{
-          fontSize: 16,
-          fontWeight: 600,
-          color: "var(--accent)",
-          marginTop: 40,
-          marginBottom: 16,
-        }}
-      >
         Product Actions
       </h3>
 
       <Table
         headers={["Action", "Credits"]}
         rows={[
-          ["Tera writing rewrite", "20"],
-          ["Tera coding review", "30"],
+          ["Tera chat completions", "3"],
+          ["Tera writing rewrite", "5"],
+          ["Tera writing draft", "10"],
+          ["Tera coding explain", "10"],
+          ["Tera coding review", "20"],
+          ["Tera coding write", "20"],
+          ["Web Intelligence extract", "15"],
+          ["Web Intelligence analyze", "25"],
+          ["Tradia trade propose", "20"],
+          ["Tradia signal evaluate", "15"],
+          ["Tradia portfolio report", "25"],
           ["ClipLoop video generate", "50"],
           ["Skills generate profile", "80"],
           ["Skills generate repo", "100"],
@@ -651,7 +676,6 @@ function PricingSection() {
           ["Skills generate text", "40"],
           ["Skills export cursor", "10"],
           ["Skills export claude", "10"],
-          ["Agent Browser session", "15 / min"],
         ]}
       />
 
