@@ -155,6 +155,19 @@ The bridge reads `TALOCODE_API_KEY` from the environment and forwards all MCP re
 | `ugclane_report_generate` | UGCLane | 40 |
 | `ugclane_export_markdown` | UGCLane | 5 |
 | `ugclane_export_json` | UGCLane | 5 |
+| `tradia_agent_plan` | Tradia | 40 |
+| `tradia_market_analyze` | Tradia | 30 |
+| `tradia_signal_evaluate` | Tradia | 30 |
+| `tradia_risk_check` | Tradia | 20 |
+| `tradia_trade_propose` | Tradia | 40 |
+| `tradia_trade_journal` | Tradia | 25 |
+| `tradia_portfolio_report` | Tradia | 50 |
+| `tradia_performance_analyze` | Tradia | 35 |
+| `tradia_public_update_generate` | Tradia | 30 |
+| `tradia_backtest_simulate` | Tradia | 60 |
+| `tradia_accountability_card` | Tradia | 25 |
+| `tradia_export_markdown` | Tradia | 5 |
+| `tradia_export_json` | Tradia | 5 |
 
 Full tool schemas and routes are available at `GET /api/v1/cloud/mcp/tools`.
 
@@ -530,4 +543,32 @@ Export extracted document data as CSV. **5 credits.**
 Export this invoice data as CSV: invoice #INV-001, $45.00
 ```
 Calls the `invoicelane_export_csv` tool with `data: { documentType: "invoice", fields: { invoiceNumber: "INV-001", total: 45.00 } }`.
+
+## Tradia MCP Tools
+
+### tradia_trade_propose
+Generate a structured trade proposal with risk analysis, invalidation, and rule checklist.
+- **Credits**: 40
+- **Input**: symbol, market, accountBalance, riskPercent, entry, stopLoss, takeProfit
+- **Safety**: All outputs include `humanReviewRequired: true` and `notFinancialAdvice: true`
+
+### tradia_risk_check
+Check risk parameters for a trade idea.
+- **Credits**: 20
+- **Input**: accountBalance, riskPercent, entry, stopLoss, takeProfit
+
+### tradia_trade_journal
+Create a journal entry from a completed trade.
+- **Credits**: 25
+- **Input**: symbol, direction, entry, exit, riskAmount, profitLoss, rMultiple
+
+### tradia_performance_analyze
+Analyze trading performance metrics.
+- **Credits**: 35
+- **Input**: trades array, startingBalance
+
+### tradia_backtest_simulate
+Run a backtest simulation on historical trades.
+- **Credits**: 60
+- **Input**: strategy, trades, startingBalance, riskPercent
 

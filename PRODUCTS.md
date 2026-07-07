@@ -51,10 +51,11 @@ Short-form promo video engine for indie developers. Generate product demo videos
 
 ## Tradia
 
-Trading performance intelligence. Import trades from brokers, analyze behavior patterns, generate risk reports, and track performance over time. Designed for retail traders.
+Agentic trading intelligence for trade proposals, risk checks, journals, performance reports and public accountability updates.
 
-- **Status**: Planned
+- **Status**: Experimental
 - **Repo**: [github.com/talocode/tradia](https://github.com/talocode/tradia)
+- **Package**: `@talocode/tradia`
 
 ## SignalLane
 

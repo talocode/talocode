@@ -84,7 +84,19 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | Codra | `explain` | 20 |
 | Codra | `review` | 40 |
 | Codra | `plan` | 40 |
-| Tradia | `performance.analyze` | 20 |
+| Tradia | agent.plan | 40 |
+| Tradia | market.analyze | 30 |
+| Tradia | signal.evaluate | 30 |
+| Tradia | risk.check | 20 |
+| Tradia | trade.propose | 40 |
+| Tradia | trade.journal | 25 |
+| Tradia | portfolio.report | 50 |
+| Tradia | performance.analyze | 35 |
+| Tradia | public_update.generate | 30 |
+| Tradia | backtest.simulate | 60 |
+| Tradia | accountability.card | 25 |
+| Tradia | export.markdown | 5 |
+| Tradia | export.json | 5 |
 | Skills | `generate.github_profile` | 80 |
 | Skills | `generate.github_repo` | 100 |
 | Skills | `generate.docs` | 100 |
@@ -197,6 +209,37 @@ await talocode.ugclane.scripts.generate({ product: "AI note-taking app", hook: "
 await talocode.ugclane.accounts.plan({ brand: "MyApp", product: "AI note-taking app", platforms: ["twitter", "linkedin"] });
 await talocode.ugclane.calendar.generate({ brand: "MyApp", product: "AI note-taking app", month: "2026-08", platforms: ["twitter", "linkedin"] });
 await talocode.ugclane.experiments.generate({ product: "AI note-taking app", goal: "maximize engagement", variables: ["hook_style"] });
+
+// Tradia - trading intelligence
+await talocode.tradia.trade.propose({
+  market: "forex",
+  symbol: "XAUUSD",
+  accountBalance: 500,
+  riskPercent: 0.5,
+  strategy: "liquidity_sweep",
+  timeframe: "15m",
+  entry: 2365.5,
+  stopLoss: 2372,
+  takeProfit: 2350,
+});
+await talocode.tradia.risk.check({
+  accountBalance: 500,
+  riskPercent: 1,
+  entry: 100,
+  stopLoss: 98,
+  takeProfit: 106,
+});
+await talocode.tradia.trade.journal({
+  symbol: "XAUUSD",
+  direction: "short",
+  entry: 2365.5,
+  exit: 2350,
+  riskAmount: 2.5,
+  profitLoss: 5.95,
+  rMultiple: 2.38,
+  reason: "Liquidity sweep and rejection",
+  rulesFollowed: true,
+});
 ```
 
 ### API Key Migration
@@ -229,6 +272,7 @@ Every product has a namespaced route under `/v1/{product}/`. Legacy non-namespac
 | ForgeCAD | `/v1/forgecad/` | `POST /v1/forgecad/design/generate` |
 | UGCLane | `/v1/ugclane/` | `POST /v1/ugclane/hooks/generate` |
 | InvoiceLane | `/v1/invoicelane/` | `POST /v1/invoicelane/extract` |
+| Tradia | `/v1/tradia/` | `POST /v1/tradia/trade/propose` |
 
 ## Endpoints
 

@@ -76,7 +76,7 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/agent-browser/` | Agent Browser | `POST /v1/agent-browser/browser/check` |
 | `/v1/cliploop/` | ClipLoop (video generation) | `POST /v1/cliploop/brief/generate`, `POST /v1/cliploop/script/generate`, `POST /v1/cliploop/video/render`, `POST /v1/cliploop/campaign/create`, `POST /v1/cliploop/campaign/package` |
 | `/v1/codra/` | Codra (AI coding) | `POST /v1/codra/repo-summary` |
-| `/v1/tradia/` | Tradia (trading intelligence) | _planned_ |
+| `/v1/tradia/` | Tradia (trading intelligence) | `POST /v1/tradia/trade/propose` |
 | `/v1/signallane/` | SignalLane (X growth intelligence) | `POST /v1/signallane/x/analyze`, `POST /v1/signallane/x/content-plan`, `POST /v1/signallane/x/post-drafts`, `POST /v1/signallane/x/experiments`, `POST /v1/signallane/x/report` |
 | `/v1/webdatalane/` | WebDataLane (web extraction) | `POST /v1/webdatalane/fetch`, `POST /v1/webdatalane/markdown`, `POST /v1/webdatalane/metadata`, `POST /v1/webdatalane/links`, `POST /v1/webdatalane/extract`, `POST /v1/webdatalane/structured`, `POST /v1/webdatalane/crawl/plan`, `POST /v1/webdatalane/screenshot` |
 | `/v1/crawlerlane/` | CrawlerLane (AI crawler intelligence) | `POST /v1/crawlerlane/logs/ingest`, `POST /v1/crawlerlane/bots/classify`, `POST /v1/crawlerlane/pages/analyze`, `POST /v1/crawlerlane/404/analyze`, `POST /v1/crawlerlane/ai-visibility/score`, `POST /v1/crawlerlane/report/generate`, `POST /v1/crawlerlane/sitemap/suggest`, `POST /v1/crawlerlane/robots/audit`, `POST /v1/crawlerlane/export/markdown`, `POST /v1/crawlerlane/export/json` |
@@ -1085,3 +1085,159 @@ UGCLane follows the spirit of ethical content creation, not the letter of what m
 - **English-language documents** — Multi-language support is planned.
 - **Simple documents** — Complex multi-page documents with tables may have reduced accuracy.
 - **No document upload** — Submit document text directly via the request body.
+
+## Tradia — Agentic Trading Intelligence
+
+Plan, risk-check, journal and report trades with the Tradia API.
+
+### Health Check
+
+`GET /v1/tradia/health`
+
+Returns API status.
+
+### Generate Agent Plan
+
+`POST /v1/tradia/agent/plan` — 40 credits
+
+Generate a structured agent trading plan.
+
+Request:
+```json
+{
+  "mode": "proposal",
+  "symbol": "XAUUSD",
+  "strategy": "liquidity_sweep",
+  "timeframe": "15m",
+  "accountBalance": 500,
+  "riskPercent": 0.5,
+  "marketContext": "Price swept previous high and rejected."
+}
+```
+
+### Analyze Market Context
+
+`POST /v1/tradia/market/analyze` — 30 credits
+
+Analyze market context for a given symbol and timeframe.
+
+### Evaluate Signal
+
+`POST /v1/tradia/signal/evaluate` — 30 credits
+
+Evaluate a trading signal based on strategy and context.
+
+### Check Risk
+
+`POST /v1/tradia/risk/check` — 20 credits
+
+Check risk parameters for a trade idea. Returns approval status, violations, and warnings.
+
+Request:
+```json
+{
+  "accountBalance": 500,
+  "riskPercent": 1,
+  "entry": 100,
+  "stopLoss": 98,
+  "takeProfit": 106
+}
+```
+
+### Propose Trade
+
+`POST /v1/tradia/trade/propose` — 40 credits
+
+Generate a structured trade proposal with risk analysis, invalidation, and rule checklist.
+
+Request:
+```json
+{
+  "symbol": "XAUUSD",
+  "market": "forex",
+  "strategy": "liquidity_sweep",
+  "accountBalance": 500,
+  "riskPercent": 0.5,
+  "entry": 2365.5,
+  "stopLoss": 2372,
+  "takeProfit": 2350
+}
+```
+
+Response includes `humanReviewRequired: true` and `notFinancialAdvice: true`.
+
+### Journal Trade
+
+`POST /v1/tradia/trade/journal` — 25 credits
+
+Create a journal entry from a completed trade with lessons and discipline score.
+
+### Portfolio Report
+
+`POST /v1/tradia/portfolio/report` — 50 credits
+
+Generate a portfolio-level performance report.
+
+### Performance Analysis
+
+`POST /v1/tradia/performance/analyze` — 35 credits
+
+Analyze trading performance metrics including win rate, profit factor, expectancy, and drawdown.
+
+### Generate Public Update
+
+`POST /v1/tradia/public-update/generate` — 30 credits
+
+Generate a public accountability update explaining trades and performance.
+
+### Backtest Simulation
+
+`POST /v1/tradia/backtest/simulate` — 60 credits
+
+Run a backtest simulation on historical trades with equity curve analysis.
+
+### Accountability Card
+
+`POST /v1/tradia/accountability/card` — 25 credits
+
+Generate an accountability card combining trade details, journal entries, and performance.
+
+### Export Markdown
+
+`POST /v1/tradia/export/markdown` — 5 credits
+
+Export trade data as a markdown document.
+
+### Export JSON
+
+`POST /v1/tradia/export/json` — 5 credits
+
+Export trade data as a JSON document.
+
+### SDK Example
+
+```typescript
+import { Talocode } from "@talocode/sdk";
+
+const talocode = new Talocode();
+
+const proposal = await talocode.tradia.trade.propose({
+  market: "forex",
+  symbol: "XAUUSD",
+  accountBalance: 500,
+  riskPercent: 0.5,
+  strategy: "liquidity_sweep",
+  timeframe: "15m",
+  marketContext: "Price swept previous high and rejected.",
+});
+```
+
+### Safety Boundaries
+
+- Not financial advice
+- No live order execution in v0.1
+- No guaranteed profit
+- No broker integration in v0.1
+- Human review required
+- Paper/simulation/proposal mode only
+- All outputs include `humanReviewRequired: true` and `notFinancialAdvice: true`
