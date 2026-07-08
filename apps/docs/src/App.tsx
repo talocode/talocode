@@ -7,9 +7,10 @@ const NAV_ITEMS = [
   { href: "#skills", label: "Skills" },
   { href: "#pricing", label: "Pricing" },
   { href: "#dns", label: "DNS" },
+  { href: "?view=blog", label: "Blog" },
 ];
 
-function Nav() {
+function Nav({ onNavClick }: { onNavClick?: (href: string) => void }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -60,6 +61,12 @@ function Nav() {
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => {
+                if (item.href.startsWith("?")) {
+                  e.preventDefault()
+                  onNavClick?.(item.href)
+                }
+              }}
               style={{
                 color: "var(--text-dim)",
                 textDecoration: "none",
@@ -839,10 +846,348 @@ function FooterSection() {
   );
 }
 
+const BLOG_POSTS = [
+  {
+    slug: "intro-cliploop",
+    title: "Introducing ClipLoop: Turn a Sentence Into a Video",
+    date: "2026-07-08",
+    author: "Talocode Team",
+    tags: ["cliploop", "video", "release"],
+    excerpt: "ClipLoop is a prompt-to-video engine that turns a natural language description into a structured brief, a scene-by-sceen script, and a rendered video — all from your terminal or JavaScript code.",
+    body: `
+## What is ClipLoop?
+
+Most video creation tools make you jump between five different apps to get a finished piece of content. ClipLoop is different — it's a **single prompt-to-video pipeline**.
+
+Describe what you want in natural language, and ClipLoop handles the rest:
+
+1. **Brief** — Analyzes your prompt and produces a structured content plan: hook, structure, tone, target audience
+2. **Script** — Turns the brief into a scene-by-scene video script with visuals, narration, and timing
+3. **Render** — Submits the script to a render engine and returns a downloadable video
+
+## Quick Start
+
+\`\`\`bash
+npm install @talocode/cliploop
+
+# Generate a brief
+cliploop brief --prompt "explain quantum computing in 60 seconds" --channel youtube
+
+# Generate a script
+cliploop script --brief-id brief_abc123 --style educational
+
+# Submit for render
+cliploop render --script-id script_def456 --format landscape
+\`\`\`
+
+## Use in Code
+
+\`\`\`typescript
+import { generateBrief, generateScript, submitRender } from '@talocode/cliploop'
+
+const brief = await generateBrief({
+  prompt: 'explain quantum computing in 60 seconds',
+  channel: 'youtube',
+  duration: 60,
+})
+
+const script = await generateScript({
+  briefId: brief.id,
+  style: 'educational',
+})
+
+const render = await submitRender({
+  scriptId: script.id,
+  format: 'landscape',
+})
+\`\`\`
+
+## Why It Matters
+
+Video is the most engaging content format, but producing it at scale is expensive and slow. ClipLoop makes video generation **programmable** — you can integrate it into your product, automate your content pipeline, or generate campaign packages with a single command.
+
+The engine works locally with Mistral AI or via the Talocode Cloud API.
+
+[View on GitHub](https://github.com/talocode/stacklane) · [npm](https://www.npmjs.com/package/@talocode/cliploop)
+`,
+  },
+  {
+    slug: "intro-tradia",
+    title: "Tradia Agentic Trading OS: Your Trading Dashboard in the Terminal",
+    date: "2026-07-08",
+    author: "Talocode Team",
+    tags: ["tradia", "trading", "release"],
+    excerpt: "Tradia gives traders a structured workflow — propose trades with risk analysis, journal outcomes, analyze performance, and share accountability — all from the command line.",
+    body: `
+## Why Tradia?
+
+Every trader hits the same wall: you take a trade, forget why, and repeat the same mistake. Tradia codifies your process so every decision is planned, reviewed, and learned from.
+
+| Without Tradia | With Tradia |
+|----------------|-------------|
+| Gut-feel entries | Structured proposals with invalidation criteria |
+| No trade journal | Journals with lessons and discipline scores |
+| No strategy validation | Backtest equity curves and win rates |
+| No accountability | Public updates explaining your trades |
+
+## Quick Start
+
+\`\`\`bash
+npm install @talocode/tradia
+
+# Propose a trade
+tradia propose --symbol XAUUSD --market forex --strategy liquidity_sweep --balance 500 --risk 0.5 --entry 2365.5 --stop 2372 --target 2350
+
+# Journal the result
+tradia journal --file trade-result.json
+
+# Analyze performance
+tradia performance --file trades.json
+\`\`\`
+
+## Use in Code
+
+\`\`\`typescript
+import { TradiaClient } from '@talocode/tradia'
+
+const tradia = new TradiaClient()
+
+const proposal = await tradia.trade.propose({
+  market: 'forex',
+  symbol: 'XAUUSD',
+  accountBalance: 500,
+  riskPercent: 0.5,
+  strategy: 'liquidity_sweep',
+  entry: 2365.5,
+  stopLoss: 2372,
+  takeProfit: 2350,
+})
+\`\`\`
+
+## What's Included
+
+- **Risk Engine** — Position sizing, drawdown, exposure limits, revenge trading detection
+- **Backtest Simulation** — Equity curves, Monte Carlo, strategy comparison
+- **Accountability Cards** — Public-facing trade explanations
+- **API Server** — REST API for hosted usage
+- **MCP Tools** — Integrate with Cursor, Claude, OpenCode
+
+[View on GitHub](https://github.com/talocode/tradia) · [npm](https://www.npmjs.com/package/@talocode/tradia)
+
+**⚠️ Not financial advice. Human review required before acting on any trade.**
+`,
+  },
+  {
+    slug: "open-source-ai-infrastructure",
+    title: "Building Open-Source Infrastructure for AI-Native Work",
+    date: "2026-07-07",
+    author: "Abdulmuiz Adeyemo",
+    tags: ["talocode", "open-source", "vision"],
+    excerpt: "Talocode is building open-source tools that developers trust, backed by a hosted API platform. Here's the philosophy and what we've shipped so far.",
+    body: `
+## The Philosophy
+
+When we started Talocode, we had one principle: **build open-source tools people trust, sell the hosted power behind them.**
+
+Every Talocode product ships as an open-source package first. You can \`npm install\` it, run it locally, inspect the code, and never touch our servers. When you need scale — cloud rendering, team collaboration, managed infrastructure — that's what the Talocode Cloud API is for.
+
+## What We've Shipped
+
+| Product | Package | What It Does |
+|---------|---------|-------------|
+| **Tera** | \`@talocode/sdk\` | Chat, writing, code generation |
+| **ClipLoop** | \`@talocode/cliploop\` | Prompt-to-video engine |
+| **Tradia** | \`@talocode/tradia\` | Agentic trading intelligence |
+| **WorkLane** | \`@talocode/worklane\` | AI coworker platform for teams |
+| **Codra** | \`@talocode/sdk\` | Code review and planning |
+
+## What's Next
+
+- **Netlify deployment** for api.talocode.site, cloud, docs, and dashboard (pending credit reset)
+- **Agent Browser API** — Web Intelligence for extract and analyze
+- **Next-gen ClipLoop** — HyperFrames-powered rendering
+- **Tradia v0.2** — Multi-strategy backtesting, Telegram integration
+
+All open-source. All MIT licensed. All built in public.
+
+[GitHub](https://github.com/talocode) · [Docs](https://docs.talocode.site) · [npm](https://www.npmjs.com/search?q=%40talocode)
+`,
+  },
+]
+
+function BlogCard({ post, onRead }: { post: typeof BLOG_POSTS[0]; onRead: () => void }) {
+  return (
+    <article
+      style={{
+        background: "var(--bg-card)",
+        border: "1px solid var(--border)",
+        borderRadius: "var(--radius)",
+        padding: 24,
+        cursor: "pointer",
+        transition: "border-color var(--transition), transform var(--transition)",
+      }}
+      onClick={onRead}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "var(--accent)"
+        e.currentTarget.style.transform = "translateY(-2px)"
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "var(--border)"
+        e.currentTarget.style.transform = "none"
+      }}
+    >
+      <div style={{ display: "flex", gap: 8, marginBottom: 12, flexWrap: "wrap" }}>
+        {post.tags.map((t) => (
+          <span key={t} style={{
+            fontSize: 11,
+            fontWeight: 600,
+            color: "var(--accent)",
+            background: "var(--code-bg)",
+            padding: "2px 8px",
+            borderRadius: "var(--radius-sm)",
+            textTransform: "uppercase",
+            letterSpacing: "0.05em",
+          }}>{t}</span>
+        ))}
+      </div>
+      <h3 style={{ fontSize: 18, fontWeight: 700, color: "var(--accent)", marginBottom: 8, lineHeight: 1.3 }}>
+        {post.title}
+      </h3>
+      <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 12 }}>
+        {post.date} · {post.author}
+      </p>
+      <p style={{ fontSize: 14, color: "var(--text-dim)", lineHeight: 1.6 }}>
+        {post.excerpt}
+      </p>
+    </article>
+  )
+}
+
+function BlogHero() {
+  return (
+    <section style={{ padding: "120px 24px 60px", borderBottom: "1px solid var(--border)" }}>
+      <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
+        <h1 style={{ fontSize: 48, fontWeight: 800, color: "var(--accent)", letterSpacing: "-0.03em", lineHeight: 1.1, marginBottom: 16 }}>
+          Talocode Blog
+        </h1>
+        <p style={{ fontSize: 18, color: "var(--text-dim)", maxWidth: 520, lineHeight: 1.6 }}>
+          Updates, releases, and stories from the Talocode team.
+        </p>
+      </div>
+    </section>
+  )
+}
+
+function BlogPostPage({ post, onBack }: { post: typeof BLOG_POSTS[0]; onBack: () => void }) {
+  const htmlBody = post.body
+    .replace(/^## (.+)$/gm, '<h3 style="font-size:20px;font-weight:700;color:var(--accent);margin-top:32px;margin-bottom:16px">$1</h3>')
+    .replace(/^### (.+)$/gm, '<h4 style="font-size:16px;font-weight:600;color:var(--accent);margin-top:24px;margin-bottom:12px">$1</h4>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong style="color:var(--accent)">$1</strong>')
+    .replace(/`(.+?)`/g, '<code style="background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius-sm);padding:2px 6px;font-size:0.875em;color:var(--accent-dim)">$1</code>')
+    .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre style="background:var(--code-bg);border:1px solid var(--border);border-radius:var(--radius);padding:20px;overflow-x:auto;font-size:13px;line-height:1.6;color:var(--accent-dim)">$2</pre>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" style="color:var(--accent);text-decoration:underline" target="_blank" rel="noopener">$1</a>')
+    .replace(/\|(.+)\|/g, (m) => {
+      if (m.includes("---")) return ""
+      const cells = m.split("|").filter(Boolean).map((c: string) => c.trim())
+      if (cells.length < 2) return m
+      return `<tr>${cells.map((c: string) => `<td style="padding:8px 12px;color:var(--text);border-bottom:1px solid var(--border);font-size:14px">${c}</td>`).join("")}</tr>`
+    })
+    .replace(/\n\n/g, '</p><p style="color:var(--text-dim);line-height:1.6;margin-bottom:16px">')
+    .replace(/<pre/g, '</p><pre')
+    .replace(/<\/pre>/g, '</pre><p style="color:var(--text-dim);line-height:1.6;margin-bottom:16px">')
+    .replace(/<\/?p[^>]*>/g, "")
+
+  return (
+    <section style={{ padding: "60px 24px 80px" }}>
+      <div style={{ maxWidth: "var(--max-width)", margin: "0 auto" }}>
+        <button
+          onClick={onBack}
+          style={{
+            background: "none",
+            border: "none",
+            color: "var(--accent)",
+            cursor: "pointer",
+            fontSize: 14,
+            padding: 0,
+            marginBottom: 24,
+            fontFamily: "inherit",
+          }}
+        >
+          ← Back to blog
+        </button>
+        <h1 style={{ fontSize: 32, fontWeight: 800, color: "var(--accent)", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 12 }}>
+          {post.title}
+        </h1>
+        <p style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 32 }}>
+          {post.date} · {post.author}
+        </p>
+        <div style={{ color: "var(--text-dim)", lineHeight: 1.8, fontSize: 15 }} dangerouslySetInnerHTML={{ __html: htmlBody }} />
+      </div>
+    </section>
+  )
+}
+
+function BlogPage({ onBack }: { onBack: () => void }) {
+  const [selectedPost, setSelectedPost] = useState<typeof BLOG_POSTS[0] | null>(null)
+
+  if (selectedPost) {
+    return <BlogPostPage post={selectedPost} onBack={() => setSelectedPost(null)} />
+  }
+
+  return (
+    <>
+      <BlogHero />
+      <section style={{ padding: "40px 24px 80px" }}>
+        <div style={{ maxWidth: "var(--max-width)", margin: "0 auto", display: "flex", flexDirection: "column", gap: 20 }}>
+          {BLOG_POSTS.map((post) => (
+            <BlogCard key={post.slug} post={post} onRead={() => setSelectedPost(post)} />
+          ))}
+        </div>
+      </section>
+    </>
+  )
+}
+
 export default function App() {
+  const [view, setView] = useState(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search)
+      return params.get("view") || "docs"
+    }
+    return "docs"
+  })
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const current = params.get("view") || "docs"
+    if (current !== view) {
+      const newParams = view === "docs" ? "" : `?view=${view}`
+      window.history.replaceState(null, "", newParams || "/")
+    }
+  }, [view])
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("?")) {
+      const param = href.replace("?", "")
+      setView(new URLSearchParams(param).get("view") || "docs")
+    }
+  }
+
+  if (view === "blog") {
+    return (
+      <div style={{ minHeight: "100vh" }}>
+        <Nav onNavClick={handleNavClick} />
+        <main>
+          <BlogPage onBack={() => setView("docs")} />
+        </main>
+        <FooterSection />
+      </div>
+    )
+  }
+
   return (
     <div style={{ minHeight: "100vh" }}>
-      <Nav />
+      <Nav onNavClick={handleNavClick} />
       <main>
         <Hero />
         <ApiSection />
