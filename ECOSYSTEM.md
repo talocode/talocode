@@ -77,6 +77,29 @@ The backbone that connects everything.
               PostgreSQL | Auth | Billing | Project Management
 ```
 
+## Python SDK
+
+Every Talocode Cloud API is also available as a Python package on PyPI:
+
+| pip install | Package | Product Access |
+|-------------|---------|---------------|
+| `pip install talocode` | `talocode` | Unified cloud client — all Talocode Cloud APIs |
+| `pip install tradia` | `tradia` | Tradia SDK + CLI |
+| `pip install contextlane` | `contextlane` | Context management CLI + SDK |
+| `pip install talocode-devtool` | `talocode-devtool` | 64 developer utility CLI tools |
+| `pip install talocode-tera` | `talocode-tera` | Tera API Python client |
+| `pip install talocode-codra` | `talocode-codra` | Codra API Python client |
+
+```python
+from talocode import TalocodeClient
+
+talocode = TalocodeClient()
+chat = talocode.tera.chat(model="mistral-small-latest", messages=[...])
+extracted = talocode.agent_browser.extract(url="https://example.com")
+```
+
+All Python packages support `TALOCODE_API_KEY` and `TALOCODE_BASE_URL` environment variables.
+
 ## Open Source
 
 Every product in the ecosystem is open-source. You can run them independently, self-host the full stack, or use Talocode Cloud for convenience. There is no vendor lock-in.

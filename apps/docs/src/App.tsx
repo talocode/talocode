@@ -362,6 +362,17 @@ function ApiSection() {
 function SdkSection() {
   return (
     <Section id="sdk" title="SDK Quickstart">
+      <h3
+        style={{
+          fontSize: 16,
+          fontWeight: 600,
+          color: "var(--accent)",
+          marginBottom: 16,
+        }}
+      >
+        TypeScript / JavaScript
+      </h3>
+
       <p style={{ color: "var(--text-dim)", marginBottom: 24, lineHeight: 1.6 }}>
         Install the <Code>@talocode/sdk</Code> package:
       </p>
@@ -387,7 +398,88 @@ const talocode = new Talocode({
           marginBottom: 16,
         }}
       >
-        Usage Examples
+        Python
+      </h3>
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 24, lineHeight: 1.6 }}>
+        Install the unified <Code>talocode</Code> package from PyPI:
+      </p>
+
+      <Pre>{`pip install talocode`}</Pre>
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 16, marginTop: 24, lineHeight: 1.6 }}>
+        Initialize and use with your API key:
+      </p>
+
+      <Pre>{`from talocode import TalocodeClient
+
+talocode = TalocodeClient(
+    api_key=os.environ["TALOCODE_API_KEY"]
+)
+
+# Tera chat
+chat = talocode.tera.chat(
+    model="mistral-small-latest",
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+
+# Agent Browser extract + analyze
+extracted = talocode.agent_browser.extract(url="https://example.com")
+analysis = talocode.agent_browser.analyze(
+    url="https://example.com",
+    analysis=["summary", "sentiment", "entities"]
+)
+
+# Tradia trading
+from tradia import TradiaClient
+tradia = TradiaClient(api_key=os.environ["TALOCODE_API_KEY"])
+proposal = tradia.trade.propose(
+    market="forex",
+    symbol="XAUUSD",
+    account_balance=500,
+    risk_percent=0.5,
+    entry=2365.5,
+    stop_loss=2372,
+    take_profit=2350
+)
+
+# Context management
+from contextlane import ContextLaneClient
+ctx = ContextLaneClient(api_key=os.environ["TALOCODE_API_KEY"])
+memory = ctx.memory.store(content="Important note")
+
+# Developer utilities
+from talocode_devtool import encode_base64, timestamp_now, uuid_v4
+
+print(encode_base64("hello"))
+print(timestamp_now())
+print(uuid_v4())`}</Pre>
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 24, lineHeight: 1.6 }}>
+        Additional Python packages on PyPI:
+      </p>
+      <Table
+        headers={["Package", "pip install", "What It Does"]}
+        rows={[
+          ["talocode", "pip install talocode", "Unified cloud client for all Talocode APIs"],
+          ["tradia", "pip install tradia", "Trading intelligence SDK & CLI"],
+          ["contextlane", "pip install contextlane", "Context management & memory records"],
+          ["talocode-devtool", "pip install talocode-devtool", "64 developer utility functions & CLI"],
+          ["talocode-tera", "pip install talocode-tera", "Tera API Python client"],
+          ["talocode-codra", "pip install talocode-codra", "Codra coding agent Python client"],
+        ]}
+      />
+
+      <h3
+        style={{
+          fontSize: 16,
+          fontWeight: 600,
+          color: "var(--accent)",
+          marginTop: 32,
+          marginBottom: 16,
+        }}
+      >
+        Usage Examples (TypeScript)
       </h3>
 
       <p style={{ color: "var(--text-dim)", marginBottom: 8, fontWeight: 600, fontSize: 14 }}>

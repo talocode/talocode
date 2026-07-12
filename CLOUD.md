@@ -165,6 +165,8 @@ TALOCODE_BASE_URL=https://api.talocode.site
 
 ## SDK
 
+### TypeScript / JavaScript
+
 Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
 
 Talocode Cloud gives every Talocode product one programmable API surface. Use `TALOCODE_API_KEY` to call Tera, ClipLoop, Agent Browser, Codra, Tradia, SignalLane, WorkLane, InvoiceLane, UGCLane, and future hosted services.
@@ -252,6 +254,50 @@ await talocode.tradia.trade.journal({
 | Codra | — | `TALOCODE_API_KEY` | Standard — new hosted API |
 | UGCLane | — | `TALOCODE_API_KEY` | Standard |
 | All others | — | `TALOCODE_API_KEY` | Standard |
+
+### Python
+
+Install from PyPI:
+
+```bash
+pip install talocode
+```
+
+Additional packages:
+
+```bash
+pip install tradia       # Trading intelligence
+pip install contextlane  # Context management
+pip install talocode-devtool  # Developer utilities
+pip install talocode-tera     # Tera API client
+pip install talocode-codra    # Codra API client
+```
+
+```python
+from talocode import TalocodeClient
+import os
+
+talocode = TalocodeClient(api_key=os.environ["TALOCODE_API_KEY"])
+
+# Tera
+chat = talocode.tera.chat(
+    model="mistral-small-latest",
+    messages=[{"role": "user", "content": "Hello!"}]
+)
+
+# Agent Browser
+extracted = talocode.agent_browser.extract(url="https://example.com")
+
+# Tradia
+from tradia import TradiaClient
+tradia = TradiaClient(api_key=os.environ["TALOCODE_API_KEY"])
+proposal = tradia.trade.propose(market="forex", symbol="XAUUSD", ...)
+
+# Context lane
+from contextlane import ContextLaneClient
+ctx = ContextLaneClient(api_key=os.environ["TALOCODE_API_KEY"])
+memory = ctx.memory.store(content="Important note")
+```
 
 See the [SDK docs](https://github.com/talocode/stacklane/blob/main/docs/TALOCODE_SDK.md) for full usage.
 

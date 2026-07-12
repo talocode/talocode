@@ -6,6 +6,7 @@ Backend cloud platform for AI-native applications. Provides authentication, proj
 
 - **Status**: Experimental
 - **Repo**: [github.com/talocode/stacklane](https://github.com/talocode/stacklane)
+- **Python Packages**: `talocode` (unified cloud client on PyPI)
 
 ## Codra
 
@@ -56,7 +57,7 @@ Agentic trading intelligence for trade proposals, risk checks, journals, perform
 
 - **Status**: Experimental
 - **Repo**: [github.com/talocode/tradia](https://github.com/talocode/tradia)
-- **Package**: `@talocode/tradia`
+- **Packages**: `@talocode/tradia` (npm), `tradia` (PyPI)
 
 ## SignalLane
 
@@ -124,3 +125,16 @@ Hosted API layer for the entire ecosystem. One API key gives access to every pro
 
 - **Status**: Experimental
 - **Docs**: [CLOUD.md](./CLOUD.md)
+
+## Python SDK Packages
+
+Python clients for every Talocode product, published on PyPI.
+
+| Package | Install | What It Does |
+|---------|---------|-------------|
+| `talocode` | `pip install talocode` | Unified cloud client — Tera, Agent Browser, Skills, SearchLane, billing |
+| `tradia` | `pip install tradia` | Trading intelligence — agent plans, risk, journal, performance, backtest |
+| `contextlane` | `pip install contextlane` | Context management — loaders, chunker, extractor, search, memory |
+| `talocode-devtool` | `pip install talocode-devtool` | 64 developer utilities — base64, JWT, UUID, JSON, hash, URL, cron, etc. |
+| `talocode-tera` | `pip install talocode-tera` | Tera API — chat, writing.rewrite, writing.draft, coding.explain, coding.review |
+| `talocode-codra` | `pip install talocode-codra` | Codra API — repo.summary, explain, review, plan |

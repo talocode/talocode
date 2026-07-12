@@ -62,7 +62,7 @@ The bridge reads `TALOCODE_API_KEY` from the environment and proxies to the remo
 
 ## SDK
 
-Official SDK: `@talocode/sdk` (currently available as `@stacklane/sdk`).
+Official SDK: `@talocode/sdk` (published as `@talocode/sdk-client`).
 
 ```ts
 import { Talocode } from "@talocode/sdk";
