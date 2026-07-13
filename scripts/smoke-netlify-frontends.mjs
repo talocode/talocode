@@ -10,7 +10,7 @@
 const BASE_URL = process.argv[2]
 if (!BASE_URL) {
   console.error('Usage: node scripts/smoke-netlify-frontends.mjs <base_url>')
-  console.error('Example: node scripts/smoke-netlify-frontends.mjs https://cloud.talocode.site')
+  console.error('Example: node scripts/smoke-netlify-frontends.mjs https://dashboard.talocode.site')
   process.exit(1)
 }
 

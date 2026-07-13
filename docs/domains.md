@@ -21,7 +21,7 @@ The primary Talocode domain is now **talocode.site**.
 | talocode.site | Main site / homepage | GitHub Pages (A records to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`) |
 | api.talocode.site | API endpoint | Netlify |
 | docs.talocode.site | Documentation site | Netlify |
-| cloud.talocode.site | Cloud dashboard | Netlify |
+| dashboard.talocode.site | Cloud dashboard | Netlify |
 | stacklane.talocode.site | Stacklane platform | Netlify |
 | dashboard.talocode.site | Dashboard | Netlify |
 

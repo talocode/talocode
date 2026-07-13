@@ -42,16 +42,16 @@ const indexHtml = read('index.html')
 check('docs/index.html has docs.talocode.site redirect', () =>
   indexHtml.includes("docs.talocode.site") && indexHtml.includes("window.location.replace")
 )
-check('docs/index.html has cloud.talocode.site redirect', () =>
-  indexHtml.includes("cloud.talocode.site") && indexHtml.includes("window.location.replace")
+check('docs/index.html has dashboard.talocode.site redirect', () =>
+  indexHtml.includes("dashboard.talocode.site") && indexHtml.includes("window.location.replace")
 )
 
 const notFoundHtml = read('404.html')
 check('docs/404.html has docs.talocode.site redirect', () =>
   notFoundHtml.includes("docs.talocode.site") && notFoundHtml.includes("window.location.replace")
 )
-check('docs/404.html has cloud.talocode.site redirect', () =>
-  notFoundHtml.includes("cloud.talocode.site") && notFoundHtml.includes("window.location.replace")
+check('docs/404.html has dashboard.talocode.site redirect', () =>
+  notFoundHtml.includes("dashboard.talocode.site") && notFoundHtml.includes("window.location.replace")
 )
 
 const dnsMd = read('DNS_TALOCODE_SITE.md')

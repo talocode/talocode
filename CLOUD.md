@@ -10,7 +10,7 @@ Include your API key in every request:
 Authorization: Bearer tk_dev_xxxxxxxxxxxx
 ```
 
-Keys are generated per project from the [Cloud Dashboard](https://cloud.talocode.site).
+Keys are generated per project from the [Cloud Dashboard](https://dashboard.talocode.site).
 
 ## Wallet and Credits
 

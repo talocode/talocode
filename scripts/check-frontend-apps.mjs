@@ -122,7 +122,7 @@ check('docs/CNAME is talocode.site', () => cname === 'talocode.site')
 check('docs/NETLIFY_FRONTEND_APPS.md exists', () => fileExists('docs/NETLIFY_FRONTEND_APPS.md'))
 
 const dnsMd = read('docs/DNS_TALOCODE_SITE.md')
-check('DNS docs mention cloud.talocode.site Netlify', () => dnsMd.includes('Netlify'))
+check('DNS docs mention dashboard.talocode.site Netlify', () => dnsMd.includes('Netlify'))
 check('DNS docs mention docs.talocode.site Netlify', () => dnsMd.includes('Netlify'))
 check('DNS docs mention dashboard.talocode.site Netlify', () => dnsMd.includes('dashboard'))
 check('DNS docs say talocode.site GitHub Pages', () => dnsMd.includes('GitHub Pages'))

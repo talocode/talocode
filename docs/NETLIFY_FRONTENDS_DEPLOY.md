@@ -8,7 +8,7 @@ Each app is a separate **Netlify site** from the `talocode/talocode` repo. Use t
 
 | Site | Domain | Base directory | Config |
 |------|--------|----------------|--------|
-| `talocode-cloud` | cloud.talocode.site | `apps/cloud` | `apps/cloud/netlify.toml` |
+| `talocode-cloud` | dashboard.talocode.site | `apps/cloud` | `apps/cloud/netlify.toml` |
 | `talocode-docs` | docs.talocode.site | `apps/docs` | `apps/docs/netlify.toml` |
 | `talocode-dashboard` | dashboard.talocode.site | `apps/dashboard` | `apps/dashboard/netlify.toml` |
 
@@ -26,7 +26,7 @@ Each app is a separate **Netlify site** from the `talocode/talocode` repo. Use t
 2. Connect `github.com/talocode/talocode`
 3. Set base directory to the app folder (e.g. `apps/cloud`)
 4. Netlify reads `netlify.toml` from that directory
-5. Add custom domain (e.g. `cloud.talocode.site`)
+5. Add custom domain (e.g. `dashboard.talocode.site`)
 
 ### Option B: Netlify CLI
 
@@ -57,7 +57,7 @@ Set per site in Netlify → Site settings → Environment variables:
 |----------|-------|
 | `VITE_TALOCODE_BASE_URL` | `https://api.talocode.site` |
 | `VITE_TALOCODE_WEB_URL` | `https://talocode.site` |
-| `VITE_TALOCODE_CLOUD_URL` | `https://cloud.talocode.site` |
+| `VITE_TALOCODE_CLOUD_URL` | `https://dashboard.talocode.site` |
 | `VITE_TALOCODE_DOCS_URL` | `https://docs.talocode.site` |
 | `VITE_TALOCODE_DASHBOARD_URL` | `https://dashboard.talocode.site` |
 
@@ -74,7 +74,7 @@ Use the actual Netlify site URLs from your dashboard after linking.
 ## Verify Deployment
 
 ```bash
-node scripts/smoke-netlify-frontends.mjs https://cloud.talocode.site
+node scripts/smoke-netlify-frontends.mjs https://dashboard.talocode.site
 node scripts/smoke-netlify-frontends.mjs https://docs.talocode.site
 node scripts/smoke-netlify-frontends.mjs https://dashboard.talocode.site
 ```

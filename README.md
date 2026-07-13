@@ -92,7 +92,7 @@ const skill = await talocode.skills.generate.githubProfile({ username: "octocat"
 |----------|-----|
 | Website | [talocode.site](https://talocode.site) — GitHub Pages landing page (legacy: [talocode.xyz](https://talocode.xyz)) |
 | Source | [github.com/talocode/talocode](https://github.com/talocode/talocode) |
-| Cloud Dashboard | [cloud.talocode.site](https://cloud.talocode.site) |
+| Cloud Dashboard | [dashboard.talocode.site](https://dashboard.talocode.site) |
 | API Endpoint | [api.talocode.site](https://api.talocode.site) |
 | Documentation | [docs.talocode.site](https://docs.talocode.site) |
 | GitHub | [github.com/talocode](https://github.com/talocode) |

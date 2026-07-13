@@ -8,7 +8,7 @@ Three standalone Vite + React + TypeScript + Tailwind apps are deployed as indep
 
 | App | Domain | Directory | Purpose |
 |-----|--------|-----------|---------|
-| Cloud | `cloud.talocode.site` | `apps/cloud` | Talocode Cloud product page |
+| Cloud | `dashboard.talocode.site` | `apps/cloud` | Talocode Cloud product page |
 | Docs | `docs.talocode.site` | `apps/docs` | Documentation site |
 | Dashboard | `dashboard.talocode.site` | `apps/dashboard` | User dashboard (key management, billing, usage) |
 
@@ -28,14 +28,14 @@ Three standalone Vite + React + TypeScript + Tailwind apps are deployed as indep
 
 ### 2. Per-App Netlify Configuration
 
-#### cloud.talocode.site
+#### dashboard.talocode.site
 
 | Setting | Value |
 |---------|-------|
 | Base directory | `apps/cloud` |
 | Build command | `npm install && npm run build` |
 | Publish directory | `apps/cloud/dist` |
-| Custom domain | `cloud.talocode.site` |
+| Custom domain | `dashboard.talocode.site` |
 
 #### docs.talocode.site
 

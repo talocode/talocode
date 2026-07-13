@@ -2,7 +2,7 @@
 
 Vite + React + TypeScript + Tailwind CSS app for the Talocode Cloud platform.
 
-Deployed on Netlify at [cloud.talocode.site](https://cloud.talocode.site).
+Deployed on Netlify at [dashboard.talocode.site](https://dashboard.talocode.site).
 
 ## Development
 

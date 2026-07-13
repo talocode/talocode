@@ -16,7 +16,7 @@ Establish the brand, the hosted API layer, and the first wave of open-source too
 Connect the ecosystem, ship the cloud dashboard, and enable end-to-end workflows.
 
 - [ ] docs.talocode.site — comprehensive documentation site
-- [ ] cloud.talocode.site — web dashboard for wallet, usage, and API keys
+- [ ] dashboard.talocode.site — web dashboard for wallet, usage, and API keys
 - [ ] Codra — Talocode Cloud integration for skill execution
 - [ ] Tera — Browser context capture API with Talocode Cloud billing
 - [ ] ClipLoop — hosted video rendering API

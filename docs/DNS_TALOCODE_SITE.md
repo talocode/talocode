@@ -30,7 +30,7 @@ This guide documents how to set up DNS for **talocode.site** at Namecheap.
 |-----------|---------|------|
 | talocode.site | GitHub Pages | Static brand site |
 | api.talocode.site | Netlify Functions | Stacklane API |
-| cloud.talocode.site | Netlify | Vite + React app |
+| dashboard.talocode.site | Netlify | Vite + React app |
 | docs.talocode.site | Netlify | Vite + React app |
 | dashboard.talocode.site | Netlify | Vite + React app |
 
