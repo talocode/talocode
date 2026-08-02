@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Authorization complete</title>
+  <style>
+    body { background: #08111f; color: #e2e8f0; font: 16px/1.5 system-ui, sans-serif; margin: 0; padding: 48px 24px; }
+    main { background: #0f1d32; border: 1px solid #28516e; border-radius: 16px; margin: auto; max-width: 680px; padding: 32px; }
+    h1 { color: #5eead4; margin-top: 0; }
+    code { background: #030914; border-radius: 8px; display: block; overflow-wrap: anywhere; padding: 16px; }
+    button { background: #5eead4; border: 0; border-radius: 8px; color: #06201d; cursor: pointer; font: inherit; font-weight: 700; margin-top: 16px; padding: 10px 16px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Authorization complete</h1>
+    <p>Copy the authorization code below and return it to your local setup.</p>
+    <code id="code">No authorization code was received.</code>
+    <button id="copy" hidden>Copy code</button>
+  </main>
+  <script>
+    const code = new URLSearchParams(location.search).get('code');
+    const output = document.getElementById('code');
+    const copy = document.getElementById('copy');
+    if (code) {
+      output.textContent = code;
+      copy.hidden = false;
+      copy.addEventListener('click', async () => {
+        await navigator.clipboard.writeText(code);
+        copy.textContent = 'Copied';
+      });
+    }
+  </script>
+</body>
+</html>
