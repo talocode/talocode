@@ -1,6 +1,5 @@
 const API_BASE =
-  import.meta.env.VITE_TALOCODE_BASE_URL ||
-  (import.meta.env.DEV ? 'http://localhost:4000' : 'https://api.talocode.site')
+  import.meta.env.VITE_TALOCODE_BASE_URL || 'https://api.talocode.site'
 
 export class ApiError extends Error {
   status: number
@@ -14,14 +13,23 @@ export class ApiError extends Error {
 }
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE}${path}`, {
-    ...options,
-    credentials: 'include',
-    headers: {
-      'content-type': 'application/json',
-      ...(options?.headers || {}),
-    },
-  })
+  let response: Response
+  try {
+    response = await fetch(`${API_BASE}${path}`, {
+      ...options,
+      credentials: 'include',
+      headers: {
+        'content-type': 'application/json',
+        ...(options?.headers || {}),
+      },
+    })
+  } catch {
+    throw new ApiError(
+      0,
+      'NETWORK_ERROR',
+      `Cannot reach API at ${API_BASE}. Check your connection or that the API is deployed.`,
+    )
+  }
 
   let payload: { data?: T; error?: { code?: string; message?: string } } = {}
   try {
