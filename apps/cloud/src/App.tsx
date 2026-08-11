@@ -5,6 +5,16 @@ const products = [
     status: "pending",
   },
   {
+    name: "DocuLane",
+    desc: "Office document CLI for agents. Read, write, and edit Word, Excel, PowerPoint without Office installed.",
+    status: "live",
+  },
+  {
+    name: "XSearchLane",
+    desc: "Realtime X (Twitter) search for AI agents. Posts, users, threads with MCP and SDK.",
+    status: "live",
+  },
+  {
     name: "Codra",
     desc: "Hosted AI coding agent API for repo analysis, code explanation, review, and plan generation.",
     status: "pending",
@@ -119,7 +129,7 @@ function Hero() {
           One API key for all Talocode product APIs.
         </p>
         <p className="mb-8 text-sm leading-relaxed" style={{ color: "#666666" }}>
-          REST APIs, SDK, and MCP for Router, Tera, Codra, Agent Browser, ClipLoop, and Skills.
+          REST APIs, SDK, and MCP for Router, Tera, Codra, Agent Browser, ClipLoop, Skills, DocuLane, and XSearchLane.
           Unified billing, one endpoint, developer-first tooling.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
@@ -207,6 +217,8 @@ function ApiDetails() {
               "/v1/cliploop/*",
               "/v1/codra/*",
               "/v1/skills/*",
+              "/v1/doculane/*",
+              "/v1/xsearchlane/*",
             ].map((endpoint) => (
               <li key={endpoint} className="font-mono text-sm">
                 {endpoint}
@@ -440,6 +452,24 @@ function StatusSection() {
             Deployment Status
           </h2>
           <ul className="space-y-3 text-sm">
+            <li className="flex items-center gap-3">
+              <span
+                className="inline-block h-2 w-2 shrink-0 rounded-full"
+                style={{ backgroundColor: "#22c55e" }}
+              />
+              <span style={{ color: "#888888" }}>
+                <span className="text-white">DocuLane</span> &mdash; Live (npm + PyPI)
+              </span>
+            </li>
+            <li className="flex items-center gap-3">
+              <span
+                className="inline-block h-2 w-2 shrink-0 rounded-full"
+                style={{ backgroundColor: "#22c55e" }}
+              />
+              <span style={{ color: "#888888" }}>
+                <span className="text-white">XSearchLane</span> &mdash; Live (npm + PyPI)
+              </span>
+            </li>
             <li className="flex items-center gap-3">
               <span
                 className="inline-block h-2 w-2 shrink-0 rounded-full"

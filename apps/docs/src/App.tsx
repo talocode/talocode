@@ -314,7 +314,10 @@ function ApiSection() {
         headers={["Namespace", "Description"]}
         rows={[
           ["/v1/tera/*", "Tera API — chat, writing, coding"],
+          ["/v1/searchlane/*", "SearchLane — agent web search & research"],
           ["/v1/agent-browser/*", "Web Intelligence — extract & analyze"],
+          ["/v1/geolane/*", "GeoLane — AI visibility / GEO audits"],
+          ["/v1/invoicelane/*", "InvoiceLane — invoice & receipt extract"],
           ["/v1/tradia/*", "Tradia Agentic Trading OS"],
           ["/v1/cliploop/*", "ClipLoop video engine"],
           ["/v1/codra/*", "Codra coding agent"],
@@ -345,6 +348,58 @@ function ApiSection() {
     ]
   }'`}</Pre>
 
+      <h3
+        style={{
+          fontSize: 16,
+          fontWeight: 600,
+          color: "var(--accent)",
+          marginTop: 40,
+          marginBottom: 16,
+        }}
+      >
+        SearchLane (live)
+      </h3>
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 16, lineHeight: 1.6 }}>
+        Agent web search & research. Official paths under{" "}
+        <Code>/v1/searchlane/*</Code>. Credits: query 5 · news 8 · research 30.
+      </p>
+
+      <Table
+        headers={["Method", "Path", "Credits"]}
+        rows={[
+          ["GET", "/v1/searchlane/health", "—"],
+          ["GET", "/v1/searchlane/pricing", "—"],
+          ["GET", "/v1/searchlane/capabilities", "—"],
+          ["POST", "/v1/searchlane/query", "5"],
+          ["POST", "/v1/searchlane/news", "8"],
+          ["POST", "/v1/searchlane/research", "30"],
+        ]}
+      />
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 16, marginTop: 24, lineHeight: 1.6 }}>
+        Example (hosted SearchLane edge — set as <Code>TALOCODE_BASE_URL</Code> until
+        Stacklane Netlify credits restore on <Code>api.talocode.site</Code>):
+      </p>
+
+      <Pre>{`export TALOCODE_BASE_URL=https://qmxhcjiryoptyzpmysen.supabase.co/functions/v1/searchlane
+export TALOCODE_API_KEY=sk-dev-talocode
+
+# Health (no body)
+curl -s "$TALOCODE_BASE_URL/health"
+
+# Web search — 5 credits
+curl -s -X POST "$TALOCODE_BASE_URL/query" \\
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"query":"MCP agent tools","limit":5}'
+
+# Research brief — 30 credits
+curl -s -X POST "$TALOCODE_BASE_URL/research" \\
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"query":"What is llms.txt?","limit":6}'`}</Pre>
+
       <p
         style={{
           color: "var(--text-muted)",
@@ -353,7 +408,9 @@ function ApiSection() {
           fontStyle: "italic",
         }}
       >
-        Tera API endpoints are functional. Other products available after api.talocode.site deployment.
+        Tera and SearchLane are live. Stacklane monorepo routes for SearchLane are
+        ready; redeploy of api.talocode.site is blocked until Netlify account credits
+        refresh (code on talocode/stacklane-api-deploy).
       </p>
     </Section>
   );
@@ -377,17 +434,27 @@ function SdkSection() {
         Install the <Code>@talocode/sdk</Code> package:
       </p>
 
-      <Pre>{`npm install @talocode/sdk`}</Pre>
+      <Pre>{`npm install @talocode/sdk
+npm install @talocode/searchlane`}</Pre>
 
       <p style={{ color: "var(--text-dim)", marginBottom: 16, marginTop: 24, lineHeight: 1.6 }}>
         Initialize with your API key:
       </p>
 
       <Pre>{`import Talocode from "@talocode/sdk";
+import { SearchLaneClient } from "@talocode/searchlane";
 
 const talocode = new Talocode({
   apiKey: process.env.TALOCODE_API_KEY,
-});`}</Pre>
+});
+
+// SearchLane (npm) — works with api.talocode.site or edge base URL
+const search = new SearchLaneClient({
+  apiKey: process.env.TALOCODE_API_KEY,
+  // temporary live host while Netlify credits are exhausted:
+  // baseUrl: "https://qmxhcjiryoptyzpmysen.supabase.co/functions/v1/searchlane",
+});
+const hits = await search.query({ query: "agent-native APIs", limit: 5 });`}</Pre>
 
       <h3
         style={{
@@ -467,8 +534,24 @@ print(uuid_v4())`}</Pre>
           ["talocode-devtool", "pip install talocode-devtool", "64 developer utility functions & CLI"],
           ["talocode-tera", "pip install talocode-tera", "Tera API Python client"],
           ["talocode-codra", "pip install talocode-codra", "Codra coding agent Python client"],
+          ["talocode-searchlane", "pip install talocode-searchlane", "SearchLane search & research client"],
         ]}
       />
+
+      <p style={{ color: "var(--text-dim)", marginBottom: 8, marginTop: 24, fontWeight: 600, fontSize: 14 }}>
+        SearchLane (Python)
+      </p>
+      <Pre>{`pip install talocode-searchlane
+
+from searchlane import SearchLaneClient
+
+client = SearchLaneClient(
+    api_key="...",
+    # base_url="https://qmxhcjiryoptyzpmysen.supabase.co/functions/v1/searchlane",
+)
+hits = client.query(query="MCP agent tools", limit=5)   # 5 credits
+news = client.news(query="AI agents", limit=5)          # 8 credits
+brief = client.research(query="What is llms.txt?")      # 30 credits`}</Pre>
 
       <h3
         style={{
@@ -763,6 +846,9 @@ function PricingSection() {
           ["Tera coding explain", "10"],
           ["Tera coding review", "20"],
           ["Tera coding write", "20"],
+          ["SearchLane query", "5"],
+          ["SearchLane news", "8"],
+          ["SearchLane research", "30"],
           ["Web Intelligence extract", "15"],
           ["Web Intelligence analyze", "25"],
           ["Tradia trade propose", "20"],

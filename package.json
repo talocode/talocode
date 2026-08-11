@@ -9,7 +9,7 @@
     "dev:dashboard": "cd apps/dashboard && npx vite",
     "build:cloud": "cd apps/cloud && npx vite build",
     "build:docs": "cd apps/docs && npx vite build",
-    "build:dashboard": "cd apps/dashboard && npx vite build",
+    "build:dashboard": "npm --prefix apps/dashboard run build",
     "build:frontends": "npm run build:cloud && npm run build:docs && npm run build:dashboard",
     "check:apps": "node scripts/check-frontend-apps.mjs"
   }
