@@ -41,9 +41,7 @@ export default function Sidebar({
   return (
     <nav className="flex h-full flex-col bg-panel">
       <div className="flex items-center gap-3 px-4 pt-5 pb-4">
-        <div className="flex h-8 w-8 items-center justify-center rounded-[10px] border border-border">
-          <span className="text-xs font-semibold text-foreground">T</span>
-        </div>
+        <img src="/assets/talocode-logo.jpg" alt="Talocode" width="32" height="32" className="h-8 w-8 rounded-[10px]" />
         <span className="text-sm font-medium text-foreground">Talocode</span>
       </div>
 

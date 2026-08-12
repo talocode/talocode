@@ -47,6 +47,9 @@ function Nav({ onNavClick }: { onNavClick?: (href: string) => void }) {
         <a
           href="/"
           style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
             fontWeight: 700,
             fontSize: 18,
             color: "var(--accent)",
@@ -54,6 +57,7 @@ function Nav({ onNavClick }: { onNavClick?: (href: string) => void }) {
             letterSpacing: "-0.02em",
           }}
         >
+          <img src="/assets/talocode-logo.jpg" alt="Talocode" width="28" height="28" style={{ borderRadius: "50%" }} />
           Talocode Docs
         </a>
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>

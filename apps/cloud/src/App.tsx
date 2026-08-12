@@ -93,9 +93,10 @@ function Nav() {
         className="mx-auto flex w-full items-center justify-between"
         style={{ maxWidth: "960px" }}
       >
-        <span className="text-sm font-semibold tracking-tight text-white">
+        <a href="https://talocode.site" className="flex items-center gap-2 text-sm font-semibold tracking-tight text-white">
+          <img src="/assets/talocode-logo.jpg" alt="Talocode" width="28" height="28" className="h-7 w-7 rounded-full" />
           Talocode Cloud
-        </span>
+        </a>
         <div className="flex items-center gap-6 text-sm" style={{ color: "#888888" }}>
           <a href="#products" className="transition-colors hover:text-white">
             Products
