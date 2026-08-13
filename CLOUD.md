@@ -138,6 +138,12 @@ Every Talocode product exposes its API through Talocode Cloud with the same auth
 | CrawlerLane | `robots.audit` | 15 |
 | CrawlerLane | `export.markdown` | 5 |
 | CrawlerLane | `export.json` | 5 |
+| MessageLane | `contacts.import` | 2 |
+| MessageLane | `campaign.create` | 2 |
+| MessageLane | `campaign.send` | 5 |
+| MessageLane | `deliveries.report` | 1 |
+
+MessageLane credits cover hosted campaign operations only. SMS gateway and carrier charges are separate and paid to the connected delivery provider.
 
 Full pricing is available at `GET /api/v1/cloud/pricing`.
 

@@ -326,6 +326,23 @@ function ApiSection() {
           ["/v1/cliploop/*", "ClipLoop video engine"],
           ["/v1/codra/*", "Codra coding agent"],
           ["/v1/skills/*", "Skills API"],
+          ["/v1/messagelane/*", "MessageLane — consent-aware SMS campaign operations"],
+          ["/v1/xsearchlane/*", "XSearchLane — realtime X search and research"],
+          ["/v1/webdatalane/*", "WebDataLane — web extraction and crawl planning"],
+          ["/v1/crawlerlane/*", "CrawlerLane — AI crawler intelligence"],
+          ["/v1/forgecad/*", "ForgeCAD — CAD workflow API"],
+          ["/v1/opensourcelane/*", "OpenSourceLane — OSS intelligence"],
+          ["/v1/replylane/*", "ReplyLane — reply opportunity intelligence"],
+          ["/v1/ugclane/*", "UGCLane — content workflow API"],
+          ["/v1/verifylane/*", "VerifyLane — verification and security checks"],
+          ["/v1/tracelane/*", "TraceLane — execution traces and evidence"],
+          ["/v1/handofflane/*", "HandoffLane — agent and human handoffs"],
+          ["/v1/stylelane/*", "StyleLane — style consistency checks"],
+          ["/v1/spendcaps/*", "SpendCaps — budget guardrails"],
+          ["/v1/policylane/*", "PolicyLane — action policy checks"],
+          ["/v1/evallane/*", "EvalLane — evaluation suites"],
+          ["/v1/promptlane/*", "PromptLane — prompt workflows"],
+          ["/v1/retrylane/*", "RetryLane — safe retries and recovery"],
           ["/mcp", "MCP endpoint"],
         ]}
       />
@@ -539,6 +556,7 @@ print(uuid_v4())`}</Pre>
           ["talocode-tera", "pip install talocode-tera", "Tera API Python client"],
           ["talocode-codra", "pip install talocode-codra", "Codra coding agent Python client"],
           ["talocode-searchlane", "pip install talocode-searchlane", "SearchLane search & research client"],
+          ["talocode-messagelane", "pip install talocode-messagelane", "MessageLane consent-aware campaign client"],
         ]}
       />
 

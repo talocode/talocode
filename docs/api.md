@@ -134,6 +134,8 @@ Each product is available under its own namespace at `/v1/{product}/`. Legacy no
 | `/v1/replylane/` | ReplyLane (X reply intelligence) | `POST /v1/replylane/opportunity/score`, `POST /v1/replylane/targets/rank`, `POST /v1/replylane/replies/draft`, `POST /v1/replylane/replies/risk`, `POST /v1/replylane/posts/grok-check`, `POST /v1/replylane/activity/audit`, `POST /v1/replylane/feeds/migrate`, `POST /v1/replylane/export/markdown`, `POST /v1/replylane/export/json` |
 | `/v1/invoicelane/` | InvoiceLane (invoice/receipt extraction) | `POST /v1/invoicelane/extract`, `POST /v1/invoicelane/receipt/extract`, `POST /v1/invoicelane/invoice/extract`, `POST /v1/invoicelane/validate`, `POST /v1/invoicelane/export/csv` |
 | `/v1/ugclane/` | UGCLane (UGC workflow API) | `POST /v1/ugclane/strategy/generate`, `POST /v1/ugclane/competitor/analyze`, `POST /v1/ugclane/hooks/generate`, `POST /v1/ugclane/scripts/generate`, `POST /v1/ugclane/accounts/plan`, `POST /v1/ugclane/calendar/generate`, `POST /v1/ugclane/experiments/generate`, `POST /v1/ugclane/report/generate`, `POST /v1/ugclane/export/markdown`, `POST /v1/ugclane/export/json` |
+| `/v1/messagelane/` | MessageLane (consent-aware SMS campaigns) | `POST /v1/messagelane/contacts/import`, `POST /v1/messagelane/campaigns`, `POST /v1/messagelane/campaigns/:id/send`, `GET /v1/messagelane/deliveries`, `GET /v1/messagelane/pricing` |
+| `/v1/xsearchlane/` | XSearchLane (realtime X research) | `POST /v1/xsearchlane/search`, `POST /v1/xsearchlane/research` |
 | `/v1/worklane/` | WorkLane (agent workflows) | _planned_ |
 
 ## Chat Completions

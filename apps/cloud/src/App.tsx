@@ -51,13 +51,128 @@ const products = [
   },
   {
     name: "SignalLane",
-    desc: "Real-time signal processing pipeline. Coming soon.",
-    status: "soon",
+    desc: "X growth intelligence for account analysis, content experiments, and publishing strategy.",
+    status: "pending",
   },
   {
     name: "WorkLane",
-    desc: "Agentic workflow orchestration layer. Coming soon.",
-    status: "soon",
+    desc: "Agent workflow orchestration with human approval gates for consequential actions.",
+    status: "pending",
+  },
+  {
+    name: "SearchLane",
+    desc: "Web search, news, and research context for agents.",
+    status: "live",
+  },
+  {
+    name: "ContextLane",
+    desc: "Context ingestion, retrieval, and persistent knowledge records for agents.",
+    status: "pending",
+  },
+  {
+    name: "MemoryLane",
+    desc: "Persistent memory primitives for agent workflows.",
+    status: "pending",
+  },
+  {
+    name: "ScreenLane",
+    desc: "Screen-aware control and visual interaction workflows.",
+    status: "pending",
+  },
+  {
+    name: "GateLane",
+    desc: "Agent tool control plane for policy, access, and execution gates.",
+    status: "pending",
+  },
+  {
+    name: "WebDataLane",
+    desc: "Web extraction to clean markdown, metadata, links, and structured data.",
+    status: "pending",
+  },
+  {
+    name: "CrawlerLane",
+    desc: "AI crawler intelligence, visibility scoring, and site access analysis.",
+    status: "pending",
+  },
+  {
+    name: "GeoLane",
+    desc: "AI visibility and citation-readiness audits for websites.",
+    status: "pending",
+  },
+  {
+    name: "ForgeCAD",
+    desc: "Parametric CAD workflows, BOMs, and engineering design checks.",
+    status: "pending",
+  },
+  {
+    name: "OpenSourceLane",
+    desc: "Open-source software intelligence, migration planning, and license audits.",
+    status: "pending",
+  },
+  {
+    name: "ReplyLane",
+    desc: "Reply opportunity scoring, drafting, and publishing-risk checks.",
+    status: "pending",
+  },
+  {
+    name: "InvoiceLane",
+    desc: "Invoice and receipt extraction, validation, and export workflows.",
+    status: "pending",
+  },
+  {
+    name: "UGCLane",
+    desc: "Original hooks, scripts, calendars, and content experiments.",
+    status: "pending",
+  },
+  {
+    name: "XSearchLane",
+    desc: "Realtime X posts, users, threads, and research for agents.",
+    status: "live",
+  },
+  {
+    name: "VerifyLane",
+    desc: "Code and content verification for secrets, security issues, and quality markers.",
+    status: "pending",
+  },
+  {
+    name: "TraceLane",
+    desc: "Trace records and evidence trails for agent execution.",
+    status: "pending",
+  },
+  {
+    name: "HandoffLane",
+    desc: "Structured handoff records between agents and human operators.",
+    status: "pending",
+  },
+  {
+    name: "StyleLane",
+    desc: "Style and brand consistency checks for generated output.",
+    status: "pending",
+  },
+  {
+    name: "SpendCaps",
+    desc: "Spend controls and budget guardrails for agent actions.",
+    status: "pending",
+  },
+  {
+    name: "PolicyLane",
+    desc: "Policy evaluation, authorization checks, and safe action gates.",
+    status: "pending",
+  },
+  {
+    name: "EvalLane",
+    desc: "Evaluation suites and scoring for agent and model output.",
+    status: "pending",
+  },
+  {
+    name: "PromptLane",
+    desc: "Prompt management and repeatable instruction workflows.",
+    status: "pending",
+  },
+  {
+    name: "RetryLane",
+    desc: "Safe retry policies and recovery workflows for agent operations.",
+    status: "pending",
   },
 ];
 

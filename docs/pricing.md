@@ -128,5 +128,11 @@ One API key (`TALOCODE_API_KEY`). One wallet. Every product is billed at the sam
 | replylane | feeds.migrate | 40 |
 | replylane | export.markdown | 5 |
 | replylane | export.json | 5 |
+| messagelane | contacts.import | 2 |
+| messagelane | campaign.create | 2 |
+| messagelane | campaign.send | 5 |
+| messagelane | deliveries.report | 1 |
 
 Full pricing is available programmatically at `GET /api/v1/cloud/pricing`.
+
+MessageLane credits cover hosted campaign operations. Connected SMS gateway and carrier charges are separate.

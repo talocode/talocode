@@ -15,6 +15,114 @@ Local-first AI coding agent that works with your codebase. Codra understands you
 - **Status**: Experimental
 - **Repo**: [github.com/talocode/codra](https://github.com/talocode/codra)
 
+## SearchLane
+
+Web search, news, and research context for agents.
+
+- **Status**: Live
+- **Repo**: [github.com/talocode/searchlane](https://github.com/talocode/searchlane)
+- **Packages**: `@talocode/searchlane` (npm), `talocode-searchlane` (PyPI)
+
+## XSearchLane
+
+Realtime X posts, users, threads, and research for agents.
+
+- **Status**: Live
+- **Repo**: [github.com/talocode/xsearchlane](https://github.com/talocode/xsearchlane)
+- **Packages**: `@talocode/xsearchlane` (npm), `talocode-xsearchlane` (PyPI)
+
+## ContextLane
+
+Context ingestion, retrieval, and knowledge records for persistent agents.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/contextlane](https://github.com/talocode/contextlane)
+- **Package**: `contextlane` (PyPI)
+
+## MemoryLane
+
+Persistent memory primitives for agent workflows.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/memorylane](https://github.com/talocode/memorylane)
+
+## GateLane
+
+Agent tool control plane for policy, access, and execution gates.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/gatelane](https://github.com/talocode/gatelane)
+
+## ScreenLane
+
+Screen-aware control and visual interaction workflows.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/screenlane](https://github.com/talocode/screenlane)
+
+## VerifyLane
+
+Code and content verification for secrets, security issues, and quality markers.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/verifylane](https://github.com/talocode/verifylane)
+
+## TraceLane
+
+Trace records and evidence trails for agent execution.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/tracelane](https://github.com/talocode/tracelane)
+
+## HandoffLane
+
+Structured handoff records between agents and human operators.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/handofflane](https://github.com/talocode/handofflane)
+
+## StyleLane
+
+Style and brand consistency checks for generated output.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/stylelane](https://github.com/talocode/stylelane)
+
+## SpendCaps
+
+Spend controls and budget guardrails for agent actions.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/spendcaps](https://github.com/talocode/spendcaps)
+
+## PolicyLane
+
+Policy evaluation, authorization checks, and safe action gates.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/policylane](https://github.com/talocode/policylane)
+
+## EvalLane
+
+Evaluation suites and scoring for agent and model output.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/evallane](https://github.com/talocode/evallane)
+
+## PromptLane
+
+Prompt management and repeatable instruction workflows.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/promptlane](https://github.com/talocode/promptlane)
+
+## RetryLane
+
+Safe retry policies and recovery workflows for agent operations.
+
+- **Status**: Planned
+- **Repo**: [github.com/talocode/retrylane](https://github.com/talocode/retrylane)
+
 ## Agent Browser / Web Intelligence
 
 Browser validation and web intelligence layer for AI agents. Agent Browser lets agents check web pages, take screenshots, extract structured content, analyze page content with AI, collect evidence, and run trace reports. Exposes a REST API and MCP server.
@@ -80,6 +188,13 @@ Web extraction API. Turn webpages into clean markdown, metadata, links, and stru
 
 - **Status**: Experimental
 - **Repo**: [github.com/talocode/webdatalane](https://github.com/talocode/webdatalane)
+
+## GeoLane
+
+AI visibility and citation-readiness audits for websites.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/geolane](https://github.com/talocode/geolane)
 
 ## InvoiceLane
 

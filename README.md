@@ -19,6 +19,19 @@ Talocode helps developers and builders make work readable to agents and controll
 | **Video** | [ClipLoop](https://github.com/talocode/cliploop) | Short-form promo video engine for indie apps | Experimental |
 | **Trading** | [Tradia](https://github.com/talocode/tradia) | Trading performance intelligence | Planned |
 | **Signals** | [SignalLane](https://github.com/talocode/signallane) | X growth intelligence for builders | Planned |
+| **Messaging** | [MessageLane](https://github.com/talocode/messagelane) | Consent-aware SMS campaigns, provider routing, and delivery operations | Live |
+| **Search** | [SearchLane](https://github.com/talocode/searchlane) | Web search, news, and research context for agents | Live |
+| **X Research** | [XSearchLane](https://github.com/talocode/xsearchlane) | Realtime X posts, users, threads, and research | Live |
+| **Context** | [ContextLane](https://github.com/talocode/contextlane) | Context ingestion, retrieval, and knowledge records | Experimental |
+| **Memory** | [MemoryLane](https://github.com/talocode/memorylane) | Persistent memory primitives for agents | Experimental |
+| **Policy** | [GateLane](https://github.com/talocode/gatelane) | Tool control plane for policy, access, and execution gates | Experimental |
+| **Screen** | [ScreenLane](https://github.com/talocode/screenlane) | Screen-aware control and visual interaction workflows | Experimental |
+| **Web Data** | [WebDataLane](https://github.com/talocode/webdatalane) | Web extraction to markdown, metadata, links, and structured data | Experimental |
+| **Crawler Intelligence** | [CrawlerLane](https://github.com/talocode/crawlerlane) | AI crawler visibility and access analysis | Experimental |
+| **GEO** | [GeoLane](https://github.com/talocode/geolane) | AI visibility and citation-readiness audits | Experimental |
+| **CAD** | [ForgeCAD](https://github.com/talocode/forgecad) | Parametric CAD workflows, BOMs, and engineering checks | Experimental |
+| **Open Source** | [OpenSourceLane](https://github.com/talocode/opensourcelane) | Open-source intelligence, migration planning, and license audits | Experimental |
+| **Reply Intelligence** | [ReplyLane](https://github.com/talocode/replylane) | Reply opportunity scoring, drafting, and publishing-risk checks | Experimental |
 | **Invoice** | [InvoiceLane](https://github.com/talocode/invoicelane) | Extract structured data from invoices, receipts, and business documents through one API. | Planned |
 | **UGC Workflow** | [UGCLane](https://github.com/talocode/ugclane) | Programmable UGC workflow API for original hooks, scripts, calendars and experiments | Experimental |
 | **Hosted API** | [Talocode Cloud](./CLOUD.md) | Hosted API layer with wallet credits and router | Experimental |
@@ -144,6 +157,8 @@ Part of **[Talocode](https://github.com/talocode)** — open-source workflow lay
 | **[ForgeCAD](https://github.com/talocode/forgecad)** | CAD workflows |
 | **[WorkLane](https://github.com/talocode/worklane)** | Work automation |
 | **[ClipLoop](https://github.com/talocode/cliploop)** | Clip / video loops |
+| **[MessageLane](https://github.com/talocode/messagelane)** | Consent-aware SMS campaigns |
+| **[XSearchLane](https://github.com/talocode/xsearchlane)** | Realtime X research |
 
 MCP-compatible agents integrate via each product's MCP server where available ([Model Context Protocol](https://modelcontextprotocol.io/)).
 

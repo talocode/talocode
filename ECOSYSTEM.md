@@ -11,6 +11,9 @@ Tools developers use directly on their machines.
 | [Codra](https://github.com/talocode/codra) | Local-first AI coding agent that works with your editor and project context |
 | [Talocode Skills](https://github.com/talocode/talocode-skills) | Reusable capability modules that agents can discover and run |
 | [Tera](https://github.com/talocode/tera) | Learning and context assistant that captures and summarizes information |
+| [ContextLane](https://github.com/talocode/contextlane) | Context ingestion, retrieval, and knowledge records for persistent agents |
+| [MemoryLane](https://github.com/talocode/memorylane) | Persistent memory primitives for agent workflows |
+| [ScreenLane](https://github.com/talocode/screenlane) | Screen-aware control and visual interaction workflows |
 
 ## Layer 2: Automation and Validation
 
@@ -20,6 +23,7 @@ Tools that make agent behavior observable, testable, and safe.
 |---------|-------------|
 | [Agent Browser](https://github.com/talocode/agent-browser) | Browser validation layer — run checks, take screenshots, collect evidence for agent-driven browser interactions |
 | [WorkLane](https://github.com/talocode/worklane) | Agent workflow and approval runtime — human-in-the-loop for critical agent actions |
+| [GateLane](https://github.com/talocode/gatelane) | Tool control plane for policy, access, and execution gates |
 
 ## Layer 3: Application Services
 
@@ -33,6 +37,14 @@ Specialized services for specific domains.
 | [WebDataLane](https://github.com/talocode/webdatalane) | Web extraction API — turn webpages into markdown, metadata, links, and structured data |
 | [InvoiceLane](https://github.com/talocode/invoicelane) | Invoice/receipt extraction API that turns business documents into structured data without OCR lock-in |
 | [UGCLane](https://github.com/talocode/ugclane) | UGC workflow API — turn product positioning into original hooks, scripts, calendars and experiments |
+| [MessageLane](https://github.com/talocode/messagelane) | Consent-aware SMS campaigns, provider routing, and delivery records |
+| [SearchLane](https://github.com/talocode/searchlane) | Web search, news, and research context for agents |
+| [XSearchLane](https://github.com/talocode/xsearchlane) | Realtime X posts, users, threads, and research for agents |
+| [CrawlerLane](https://github.com/talocode/crawlerlane) | AI crawler intelligence and visibility scoring |
+| [GeoLane](https://github.com/talocode/geolane) | AI visibility and citation-readiness audits |
+| [ForgeCAD](https://github.com/talocode/forgecad) | Parametric CAD workflows, BOMs, and engineering design checks |
+| [OpenSourceLane](https://github.com/talocode/opensourcelane) | Open-source intelligence, migration planning, and license audits |
+| [ReplyLane](https://github.com/talocode/replylane) | Reply opportunity scoring, drafting, and publishing-risk checks |
 
 ## Layer 4: Infrastructure
 
@@ -89,6 +101,7 @@ Every Talocode Cloud API is also available as a Python package on PyPI:
 | `pip install talocode-devtool` | `talocode-devtool` | 64 developer utility CLI tools |
 | `pip install talocode-tera` | `talocode-tera` | Tera API Python client |
 | `pip install talocode-codra` | `talocode-codra` | Codra API Python client |
+| `pip install talocode-messagelane` | `talocode-messagelane` | MessageLane campaign client |
 
 ```python
 from talocode import TalocodeClient
