@@ -15,6 +15,11 @@ const products = [
     status: "live",
   },
   {
+    name: "MessageLane",
+    desc: "Consent-aware SMS campaigns. Import contacts, create campaigns, dispatch through approved gateways, and track delivery records via API, SDK, CLI, and MCP. Get hosted API keys at dashboard.talocode.site.",
+    status: "live",
+  },
+  {
     name: "Codra",
     desc: "Hosted AI coding agent API for repo analysis, code explanation, review, and plan generation.",
     status: "pending",
@@ -130,7 +135,7 @@ function Hero() {
           One API key for all Talocode product APIs.
         </p>
         <p className="mb-8 text-sm leading-relaxed" style={{ color: "#666666" }}>
-          REST APIs, SDK, and MCP for Router, Tera, Codra, Agent Browser, ClipLoop, Skills, DocuLane, and XSearchLane.
+          REST APIs, SDK, and MCP for Router, Tera, Codra, Agent Browser, ClipLoop, Skills, DocuLane, XSearchLane, and MessageLane.
           Unified billing, one endpoint, developer-first tooling.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">

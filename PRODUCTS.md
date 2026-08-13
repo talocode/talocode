@@ -66,6 +66,14 @@ X growth intelligence — account analytics, content experiments, and growth str
 - **Status**: Planned
 - **Repo**: [github.com/talocode/signallane](https://github.com/talocode/signallane)
 
+## MessageLane
+
+Consent-aware SMS campaign operations for agents and teams. Import consented contacts, create campaigns, dispatch through approved gateways, and retain delivery records through a TypeScript SDK, CLI, HTTP API, MCP server, and Python SDK.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/messagelane](https://github.com/talocode/messagelane)
+- **Packages**: `@talocode/messagelane` (npm), `talocode-messagelane` (PyPI)
+
 ## WebDataLane
 
 Web extraction API. Turn webpages into clean markdown, metadata, links, and structured data through one API. Includes URL fetch, markdown conversion, metadata extraction, link discovery, structured data extraction, and crawl planning. Local helpers work without an API key.
