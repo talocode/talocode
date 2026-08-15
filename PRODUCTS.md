@@ -138,6 +138,16 @@ Agent workflow and approval runtime. WorkLane orchestrates multi-step agent task
 - **Status**: Planned
 - **Repo**: [github.com/talocode/worklane](https://github.com/talocode/worklane)
 
+## BotLane
+
+Telegram bridge for Grok/xAI-powered bots. BotLane connects a Grok bot to Telegram for 1:1 and group chat, with session memory and an allowlist. Ships as npm + PyPI packages with a CLI, SDK, MCP server, and HTTP API under `/v1/botlane/*`.
+
+- **Status**: Experimental
+- **Repo**: [github.com/talocode/botlane](https://github.com/talocode/botlane)
+- **npm**: [npmjs.com/package/@talocode/botlane](https://www.npmjs.com/package/@talocode/botlane)
+- **PyPI**: [pypi.org/project/talocode-botlane](https://pypi.org/project/talocode-botlane)
+- **API**: `/v1/botlane/*` (`health`, `chat`, `send`, `history`, `reset`)
+
 ## Talocode Skills
 
 Reusable skill definitions for AI agents. Skills are structured capability modules that agents can discover, install, and run. Built on the Skills SDK.
