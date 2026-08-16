@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Talocode OAuth callback</title>
+<style>
+  body{background:#101216;color:#f0f4f8;font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}
+  .card{background:#161a20;border:1px solid #262b33;border-radius:16px;padding:40px;max-width:460px;text-align:center}
+  h1{font-size:20px;margin:0 0 8px} p{color:#9aa4b0;font-size:14px;line-height:1.6;margin:0}
+  code{background:#0c0e12;border-radius:6px;padding:2px 8px;font-size:13px}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Talocode OAuth callback</h1>
+  <p>This page captures your authorization from Google and forwards it to the local BotLane auth server. If you see this without a code, the authorization may have already completed.</p>
+</div>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var code = params.get('code');
+    var state = params.get('state');
+    if (!code) {
+      document.querySelector('p').textContent = 'No authorization code in this URL. Close this tab and check the terminal.';
+      return;
+    }
+    // Forward the code to the local auth server that started this flow.
+    var target = 'http://localhost:35017/?' + window.location.search.slice(1);
+    try {
+      var x = new XMLHttpRequest();
+      x.open('GET', target, true);
+      x.onload = function () { document.querySelector('p').textContent = 'Authorization received. You can close this tab.'; };
+      x.onerror = function () {
+        // Fallback: tell user to manually paste the code back into the terminal.
+        document.querySelector('p').innerHTML = 'Could not reach the local server. Copy this code and paste it into the terminal: <br><br><code>' + code + '</code>';
+      };
+      x.send();
+    } catch (e) {
+      document.querySelector('p').textContent = 'Could not reach the local auth server. Check that it is running.';
+    }
+  })();
+</script>
+</body>
+</html>
