@@ -5,6 +5,7 @@ const NAV_ITEMS = [
   { href: "#sdk", label: "SDK" },
   { href: "#mcp", label: "MCP" },
   { href: "#skills", label: "Skills" },
+  { href: "/tcode.html", label: "$TCODE" },
   { href: "#pricing", label: "Pricing" },
   { href: "#dns", label: "DNS" },
   { href: "?view=blog", label: "Blog" },
