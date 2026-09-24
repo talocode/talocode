@@ -616,6 +616,33 @@ function StatusSection() {
   );
 }
 
+function VerifiedRevenue() {
+  return (
+    <section className="px-6 py-16" style={{ backgroundColor: "#111111" }}>
+      <div className="mx-auto" style={{ maxWidth: "960px" }}>
+        <h2 className="mb-2 text-2xl font-semibold text-white">Verified revenue</h2>
+        <p className="mb-6 text-sm" style={{ color: "#888888" }}>
+          Talocode Cloud revenue, verified and published.
+        </p>
+        <iframe
+          src="https://trustmrr.com/embed/talocode-cloud?theme=light&period=30d&color=blue"
+          title="TrustMRR verified revenue chart"
+          width={640}
+          height={360}
+          style={{
+            width: "100%",
+            maxWidth: "640px",
+            border: 0,
+            borderRadius: "12px",
+            overflow: "hidden",
+          }}
+          loading="lazy"
+        />
+      </div>
+    </section>
+  );
+}
+
 function Footer() {
   const links = [
     { label: "GitHub", href: "https://github.com/talocode" },
@@ -669,6 +696,7 @@ export default function App() {
         <SdkQuickstart />
         <McpQuickstart />
         <StatusSection />
+        <VerifiedRevenue />
       </main>
       <Footer />
     </div>
