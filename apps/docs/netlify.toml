@@ -1,6 +1,9 @@
 [build]
   base = "apps/docs"
-  command = "npm install && npm run build"
+  # Same as apps/cloud: this app ships a pnpm lockfile, so it must be installed
+  # with pnpm. npm over pnpm's node_modules is what produced
+  # "Cannot read properties of null (reading 'matches')".
+  command = "corepack enable && rm -rf node_modules && pnpm install --frozen-lockfile && pnpm run build"
   publish = "dist"
 
 [[redirects]]

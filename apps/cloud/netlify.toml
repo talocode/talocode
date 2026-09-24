@@ -1,6 +1,11 @@
 [build]
   base = "apps/cloud"
-  command = "npm install && npm run build"
+  # This app ships a pnpm lockfile and no npm lockfile. Installing with npm
+  # over Netlify's restored dependency cache threw
+  # "Cannot read properties of null (reading 'matches')", which happens when
+  # npm install runs over a node_modules that pnpm created. Use the lockfile's
+  # own package manager, and purge the stale cache once so it cannot recur.
+  command = "corepack enable && rm -rf node_modules && pnpm install --frozen-lockfile && pnpm run build"
   publish = "dist"
 
 [[redirects]]
