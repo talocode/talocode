@@ -1329,7 +1329,7 @@ function BlogPostPage({ post, onBack }: { post: typeof BLOG_POSTS[0]; onBack: ()
   )
 }
 
-function BlogPage({ onBack }: { onBack: () => void }) {
+function BlogPage() {
   const [selectedPost, setSelectedPost] = useState<typeof BLOG_POSTS[0] | null>(null)
 
   if (selectedPost) {
@@ -1380,7 +1380,7 @@ export default function App() {
       <div style={{ minHeight: "100vh" }}>
         <Nav onNavClick={handleNavClick} />
         <main>
-          <BlogPage onBack={() => setView("docs")} />
+          <BlogPage />
         </main>
         <FooterSection />
       </div>
