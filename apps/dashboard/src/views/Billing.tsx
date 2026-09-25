@@ -79,29 +79,42 @@ export default function BillingView() {
   const total = selectedAmount ?? 0
 
   const handleProceed = async () => {
-    if (total <= 0) return
-    setProcessing(true)
-    const { result, message } = await startCreditCheckout({
-      credits: total,
-      projectId: project?.id,
-      embed: true,
-    })
-    setProcessing(false)
-    if (result === 'no_project') {
+    if (total <= 0) {
+      toast('Select a credit pack first.', 'error')
+      return
+    }
+    if (!project) {
       toast('Create a project before topping up.', 'error')
       return
     }
-    if (result === 'not_configured') {
-      toast(message || 'Lemon Squeezy is not configured on the API.', 'error')
-      return
+    setProcessing(true)
+    try {
+      const { result, message } = await startCreditCheckout({
+        credits: total,
+        projectId: project.id,
+      })
+      if (result === 'no_project') {
+        toast('Create a project before topping up.', 'error')
+        return
+      }
+      if (result === 'not_configured') {
+        toast(message || 'Lemon Squeezy is not configured on the API.', 'error')
+        return
+      }
+      if (result === 'error') {
+        toast(message || 'Could not start checkout.', 'error')
+        return
+      }
+      // 'redirected': the browser is leaving for the hosted checkout, which
+      // returns to /billing?topup=success and is handled on mount.
+      if (message) toast(message, 'info')
+      setShowTopUp(false)
+      setSelectedAmount(null)
+    } catch (err) {
+      toast(err instanceof Error ? err.message : 'Could not start checkout.', 'error')
+    } finally {
+      setProcessing(false)
     }
-    if (result === 'error') {
-      toast(message || 'Could not start checkout.', 'error')
-      return
-    }
-    if (message) toast(message, 'info')
-    setShowTopUp(false)
-    setSelectedAmount(null)
   }
 
   const handleTopUpDone = () => {
@@ -228,7 +241,7 @@ export default function BillingView() {
           </button>
           <button
             onClick={() => void handleProceed()}
-            disabled={total <= 0 || processing || !project}
+            disabled={processing || !project}
             className="order-1 flex-1 rounded-lg bg-foreground px-4 py-2.5 text-sm font-medium text-surface hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 sm:order-2"
           >
             {processing ? 'Opening checkout…' : 'Proceed to Payment'}
