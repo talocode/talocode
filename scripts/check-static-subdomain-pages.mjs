@@ -38,28 +38,37 @@ check('docs/cloud.html exists', () => existsSync(join(docsDir, 'cloud.html')))
 check('docs/docs.html exists', () => existsSync(join(docsDir, 'docs.html')))
 check('docs/skills.html exists', () => existsSync(join(docsDir, 'skills.html')))
 
+// These were subdomain redirect stubs. They are real pages now: the subdomains
+// are separate Netlify sites reached by CNAME, so nothing in this directory
+// redirects except the intentional /tcode -> /tcode.html stub.
 const indexHtml = read('index.html')
-check('docs/index.html has docs.talocode.site redirect', () =>
-  indexHtml.includes("docs.talocode.site") && indexHtml.includes("window.location.replace")
+check('docs/index.html is a real page, not a redirect stub', () =>
+  !indexHtml.includes('window.location.replace') &&
+  !indexHtml.includes('http-equiv="refresh"') &&
+  indexHtml.includes('footer-links')
 )
-check('docs/index.html has dashboard.talocode.site redirect', () =>
-  indexHtml.includes("dashboard.talocode.site") && indexHtml.includes("window.location.replace")
+check('docs/index.html links to the Cloud dashboard and the API', () =>
+  indexHtml.includes('dashboard.talocode.site') && indexHtml.includes('api.talocode.site')
 )
 
 const notFoundHtml = read('404.html')
-check('docs/404.html has docs.talocode.site redirect', () =>
-  notFoundHtml.includes("docs.talocode.site") && notFoundHtml.includes("window.location.replace")
+check('docs/404.html is a real page, not a redirect stub', () =>
+  !notFoundHtml.includes('window.location.replace') &&
+  !notFoundHtml.includes('http-equiv="refresh"') &&
+  notFoundHtml.includes('footer-links')
 )
-check('docs/404.html has dashboard.talocode.site redirect', () =>
-  notFoundHtml.includes("dashboard.talocode.site") && notFoundHtml.includes("window.location.replace")
+check('docs/tcode/index.html is a redirect stub to /tcode.html', () =>
+  read('tcode/index.html').includes('http-equiv="refresh"')
 )
 
 const dnsMd = read('DNS_TALOCODE_SITE.md')
-check('DNS docs mention docs URL Redirect', () => dnsMd.includes('URL Redirect') && dnsMd.includes('docs'))
-check('DNS docs mention cloud URL Redirect', () => dnsMd.includes('URL Redirect') && dnsMd.includes('cloud'))
-check('DNS docs say api.talocode.site NOT GitHub Pages', () =>
-  dnsMd.includes('api.talocode.site') && dnsMd.includes('NOT GitHub Pages')
+check('DNS docs map cloud and docs to CNAME records', () =>
+  dnsMd.includes('CNAME') && dnsMd.includes('cloud') && dnsMd.includes('docs')
 )
+check('DNS docs say talocode.site is GitHub Pages', () =>
+  dnsMd.includes('talocode.site') && dnsMd.includes('GitHub Pages')
+)
+check('DNS docs document the api subdomain', () => dnsMd.includes('api.talocode.site'))
 
 const pages = ['index.html', 'cloud.html', 'api.html', 'mcp.html', 'pricing.html', '404.html', 'docs.html', 'skills.html']
 for (const page of pages) {
