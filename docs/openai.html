@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenAI drop-in — Talocode Cloud router</title>
+  <meta name="description" content="Point any OpenAI client at api.talocode.site. Bearer TALOCODE_API_KEY. Default model talocode/auto.">
+  <link rel="canonical" href="https://talocode.site/openai.html">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<nav class="nav"><div class="container nav-inner"><a href="/" class="logo">talocode</a>
+<div class="nav-links"><a href="cloud.html">Cloud</a><a href="claim.html">Claim</a><a href="pricing.html">Pricing</a></div></div></nav>
+<header class="hero"><div class="container">
+<h1>Drop-in for OpenAI clients</h1>
+<p class="hero-sub">Same chat completions shape. Prepaid Talocode credits. Default model <code>talocode/auto</code>.</p>
+</div></header>
+<section class="section"><div class="container">
+<pre><code>export OPENAI_BASE_URL=https://api.talocode.site/v1
+export OPENAI_API_KEY=$TALOCODE_API_KEY
+
+curl https://api.talocode.site/v1/chat/completions \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"model":"talocode/auto","messages":[{"role":"user","content":"Hello"}]}'
+
+GET https://api.talocode.site/v1/models
+</code></pre>
+<p>Models: <code>talocode/auto</code> (4 cr) · <code>talocode/fast</code> (2 cr) · <code>talocode/coding</code> (5 cr). 1 credit = $0.01.</p>
+<p>Key: <a href="https://dashboard.talocode.site">dashboard.talocode.site</a> · Router: <a href="cloud.html">cloud.html</a></p>
+</div></section>
+</body></html>
