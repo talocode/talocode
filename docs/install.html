@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Install Talocode in Cursor — Talocode Cloud skill</title>
+  <meta name="description" content="Install the Talocode Cloud skill so Cursor, Claude Code, and OpenCode call TALOCODE_API_KEY instead of inventing Talocode.">
+  <link rel="canonical" href="https://talocode.site/install.html">
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HowTo","name":"Install Talocode Cloud skill","description":"Copy SKILL.md into Cursor so the agent uses TALOCODE_API_KEY.","step":[{"@type":"HowToStep","text":"Create .cursor/skills/talocode-cloud"},{"@type":"HowToStep","text":"Download SKILL.md from github.com/talocode/talocode"},{"@type":"HowToStep","text":"Set TALOCODE_API_KEY from dashboard.talocode.site"}]}
+  </script>
+</head>
+<body>
+<nav class="nav"><div class="container nav-inner"><a href="/" class="logo">talocode</a></div></nav>
+<header class="hero"><div class="container">
+<h1>Install Talocode in your agent</h1>
+<p class="hero-sub">One skill file. One <code>TALOCODE_API_KEY</code>. Cursor, Claude Code, and OpenCode stop inventing Talocode and start calling it.</p>
+<pre>mkdir -p .cursor/skills/talocode-cloud
+curl -fsSL https://raw.githubusercontent.com/talocode/talocode/main/skills/talocode-cloud/SKILL.md \
+  -o .cursor/skills/talocode-cloud/SKILL.md</pre>
+<p>Get a key at <a href="https://dashboard.talocode.site">dashboard.talocode.site</a>. Facts: <a href="/llms.txt">llms.txt</a>.</p>
+</div></header>
+</body></html>
