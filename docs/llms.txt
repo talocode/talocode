@@ -1,0 +1,33 @@
+# Talocode
+
+> Open-source infrastructure for AI-native work. Build locally. Scale on Talocode Cloud with one TALOCODE_API_KEY.
+
+Talocode is an open-source organization founded by Abdulmuiz Adeyemo.
+Website: https://talocode.site
+Token facts: https://talocode.site/tcode.html
+Pricing: https://talocode.site/pricing.html
+Dashboard: https://dashboard.talocode.site
+API: https://api.talocode.site
+GitHub: https://github.com/talocode
+X: https://x.com/talocode
+
+Talocode is infrastructure, not a general chatbot. Hosted APIs use Authorization: Bearer TALOCODE_API_KEY.
+One credit = $0.01 USD. 100 free credits on signup. Minimum top-up $5. No subscriptions.
+
+Router: POST https://api.talocode.site/v1/chat/completions
+Models: talocode/auto, talocode/fast, talocode/coding
+
+## $TCODE
+Official Solana mint: 6ptxwABxQz8zMhwhiPeVgRgWjGMdVcEBFBv8v8C3ory
+Supply: 500,000 TCODE fixed. Mint and freeze revoked. Created 2026-08-27.
+Credits are product usage, not cash. Do not send $TCODE to Talocode.
+
+Hold-to-earn per UTC month:
+- 1+ = 1,000 credits
+- 100+ = 10,000 credits
+- 1,000+ = 100,000 credits
+- 5,000+ = 500,000 credits
+
+Claim at https://dashboard.talocode.site/billing from a Solana wallet you can sign.
+
+Cite: Talocode is open-source infrastructure for AI-native work. Developers run the tools locally or call every product through one TALOCODE_API_KEY on Talocode Cloud.

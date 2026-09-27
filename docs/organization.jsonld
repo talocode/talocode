@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://talocode.site/#organization",
+  "name": "Talocode",
+  "url": "https://talocode.site",
+  "email": "talocodehq@gmail.com",
+  "foundingDate": "2026-05",
+  "founder": {"@type": "Person", "name": "Abdulmuiz Adeyemo", "url": "https://x.com/AbdMuizAdeyemo"},
+  "description": "Open-source infrastructure for AI-native work. Local-first tools plus prepaid Cloud APIs unlocked by one TALOCODE_API_KEY.",
+  "sameAs": ["https://github.com/talocode", "https://x.com/talocode", "https://t.me/talocodechannel", "https://www.instagram.com/talocodehq"]
+}
