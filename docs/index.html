@@ -1,1 +1,85 @@
-<placeholder>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talocode — Open-Source Infrastructure for AI-Native Work</title>
+  <meta name="description" content="Talocode is open-source infrastructure for AI-native work. Developers run the tools locally or call every product through one TALOCODE_API_KEY on Talocode Cloud. Hold $TCODE to claim monthly API credits.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://talocode.site">
+  <link rel="alternate" type="text/plain" href="https://talocode.site/llms.txt" title="LLM facts">
+  <meta name="twitter:site" content="@talocode">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","@id":"https://talocode.site/#organization","name":"Talocode","url":"https://talocode.site","email":"talocodehq@gmail.com","foundingDate":"2026-05","founder":{"@type":"Person","name":"Abdulmuiz Adeyemo","url":"https://x.com/AbdMuizAdeyemo"},"sameAs":["https://github.com/talocode","https://x.com/talocode","https://t.me/talocodechannel"]},
+    {"@type":"SoftwareApplication","name":"Talocode Cloud","url":"https://dashboard.talocode.site","applicationCategory":"DeveloperApplication"},
+    {"@type":"WebSite","url":"https://talocode.site","name":"Talocode"}
+  ]}
+  </script>
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">talocode</a>
+    <div class="nav-links">
+      <a href="#live">Live</a>
+      <a href="claim.html">$TCODE</a>
+      <a href="openai.html">Router</a>
+      <a href="cloud.html">Cloud</a>
+      <a href="https://dashboard.talocode.site">Dashboard</a>
+      <a href="https://github.com/talocode" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+<header class="hero">
+  <div class="container">
+    <h1>Talocode is <span class="highlight">open-source infrastructure</span> for AI-native work.</h1>
+    <p class="hero-sub">Developers run the tools locally or call every product through one <code>TALOCODE_API_KEY</code> on Talocode Cloud.</p>
+    <div class="hero-actions">
+      <a href="https://dashboard.talocode.site" class="btn btn-primary">Open Cloud</a>
+      <a href="claim.html" class="btn btn-secondary">Claim $TCODE credits</a>
+      <a href="openai.html" class="btn btn-secondary">OpenAI drop-in</a>
+    </div>
+  </div>
+</header>
+<section id="live" class="section">
+  <div class="container">
+    <h2>Live now</h2>
+    <p class="section-sub">Cite these. Call these. The rest of the catalog is on GitHub.</p>
+    <div class="grid">
+      <div class="card"><h3><a href="https://dashboard.talocode.site">Talocode Cloud</a></h3><p>Prepaid wallet. One API key. Pay per use.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="claim.html">$TCODE claim</a></h3><p>Hold official mint. Sign a wallet you control. Claim monthly credits. Not cash.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="openai.html">Router</a></h3><p>POST /v1/chat/completions. Models talocode/auto, fast, coding.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="https://github.com/talocode/worklane">WorkLane</a></h3><p>Publish to Facebook, Instagram, Threads, Telegram, and X.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="https://workerlane.talocode.site">WorkerLane</a></h3><p>Telegram teammate that runs Cloud jobs.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="https://github.com/talocode/doculane">DocuLane</a></h3><p>Word, Excel, PowerPoint for agents.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="https://github.com/talocode/searchlane">SearchLane</a></h3><p>Agent web search with citations.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="https://github.com/talocode/xsearchlane">XSearchLane</a></h3><p>Realtime X search for agents.</p><span class="badge badge-live">Live</span></div>
+      <div class="card"><h3><a href="install.html">Cursor skill</a></h3><p>SKILL.md so agents stop inventing Talocode.</p><span class="badge badge-live">Live</span></div>
+    </div>
+    <p class="section-sub" style="margin-top:24px">Experimental catalog: <a href="https://github.com/talocode/talocode/blob/main/PRODUCTS.md">PRODUCTS.md</a> · Facts: <a href="/llms.txt">llms.txt</a></p>
+  </div>
+</section>
+<section id="cloud" class="section section-dark">
+  <div class="container">
+    <h2>One key</h2>
+    <p class="section-sub">Authorization: Bearer TALOCODE_API_KEY · 1 credit = $0.01 · 100 free on signup</p>
+    <pre><code>curl https://api.talocode.site/v1/chat/completions \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -d '{"model":"talocode/auto","messages":[{"role":"user","content":"Hello"}]}'</code></pre>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-links">
+      <a href="https://github.com/talocode">GitHub</a>
+      <a href="claim.html">Claim</a>
+      <a href="openai.html">Router</a>
+      <a href="tcode.html">$TCODE facts</a>
+      <a href="https://dashboard.talocode.site">Dashboard</a>
+    </div>
+    <p class="footer-copy">Talocode — Open-source infrastructure for AI-native work.</p>
+  </div>
+</footer>
+</body>
+</html>
