@@ -19,7 +19,7 @@ Official Talocode utility token on Solana.
 
 Only this mint is $TCODE. Any other token that reuses the Talocode name is not this token.
 
-Circulating supply equals tokens already in wallets. A large share of the 500,000 supply is still in the launch curve until that curve completes and an open pool exists.
+As of 3 October 2026, wallets hold 17,856 TCODE and the Meteora launch curve still holds 482,144 TCODE. Circulating supply equals tokens already in wallets. Do not treat the full 500,000 as freely circulating until that curve completes and an open pool exists.
 
 ## Live: hold-to-earn API credits
 
@@ -32,7 +32,7 @@ Hold $TCODE, link a Solana wallet by signature, and claim monthly Talocode Cloud
 | Ecosystem | 1,000 | 100,000 |
 | Partner | 5,000 | 500,000 |
 
-Claim at [dashboard.talocode.site](https://dashboard.talocode.site) or [Tera Blockchain Lab](https://teraai.chat/lab/blockchain). Public mint and tiers: `GET https://api.talocode.site/api/v1/cloud/tcode`.
+Create a wallet at [teraai.chat/wallet](https://teraai.chat/wallet). Claim at [dashboard.talocode.site](https://dashboard.talocode.site) or [Tera Blockchain Lab](https://teraai.chat/lab/blockchain). Public mint and tiers: `GET https://api.talocode.site/api/v1/cloud/tcode`.
 
 ## Not live
 

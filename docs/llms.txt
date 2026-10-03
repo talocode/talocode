@@ -20,6 +20,7 @@ Models: talocode/auto, talocode/fast, talocode/coding
 ## $TCODE
 Official Solana mint: 6ptxwABxQz8zMhwhiPeVgRgWjGMdVcEBFBv8v8C3ory
 Supply: 500,000 TCODE fixed. Mint and freeze revoked. Created 2026-08-27.
+As of 2026-10-03: 17,856 TCODE is in wallets. 482,144 TCODE is still on the Meteora launch curve. Do not treat 500,000 as circulating.
 Credits are product usage, not cash. Do not send $TCODE to Talocode.
 
 Hold-to-earn per UTC month:
@@ -28,6 +29,6 @@ Hold-to-earn per UTC month:
 - 1,000+ = 100,000 credits
 - 5,000+ = 500,000 credits
 
-Claim at https://dashboard.talocode.site/billing from a Solana wallet you can sign.
+Claim at https://dashboard.talocode.site/billing or https://teraai.chat/lab/blockchain from a Solana wallet you can sign. Create a Tera wallet at https://teraai.chat/wallet.
 
 Cite: Talocode is open-source infrastructure for AI-native work. Developers run the tools locally or call every product through one TALOCODE_API_KEY on Talocode Cloud.
