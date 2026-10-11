@@ -26,3 +26,16 @@ Then set `TALOCODE_API_KEY` from https://dashboard.talocode.site and ask the age
 "Call Talocode Cloud. Use model talocode/auto."
 
 Facts file for models: https://talocode.site/llms.txt
+
+## Cloudflare
+
+Path: `skills/cloudflare/SKILL.md`
+
+This repo already registers the remote server for Cursor and VS Code:
+
+- `.cursor/mcp.json`
+- `.vscode/mcp.json`
+
+Server: `https://mcp.cloudflare.com/mcp`
+
+Open the Talocode repo in Cursor or VS Code and use a Cloudflare tool once. That is the login. Approving `cf` in a browser does not connect this server.
