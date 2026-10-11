@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "talocode": {
+      "url": "https://api.talocode.site/mcp",
+      "headers": {
+        "Authorization": "Bearer ${TALOCODE_API_KEY}"
+      }
+    },
+    "cloudflare": {
+      "url": "https://mcp.cloudflare.com/mcp"
+    }
+  }
+}
