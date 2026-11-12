@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CalcLane — Talocode</title>
+  <meta name="description" content="A calculator you can use in the browser. The same math is POST /v1/calclane/evaluate on Talocode Cloud. One credit when the API runs.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="canonical" href="https://talocode.site/calc.html">
+</head>
+<body>
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo">talocode</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="https://api.talocode.site/v1/calclane/health">API health</a>
+    </div>
+  </div>
+</nav>
+<header class="hero">
+  <div class="container">
+    <h1>CalcLane</h1>
+    <p class="hero-sub">Use it here. It does not spend a credit. The same expression on the API costs 1 credit, which is $0.01.</p>
+    <form id="calc" class="hero-actions" style="display:block;max-width:640px">
+      <input id="expr" name="expr" value="12 * sqrt(144)" autocomplete="off" aria-label="Expression" style="width:100%;padding:14px 16px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;font-size:18px">
+      <div style="margin-top:12px">
+        <button class="btn btn-primary" type="submit">Equals</button>
+      </div>
+      <p id="out" style="margin-top:20px;font-size:42px;font-weight:700">144</p>
+      <p id="err" style="color:#f87171"></p>
+    </form>
+  </div>
+</header>
+<section class="section">
+  <div class="container">
+    <h2>The same call for an agent</h2>
+    <p class="section-sub">Authorization: Bearer TALOCODE_API_KEY. Health is free. Evaluate spends 1 credit.</p>
+    <pre><code>curl https://api.talocode.site/v1/calclane/evaluate \
+  -H "Authorization: Bearer $TALOCODE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"expression":"12 * sqrt(144)"}'</code></pre>
+    <p class="section-sub">Allowed: numbers, + - * / ^, parentheses, sqrt, sin, cos, tan, log, ln, pi, e. Angles are degrees.</p>
+  </div>
+</section>
+<script>
+function fact(n) {
+  if (n < 0 || !Number.isInteger(n) || n > 170) throw new Error("fact needs a whole number from 0 to 170")
+  let out = 1
+  for (let i = 2; i <= n; i += 1) out *= i
+  return out
+}
+function sin(x) { return Math.sin(x * Math.PI / 180) }
+function cos(x) { return Math.cos(x * Math.PI / 180) }
+function tan(x) { return Math.tan(x * Math.PI / 180) }
+function evaluate(raw) {
+  const expr = String(raw || "").trim()
+  if (!expr) throw new Error("Type an expression")
+  if (!/^(?:[0-9]*\.?[0-9]+|sqrt|sin|cos|tan|log|ln|pi|e|fact|\^|[+\-*/(),\s])+$/.test(expr)) {
+    throw new Error("Only numbers and the listed functions")
+  }
+  const js = expr
+    .replace(/\^/g, "**")
+    .replace(/\bsqrt\b/g, "Math.sqrt")
+    .replace(/\bsin\b/g, "sin")
+    .replace(/\bcos\b/g, "cos")
+    .replace(/\btan\b/g, "tan")
+    .replace(/\blog\b/g, "Math.log10")
+    .replace(/\bln\b/g, "Math.log")
+    .replace(/\bpi\b/g, "Math.PI")
+    .replace(/\be\b/g, "Math.E")
+    .replace(/\bfact\b/g, "fact")
+  const value = Function("Math", "fact", "sin", "cos", "tan", `"use strict"; return (${js})`)(Math, fact, sin, cos, tan)
+  if (!Number.isFinite(value)) throw new Error("That did not resolve to a finite number")
+  return value
+}
+const form = document.getElementById("calc")
+const input = document.getElementById("expr")
+const out = document.getElementById("out")
+const err = document.getElementById("err")
+form.addEventListener("submit", (event) => {
+  event.preventDefault()
+  try {
+    const value = evaluate(input.value)
+    out.textContent = String(value)
+    err.textContent = ""
+  } catch (error) {
+    err.textContent = error.message || "Could not evaluate"
+  }
+})
+</script>
+</body>
+</html>
