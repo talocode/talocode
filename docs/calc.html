@@ -3,10 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CalcLane — Talocode</title>
-  <meta name="description" content="A calculator you can use in the browser. The same math is POST /v1/calclane/evaluate on Talocode Cloud. One credit when the API runs.">
+  <title>CalcLane — scientific calculator</title>
+  <meta name="description" content="Scientific calculator. Degrees, radians, or grads. The same expression is POST /v1/calclane/evaluate. One credit when the API runs.">
   <link rel="stylesheet" href="/styles.css">
   <link rel="canonical" href="https://talocode.site/calc.html">
+  <style>
+    .calc { max-width: 440px; }
+    .screen { background: #111; border: 1px solid #333; border-radius: 12px; padding: 14px 16px; }
+    .screen input { width: 100%; border: 0; background: transparent; color: #e5e5e5; font-size: 18px; outline: none; }
+    .result { margin-top: 8px; font-size: 36px; font-weight: 700; line-height: 1.1; word-break: break-all; }
+    .modes { display: flex; gap: 8px; margin: 12px 0; }
+    .modes button, .keys button { border: 1px solid #333; background: #161616; color: #e5e5e5; border-radius: 8px; }
+    .modes button { padding: 8px 12px; }
+    .modes button[aria-pressed="true"] { background: #fff; color: #111; }
+    .keys { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .keys button { min-height: 46px; font-size: 15px; }
+    .keys button.wide { grid-column: span 2; }
+    .err { min-height: 1.4em; color: #f87171; margin-top: 8px; }
+  </style>
 </head>
 <body>
 <nav class="nav">
@@ -21,72 +35,304 @@
 <header class="hero">
   <div class="container">
     <h1>CalcLane</h1>
-    <p class="hero-sub">Use it here. It does not spend a credit. The same expression on the API costs 1 credit, which is $0.01.</p>
-    <form id="calc" class="hero-actions" style="display:block;max-width:640px">
-      <input id="expr" name="expr" value="12 * sqrt(144)" autocomplete="off" aria-label="Expression" style="width:100%;padding:14px 16px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;font-size:18px">
-      <div style="margin-top:12px">
-        <button class="btn btn-primary" type="submit">Equals</button>
+    <p class="hero-sub">Scientific calculator. This page does not spend a credit. The same expression on the API costs 1 credit, which is $0.01.</p>
+    <form id="calc" class="calc">
+      <div class="screen">
+        <input id="expr" name="expr" value="sin(90)" autocomplete="off" aria-label="Expression">
+        <p id="out" class="result">1</p>
       </div>
-      <p id="out" style="margin-top:20px;font-size:42px;font-weight:700">144</p>
-      <p id="err" style="color:#f87171"></p>
+      <div class="modes" role="group" aria-label="Angle unit">
+        <button type="button" data-angle="deg" aria-pressed="true">DEG</button>
+        <button type="button" data-angle="rad" aria-pressed="false">RAD</button>
+        <button type="button" data-angle="grad" aria-pressed="false">GRAD</button>
+      </div>
+      <div class="keys">
+        <button type="button" data-insert="sin(">sin</button>
+        <button type="button" data-insert="cos(">cos</button>
+        <button type="button" data-insert="tan(">tan</button>
+        <button type="button" data-insert="log(">log</button>
+        <button type="button" data-insert="ln(">ln</button>
+        <button type="button" data-insert="asin(">asin</button>
+        <button type="button" data-insert="acos(">acos</button>
+        <button type="button" data-insert="atan(">atan</button>
+        <button type="button" data-insert="sqrt(">√</button>
+        <button type="button" data-insert="^">x^y</button>
+        <button type="button" data-insert="(">(</button>
+        <button type="button" data-insert=")">)</button>
+        <button type="button" data-insert="pi">π</button>
+        <button type="button" data-insert="e">e</button>
+        <button type="button" data-insert="fact(">n!</button>
+        <button type="button" data-insert="7">7</button>
+        <button type="button" data-insert="8">8</button>
+        <button type="button" data-insert="9">9</button>
+        <button type="button" data-action="del">DEL</button>
+        <button type="button" data-action="clear">AC</button>
+        <button type="button" data-insert="4">4</button>
+        <button type="button" data-insert="5">5</button>
+        <button type="button" data-insert="6">6</button>
+        <button type="button" data-insert="*">×</button>
+        <button type="button" data-insert="/">÷</button>
+        <button type="button" data-insert="1">1</button>
+        <button type="button" data-insert="2">2</button>
+        <button type="button" data-insert="3">3</button>
+        <button type="button" data-insert="+">+</button>
+        <button type="button" data-insert="-">−</button>
+        <button type="button" data-insert="0" class="wide">0</button>
+        <button type="button" data-insert=".">.</button>
+        <button type="button" data-insert="%">mod</button>
+        <button type="submit">=</button>
+      </div>
+      <p id="err" class="err"></p>
     </form>
   </div>
 </header>
 <section class="section">
   <div class="container">
     <h2>The same call for an agent</h2>
-    <p class="section-sub">Authorization: Bearer TALOCODE_API_KEY. Health is free. Evaluate spends 1 credit.</p>
+    <p class="section-sub">Scientific mode is the default. Send angle as deg, rad, or grad.</p>
     <pre><code>curl https://api.talocode.site/v1/calclane/evaluate \
   -H "Authorization: Bearer $TALOCODE_API_KEY" \
   -H "Content-Type: application/json" \
-  -d '{"expression":"12 * sqrt(144)"}'</code></pre>
-    <p class="section-sub">Allowed: numbers, + - * / ^, parentheses, sqrt, sin, cos, tan, log, ln, pi, e. Angles are degrees.</p>
+  -d '{"expression":"sin(90)","angle":"deg"}'</code></pre>
+    <p class="section-sub">Also: cos, tan, asin, acos, atan, log, ln, sqrt, cbrt, abs, exp, fact, pi, e, ^, and mod. % is remainder, not percent.</p>
   </div>
 </section>
 <script>
-function fact(n) {
-  if (n < 0 || !Number.isInteger(n) || n > 170) throw new Error("fact needs a whole number from 0 to 170")
-  let out = 1
-  for (let i = 2; i <= n; i += 1) out *= i
-  return out
+const FUNCS = new Set(["sin","cos","tan","asin","acos","atan","log","ln","sqrt","cbrt","abs","floor","ceil","round","exp","fact","factorial"])
+function formatNumber(n) {
+  if (!Number.isFinite(n)) throw new Error("Overflow")
+  if (Object.is(n, -0)) return "0"
+  const abs = Math.abs(n)
+  if (abs !== 0 && (abs >= 1e16 || abs < 1e-10)) return n.toExponential(10).replace(/e\+/, "e").replace(/(\.\d*?)0+e/, "$1e")
+  let s = n.toPrecision(15)
+  if (/e/i.test(s)) return s.replace(/e\+/, "e")
+  if (s.includes(".")) s = s.replace(/\.?0+$/, "")
+  return s === "-0" ? "0" : s
 }
-function sin(x) { return Math.sin(x * Math.PI / 180) }
-function cos(x) { return Math.cos(x * Math.PI / 180) }
-function tan(x) { return Math.tan(x * Math.PI / 180) }
-function evaluate(raw) {
-  const expr = String(raw || "").trim()
-  if (!expr) throw new Error("Type an expression")
-  if (!/^(?:[0-9]*\.?[0-9]+|sqrt|sin|cos|tan|log|ln|pi|e|fact|\^|[+\-*/(),\s])+$/.test(expr)) {
-    throw new Error("Only numbers and the listed functions")
-  }
-  const js = expr
-    .replace(/\^/g, "**")
-    .replace(/\bsqrt\b/g, "Math.sqrt")
-    .replace(/\bsin\b/g, "sin")
-    .replace(/\bcos\b/g, "cos")
-    .replace(/\btan\b/g, "tan")
-    .replace(/\blog\b/g, "Math.log10")
-    .replace(/\bln\b/g, "Math.log")
-    .replace(/\bpi\b/g, "Math.PI")
-    .replace(/\be\b/g, "Math.E")
-    .replace(/\bfact\b/g, "fact")
-  const value = Function("Math", "fact", "sin", "cos", "tan", `"use strict"; return (${js})`)(Math, fact, sin, cos, tan)
-  if (!Number.isFinite(value)) throw new Error("That did not resolve to a finite number")
+function toRadians(value, unit) {
+  if (unit === "deg") return value * Math.PI / 180
+  if (unit === "grad") return value * Math.PI / 200
   return value
 }
+function fromRadians(value, unit) {
+  if (unit === "deg") return value * 180 / Math.PI
+  if (unit === "grad") return value * 200 / Math.PI
+  return value
+}
+function factorial(n) {
+  if (!Number.isFinite(n) || n < 0 || !Number.isInteger(n) || n > 170) throw new Error("Invalid factorial input")
+  let r = 1
+  for (let i = 2; i <= n; i++) r *= i
+  return r
+}
+function applyUnary(name, x, angle) {
+  switch (name) {
+    case "sin": return Math.sin(toRadians(x, angle))
+    case "cos": return Math.cos(toRadians(x, angle))
+    case "tan": {
+      const t = Math.tan(toRadians(x, angle))
+      if (!Number.isFinite(t)) throw new Error("Invalid input")
+      return t
+    }
+    case "asin":
+      if (x < -1 || x > 1) throw new Error("Invalid input")
+      return fromRadians(Math.asin(x), angle)
+    case "acos":
+      if (x < -1 || x > 1) throw new Error("Invalid input")
+      return fromRadians(Math.acos(x), angle)
+    case "atan": return fromRadians(Math.atan(x), angle)
+    case "log":
+      if (x <= 0) throw new Error("Invalid input")
+      return Math.log10(x)
+    case "ln":
+      if (x <= 0) throw new Error("Invalid input")
+      return Math.log(x)
+    case "sqrt":
+      if (x < 0) throw new Error("Invalid input")
+      return Math.sqrt(x)
+    case "cbrt": return Math.cbrt(x)
+    case "abs": return Math.abs(x)
+    case "floor": return Math.floor(x)
+    case "ceil": return Math.ceil(x)
+    case "round": return Math.round(x)
+    case "exp": return Math.exp(x)
+    case "fact":
+    case "factorial": return factorial(x)
+    default: throw new Error("Unknown function: " + name)
+  }
+}
+function applyBinary(op, a, b) {
+  if (op === "+") return a + b
+  if (op === "-") return a - b
+  if (op === "*") return a * b
+  if (op === "/" || op === "%" || op === "mod") {
+    if (b === 0) throw new Error("Cannot divide by zero")
+    return op === "/" ? a / b : a % b
+  }
+  if (op === "^") {
+    const r = Math.pow(a, b)
+    if (!Number.isFinite(r)) throw new Error("Overflow")
+    return r
+  }
+  throw new Error("Unknown operator: " + op)
+}
+function tokenize(input) {
+  const s = input.replace(/\s+/g, "")
+  const tokens = []
+  let i = 0
+  while (i < s.length) {
+    const c = s[i]
+    if (/[0-9.]/.test(c)) {
+      let j = i + 1
+      while (j < s.length && /[0-9.]/.test(s[j])) j++
+      if (j < s.length && (s[j] === "e" || s[j] === "E")) {
+        const mark = j
+        j++
+        if (j < s.length && (s[j] === "+" || s[j] === "-")) j++
+        const numStart = j
+        while (j < s.length && /[0-9]/.test(s[j])) j++
+        if (j === numStart) j = mark
+      }
+      const n = Number(s.slice(i, j))
+      if (!Number.isFinite(n)) throw new Error("Invalid number")
+      tokens.push({ kind: "num", value: n })
+      i = j
+      continue
+    }
+    if (/[a-zA-Z]/.test(c)) {
+      let j = i + 1
+      while (j < s.length && /[a-zA-Z0-9]/.test(s[j])) j++
+      const name = s.slice(i, j).toLowerCase()
+      if (name === "pi") tokens.push({ kind: "const", value: "pi" })
+      else if (name === "e") tokens.push({ kind: "const", value: "e" })
+      else if (FUNCS.has(name)) tokens.push({ kind: "fn", value: name })
+      else if (name === "mod") tokens.push({ kind: "op", value: "mod" })
+      else throw new Error("Unknown identifier: " + name)
+      i = j
+      continue
+    }
+    if (c === "(") { tokens.push({ kind: "lparen" }); i++; continue }
+    if (c === ")") { tokens.push({ kind: "rparen" }); i++; continue }
+    if ("+-*/%^".includes(c)) { tokens.push({ kind: "op", value: c }); i++; continue }
+    if (c === "!") { tokens.push({ kind: "op", value: "!" }); i++; continue }
+    throw new Error("Unexpected character: " + c)
+  }
+  return tokens
+}
+function Parser(tokens, angle) {
+  this.tokens = tokens
+  this.angle = angle
+  this.i = 0
+}
+Parser.prototype.peek = function () { return this.tokens[this.i] }
+Parser.prototype.take = function () {
+  const t = this.tokens[this.i++]
+  if (!t) throw new Error("Unexpected end of expression")
+  return t
+}
+Parser.prototype.parse = function () {
+  const v = this.parseAdd()
+  if (this.i < this.tokens.length) throw new Error("Unexpected trailing tokens")
+  return v
+}
+Parser.prototype.parseAdd = function () {
+  let left = this.parseMul()
+  while (this.peek()?.kind === "op" && (this.peek().value === "+" || this.peek().value === "-")) {
+    const op = this.take().value
+    left = applyBinary(op, left, this.parseMul())
+  }
+  return left
+}
+Parser.prototype.parseMul = function () {
+  let left = this.parsePow()
+  while (this.peek()?.kind === "op" && ["*", "/", "%", "mod"].includes(this.peek().value)) {
+    const op = this.take().value
+    left = applyBinary(op, left, this.parsePow())
+  }
+  return left
+}
+Parser.prototype.parsePow = function () {
+  let left = this.parseUnary()
+  if (this.peek()?.kind === "op" && this.peek().value === "^") {
+    this.take()
+    left = applyBinary("^", left, this.parsePow())
+  }
+  while (this.peek()?.kind === "op" && this.peek().value === "!") {
+    this.take()
+    left = factorial(left)
+  }
+  return left
+}
+Parser.prototype.parseUnary = function () {
+  const t = this.peek()
+  if (t?.kind === "op" && (t.value === "+" || t.value === "-")) {
+    this.take()
+    const v = this.parseUnary()
+    return t.value === "-" ? -v : v
+  }
+  return this.parsePrimary()
+}
+Parser.prototype.parsePrimary = function () {
+  const t = this.take()
+  if (t.kind === "num") return t.value
+  if (t.kind === "const") return t.value === "pi" ? Math.PI : Math.E
+  if (t.kind === "fn") {
+    if (this.peek()?.kind !== "lparen") throw new Error("Expected (")
+    this.take()
+    const arg = this.parseAdd()
+    if (this.peek()?.kind !== "rparen") throw new Error("Expected )")
+    this.take()
+    return applyUnary(t.value, arg, this.angle)
+  }
+  if (t.kind === "lparen") {
+    const v = this.parseAdd()
+    if (this.peek()?.kind !== "rparen") throw new Error("Expected )")
+    this.take()
+    return v
+  }
+  throw new Error("Unexpected token")
+}
+function evaluate(raw, angle) {
+  const expr = String(raw || "").trim()
+  if (!expr) throw new Error("Type an expression")
+  return new Parser(tokenize(expr), angle || "deg").parse()
+}
+let angle = "deg"
 const form = document.getElementById("calc")
 const input = document.getElementById("expr")
 const out = document.getElementById("out")
 const err = document.getElementById("err")
-form.addEventListener("submit", (event) => {
-  event.preventDefault()
+function show() {
   try {
-    const value = evaluate(input.value)
-    out.textContent = String(value)
+    out.textContent = formatNumber(evaluate(input.value, angle))
     err.textContent = ""
   } catch (error) {
     err.textContent = error.message || "Could not evaluate"
   }
+}
+form.addEventListener("submit", (event) => { event.preventDefault(); show() })
+form.querySelectorAll("[data-insert]").forEach((button) => {
+  button.addEventListener("click", () => {
+    input.value += button.getAttribute("data-insert")
+    input.focus()
+  })
+})
+form.querySelector("[data-action=del]").addEventListener("click", () => {
+  input.value = input.value.slice(0, -1)
+  input.focus()
+})
+form.querySelector("[data-action=clear]").addEventListener("click", () => {
+  input.value = ""
+  out.textContent = "0"
+  err.textContent = ""
+  input.focus()
+})
+form.querySelectorAll("[data-angle]").forEach((button) => {
+  button.addEventListener("click", () => {
+    angle = button.getAttribute("data-angle")
+    form.querySelectorAll("[data-angle]").forEach((item) => item.setAttribute("aria-pressed", String(item === button)))
+    if (input.value.trim()) show()
+  })
 })
 </script>
 </body>

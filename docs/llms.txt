@@ -27,7 +27,7 @@ These health routes answered on 2026-11-12:
 - Loop: POST /v1/loop/audit
 - Tera: POST /v1/tera/chat/completions
 - SearchLane: POST /v1/searchlane/query
-- CalcLane: POST /v1/calclane/evaluate. The same calculator is at https://talocode.site/calc.html and does not spend a credit.
+- CalcLane: POST /v1/calclane/evaluate. Scientific calculator. Angle is deg, rad, or grad. The same calculator is at https://talocode.site/calc.html and does not spend a credit. % is remainder, not percent.
 - DocuLane: POST /v1/doculane/read. Hosted read is structural. Real Office parsing is the local CLI.
 - VerifyLane: POST /v1/verifylane/code
 - PolicyLane: POST /v1/policylane/check
