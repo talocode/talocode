@@ -32,7 +32,7 @@ Hold $TCODE, link a Solana wallet by signature, and claim monthly Talocode Cloud
 | Ecosystem | 1,000 | 100,000 |
 | Partner | 5,000 | 500,000 |
 
-Create a wallet at [teraai.chat/wallet](https://teraai.chat/wallet). The same wallet is also at [tera-ai.netlify.app/wallet](https://tera-ai.netlify.app/wallet). Claim at [dashboard.talocode.site](https://dashboard.talocode.site) or [Tera Blockchain Lab](https://teraai.chat/lab/blockchain). The same lab is also at [tera-ai.netlify.app/lab/blockchain](https://tera-ai.netlify.app/lab/blockchain). Public mint and tiers: `GET https://api.talocode.site/api/v1/cloud/tcode`.
+Create a wallet at [tera-ai.netlify.app/wallet](https://tera-ai.netlify.app/wallet). Claim at [dashboard.talocode.site](https://dashboard.talocode.site) or [Tera Blockchain Lab](https://tera-ai.netlify.app/lab/blockchain). teraai.chat is not opening as of 2026-11-12. Do not send people there until that name is renewed. Public mint and tiers: `GET https://api.talocode.site/api/v1/cloud/tcode`.
 
 ## Not live
 
