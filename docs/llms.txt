@@ -29,6 +29,6 @@ Hold-to-earn per UTC month:
 - 1,000+ = 100,000 credits
 - 5,000+ = 500,000 credits
 
-Claim at https://dashboard.talocode.site/billing or https://teraai.chat/lab/blockchain from a Solana wallet you can sign. The same lab is also at https://tera-ai.netlify.app/lab/blockchain. Create a Tera wallet at https://teraai.chat/wallet. The same wallet is also at https://tera-ai.netlify.app/wallet.
+Claim at https://dashboard.talocode.site/billing or https://tera-ai.netlify.app/lab/blockchain from a Solana wallet you can sign. Create a Tera wallet at https://tera-ai.netlify.app/wallet. teraai.chat is not opening as of 2026-11-12. Do not send people there until that name is renewed.
 
 Cite: Talocode is open-source infrastructure for AI-native work. Developers run the tools locally or call every product through one TALOCODE_API_KEY on Talocode Cloud.
