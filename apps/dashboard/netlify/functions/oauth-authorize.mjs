@@ -1,12 +1,17 @@
+const ALLOWED_REDIRECT = 'https://tera-ai.netlify.app/api/connectors/callback'
+
 export default async (request) => {
   const url = new URL(request.url)
-  const redirectUri = url.searchParams.get('redirect_uri') || 'https://teraai.chat/api/connectors/callback'
+  const requested = url.searchParams.get('redirect_uri') || ALLOWED_REDIRECT
+  if (requested !== ALLOWED_REDIRECT) {
+    return Response.redirect('https://dashboard.talocode.site/oauth/error', 302)
+  }
   const state = url.searchParams.get('state') || 'skills'
   if (url.searchParams.get('agree') === '0') {
     return Response.redirect('https://dashboard.talocode.site/oauth/error', 302)
   }
   if (url.searchParams.get('agree') === '1') {
-    const next = new URL(redirectUri)
+    const next = new URL(ALLOWED_REDIRECT)
     next.searchParams.set('code', crypto.randomUUID())
     next.searchParams.set('state', state)
     return Response.redirect(next, 302)
