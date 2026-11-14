@@ -1,0 +1,1 @@
+var e=`4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU`;function t(e,t){let n=10n**BigInt(t),r=e/n,i=(e%n).toString().padStart(t,`0`).replace(/0+$/,``);return i?`${r}.${i}`:r.toString()}function n(e,n){let r=n===`USDC`?6:9;try{return`${t(BigInt(e),r)} ${n}`}catch{return`${e} ${n}`}}export{t as n,n as r,e as t};

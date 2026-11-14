@@ -11,6 +11,11 @@ API: https://api.talocode.site
 GitHub: https://github.com/talocode
 X: https://x.com/talocode
 
+Agent Wallet UI: https://talocode.site/agent-wallet/
+Source: https://github.com/talocode/talocode-agent-wallet
+agent-wallet.talocode.site does not resolve (no DNS record), checked 2026-11-14. The path above is the published build. GitHub Pages is static, so sign-in and payment history are not stored on that host.
+Solana Devnet only. Devnet USDC mint: 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU. Not money. The owner signs. Mainnet is not connected.
+
 Talocode is infrastructure, not a general chatbot. Hosted APIs use Authorization: Bearer TALOCODE_API_KEY.
 One credit = $0.01 USD. 100 free credits on signup. Minimum top-up $5. No subscriptions.
 
